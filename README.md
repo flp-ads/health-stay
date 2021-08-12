@@ -45,3 +45,4 @@ Utilizaremos todos os endpoints oferecidos pela API.
 - Rafael 8;
 - Média de complexidade - 8.
 
+**LinkTree:** https://linktr.ee/rafael_bertoldo
