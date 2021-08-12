@@ -1,4 +1,5 @@
-import { createGlobalStyle } from 'styled-components';
+import { motion } from "framer-motion"
+import styled, { createGlobalStyle } from "styled-components"
 
 export default createGlobalStyle`
     * {
@@ -10,15 +11,20 @@ export default createGlobalStyle`
     }
 
     :root {
-      --light-vanilla: #FFFDED;
-      --vanilla: #F5F1D0;
-      --dark-green: #03501D;
-      --light-green: #7BB34C;
-      --medium-gray: #A8A8A8;
-      --light-gray: #FBFDFF;
-      --black: #202020;
-      --red: #c53030;
-      --white: #ffffff;
+    --light-vanilla: #FFFDED;
+    --vanilla: #F5F1D0;
+    --dark-green: #03501D;
+    --light-green: #7BB34C;
+    --medium-gray: #A8A8A8;
+    --light-gray: #FBFDFF;
+    --black: #202020;
+    --red: #c53030;
+    --white: #ffffff;
+
+    --card-title-size: 18px;
+    --card-text-size: 13px;
+    --card-border-radius: 16px;
+    --card-small-text: 8px;
     }
 
     body {
@@ -44,4 +50,11 @@ export default createGlobalStyle`
     a {
         text-decoration: none;
     }
+`
+
+export const GlobalContainer = styled(motion.div)`
+	border-radius: 1.5rem;
+	padding: 1rem;
+	background-color: var(--white);
+	box-shadow: 0px 0px 19px rgba(0, 0, 0, 0.1);
 `
