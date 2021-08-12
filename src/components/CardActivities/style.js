@@ -8,7 +8,6 @@ export const CardActivitiesContainer = styled.div`
   width: 80%;
   height: 100px;
 
-  margin: 2rem;
   @media (min-width: 900px) {
     max-width: 450px;
     height: 130px;
@@ -52,15 +51,19 @@ export const CardActivitiesTitleContainer = styled.div`
     color: var(--red);
     background: none;
     border: none;
-  }
-
-  svg {
-    width: 17px;
+    svg {
+      width: 16px;
+    }
   }
 
   @media (min-width: 900px) {
     h3 {
       font-size: 26px;
+    }
+    button {
+      svg {
+        width: 23px;
+      }
     }
   }
 `;

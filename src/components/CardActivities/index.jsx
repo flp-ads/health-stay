@@ -16,7 +16,7 @@ export default function CardActivities() {
         <CardActivitiesTitleContainer>
           <h3>Activitie name</h3>
           <button>
-            <FiTrash2 size={20} />
+            <FiTrash2 size={23} />
           </button>
         </CardActivitiesTitleContainer>
         <CardActivitiesInfoContainer>
