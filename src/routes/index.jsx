@@ -30,10 +30,10 @@ const Routes = () => {
                 component={Habits}/>
             
             <Route
-                exact path='/Groups'
+                exact path='/groups'
                 component={Groups}/>
 
-                
+
         </Switch>
     )
 }

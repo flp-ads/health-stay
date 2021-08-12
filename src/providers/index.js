@@ -1,7 +1,7 @@
-const Providers = () => {
+const Providers = ({children}) => {
     return (
         <div>
-            
+            {children}
         </div>
     )
 }

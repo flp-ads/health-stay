@@ -11,7 +11,7 @@ const Route = ({isPrivate = false, component: Component, ...rest}) => {
         <ReactDOMRoute
             {...rest}
             render={() => {
-                return isPrivate ? <Component /> : <Redirect to={isPrivate ? '/login' : '/dashboard'} />
+                return <Component />
             }} />
     )
 }
