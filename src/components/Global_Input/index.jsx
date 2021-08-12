@@ -1,6 +1,6 @@
 import { StyledInput } from "./styles";
 
-const Global_Input = ({ icon: Icon, ...rest }) => {
+const Input = ({ icon: Icon, ...rest }) => {
   return (
     <StyledInput>
       {Icon && <Icon />}
@@ -9,4 +9,4 @@ const Global_Input = ({ icon: Icon, ...rest }) => {
   );
 };
 
-export default Global_Input;
+export default Input;
