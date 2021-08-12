@@ -26,14 +26,15 @@ export default createGlobalStyle`
     }
 
     body, input, button {
-        font-family: 'Bree Serif', serif;
+        font-family: 'Montserrat', sans-serif;
+        font-weight: normal;
         font-size: 1rem;
         background-color: var(--logo-green)
     }
 
     h1,h2,h3,h4,h5,h6 {
-        font-family: 'Indie Flower', cursive;
-        font-weight: 700;
+        font-family: 'Montserrat', sans-serif;
+        font-weight: bold;
     }
 
     button {
