@@ -18,18 +18,18 @@ export default createGlobalStyle`
       --light-gray: #FBFDFF;
       --black: #202020;
       --red: #c53030;
+      --white: #ffffff;
     }
 
     body {
-        background: var(--logo-green);
-        color: var(--vanilla);
+        background: var(--white);
+        color: var(--black);
     }
 
     body, input, button {
         font-family: 'Montserrat', sans-serif;
         font-weight: normal;
         font-size: 1rem;
-        background-color: var(--logo-green)
     }
 
     h1,h2,h3,h4,h5,h6 {
