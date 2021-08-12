@@ -1,7 +1,7 @@
 import { Container, UsersBottom } from "./card.style"
 import { FaHeart } from "react-icons/fa"
 
-const Group_Card = ({ group, isSubscribed = false }) => {
+const GroupCard = ({ group, isSubscribed = false }) => {
 	const { name, category, users_on_group } = group
 	let isBig = false
 	let users = users_on_group
@@ -46,4 +46,4 @@ const Group_Card = ({ group, isSubscribed = false }) => {
 	)
 }
 
-export default Group_Card
+export default GroupCard
