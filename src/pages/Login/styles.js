@@ -7,17 +7,15 @@ export const Container = styled.div`
   width: 100vw;
   display: flex;
   flex-direction: column;
-  align-items: center;
 
   @media (min-width: 768px) {
-      flex-direction: row;
-
+    flex-direction: row;
   }
 `;
 
 export const Background = styled.div`
-  background: url(${SideMobileImage}) no-repeat center, var(--light-green);
-  background-size: 100%;
+  background: url(${SideMobileImage}) repeat center, var(--light-green);
+  background-size: auto 100%;
   height: 300px;
   width: 100%;
 
@@ -28,33 +26,74 @@ export const Background = styled.div`
 
   h1 {
     color: var(--dark-green);
+    font-weight: normal;
   }
 
   .title_bold {
-    font-weight: 700;
+    font-weight: bold;
   }
+
   @media (min-width: 768px) {
     height: 100vh;
-    width: 35%;
+    width: 36%;
     background: url(${SideImage}) no-repeat center, var(--light-green);
-    background-size: 100%;
+    background-size: auto 100%;
+  }
+`;
 
-    .title_bold {
-      font-weight: 700;
-    }
+export const MainContainer = styled.div`
+  width: 100%;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+
+  @media (min-width: 768px) {
+    width: 64%;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+  }
+`;
+
+export const HeaderContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-self: flex-start;
+  justify-content: space-between;
+
+  padding: 16px;
+  width: 100%;
+
+  h1 {
+    color: var(--dark-green);
+  }
+
+  button {
+    display: flex;
+    align-items: center;
+
+    color: var(--dark-green);
+    border: none;
+    background: transparent;
   }
 `;
 
 export const Content = styled.div`
   width: 50%;
+  height: 100%;
   margin: 0 auto;
   display: flex;
   flex-flow: column nowrap;
-  justify-content: center;
   align-items: center;
+  align-self: center;
 
-  margin-top: 32px;
-  
+  margin-top: 80px;
+
+  header {
+    justify-self: top;
+    align-self: top;
+  }
+
   form {
     margin-bottom: 24px;
   }
@@ -64,23 +103,33 @@ export const Content = styled.div`
   }
 
   .separator {
-      display: flex;
-      flex-direction: row;
-      justify-content: center;
-      align-items: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
 
-      width: 80%;
+    margin: 8px 0;
+    width: 320px;
 
-      p {
-          margin: 0 8px;
-      }
+    p {
+      margin: 0 32px;
+      color: var(--light-green);
+    }
 
-      hr {
-          width: 40%;
-          height: 2px;
-      }
+    hr {
+      width: 90px;
+      border: none;
+      border-bottom: 1px solid var(--medium-gray);
+    }
   }
 
   @media (min-width: 768px) {
+    margin-top: 160px;
+
+    .separator {
+      hr {
+        width: 100%;
+      }
+    }
   }
 `;

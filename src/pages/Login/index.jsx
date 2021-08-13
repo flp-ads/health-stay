@@ -1,72 +1,74 @@
-import Input from '../../components/Global_Input';
-import Button from '../../components/Global_Button';
+import Input from "../../components/Global_Input";
+import Button from "../../components/Global_Button";
 
-import { useForm } from 'react-hook-form';
-import { yupResolver } from '@hookform/resolvers/yup';
-import * as yup from 'yup';
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import * as yup from "yup";
 
 import { Link } from "react-router-dom";
 
-import { Container, Background, Content } from './styles';
+import {
+  Container,
+  Background,
+  Content,
+  HeaderContainer,
+  MainContainer,
+} from "./styles";
 
-import { FiLock, FiMail } from "react-icons/fi";
+import { FiLock, FiUser, FiChevronLeft } from "react-icons/fi";
 
 const Login = () => {
+  const formSchema = yup.object().shape({
+    username: yup.string().required("Preencha este campo"),
+    password: yup.string().required("Preencha este campo"),
+  });
 
-    const formSchema = yup.object().shape({
-        email: yup
-            .string()
-            .required('E-mail required')
-            .email('Invalid e-mail'),
-        password: yup
-            .string()
-            .required('Password required'),
-    })
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({
+    resolver: yupResolver(formSchema),
+  });
 
-    const { register, handleSubmit, formState: { errors } } = useForm({
-        resolver: yupResolver(formSchema)
-    })
+  const onFormSubmit = ({ username, password }) => {};
 
-    const onFormSubmit = () => {
+  return (
+    <Container>
+      <Background>
+        <h1>Bem-vindo</h1>
+        <h1 className="title_bold">de volta</h1>
+      </Background>
 
-    }
+      <MainContainer>
+        <HeaderContainer>
+          <button>
+            <FiChevronLeft /> return
+          </button>
 
-    return (
-        <Container>
-            <Background>
-                <h1>Bem-vindo</h1>
-                <h1 className='title_bold'>de volta</h1>
-            </Background>
+          <h1>Logo</h1>
+        </HeaderContainer>
 
-            <Content>
-                <form>
-                    <Input
-                        icon={FiMail}
-                        placeholder='Usuário' />
+        <Content>
+          <form>
+            <Input icon={FiUser} placeholder="Usuário" />
 
-                    <Input
-                        icon={FiLock}
-                        placeholder='Senha' />
-                </form>
+            <Input icon={FiLock} placeholder="Senha" />
+          </form>
 
-                <Button>
-                    login
-                </Button>
+          <Button>login</Button>
 
-                <div className='separator'>
-                    <hr />
-                    <p>ou</p>
-                    <hr />
-                </div>
+          <div className="separator">
+            <hr />
+            <p>ou</p>
+            <hr />
+          </div>
 
-                <Button
-                    isVanilla>
-                    cadastro
-                </Button>
+          <Button isVanilla>cadastro</Button>
+        </Content>
+      </MainContainer>
+    </Container>
+  );
+};
 
-            </Content>
-        </Container>
-    )
-}
-
-export default Login
+export default Login;

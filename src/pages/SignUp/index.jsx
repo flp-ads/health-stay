@@ -1,9 +1,78 @@
-const SingUp = () => {
-    return (
-        <div>
-            
-        </div>
-    )
-}
+import Input from "../../components/Global_Input";
+import Button from "../../components/Global_Button";
 
-export default SingUp
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import * as yup from "yup";
+
+import { Link } from "react-router-dom";
+
+import {
+  Container,
+  Background,
+  Content,
+  HeaderContainer,
+  MainContainer,
+} from "./styles";
+
+import { FiLock, FiUser, FiChevronLeft, FiMail } from "react-icons/fi";
+
+const Login = () => {
+  const formSchema = yup.object().shape({
+    username: yup.string().required("Preencha este campo"),
+    password: yup.string().required("Preencha este campo"),
+  });
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({
+    resolver: yupResolver(formSchema),
+  });
+
+  const onFormSubmit = ({ username, password }) => {};
+
+  return (
+    <Container>
+      <Background>
+        <h1 className="title_bold">Crie sua</h1>
+        <h1>conta</h1>
+      </Background>
+
+      <MainContainer>
+        <HeaderContainer>
+          <button>
+            <FiChevronLeft /> return
+          </button>
+
+          <h1>Logo</h1>
+        </HeaderContainer>
+
+        <Content>
+          <form>
+            <Input icon={FiUser} placeholder="Usuário" />
+
+            <Input icon={FiMail} placeholder="Email" />
+
+            <Input icon={FiLock} placeholder="Senha" />
+
+            <Input icon={FiLock} placeholder="Confirmar senha" />
+          </form>
+
+          <Button>login</Button>
+
+          <div className="separator">
+            <hr />
+            <p>ou</p>
+            <hr />
+          </div>
+
+          <Button isVanilla>cadastro</Button>
+        </Content>
+      </MainContainer>
+    </Container>
+  );
+};
+
+export default Login;
