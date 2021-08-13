@@ -1,4 +1,4 @@
-import { StyledInput } from "./styles";
+import { StyledInput } from "./input.style";
 
 const Input = ({ icon: Icon, ...rest }) => {
   return (
