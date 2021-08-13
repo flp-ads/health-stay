@@ -1,11 +1,5 @@
-import CardActivities from "../../components/CardActivities";
-
 const Home = () => {
-  return (
-    <div>
-      <CardActivities />
-    </div>
-  );
+  return <div></div>;
 };
 
 export default Home;
