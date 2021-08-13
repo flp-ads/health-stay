@@ -1,10 +1,10 @@
 import { StyledInput } from "./input.style";
 
-const Input = ({ icon: Icon, ...rest }) => {
+const Input = ({ icon: Icon, register, name, ...rest }) => {
   return (
     <StyledInput>
       {Icon && <Icon />}
-      <input {...rest} />
+      <input {...register(name)} {...rest} />
     </StyledInput>
   );
 };
