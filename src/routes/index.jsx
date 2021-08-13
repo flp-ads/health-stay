@@ -1,42 +1,48 @@
-import { Switch } from 'react-router-dom';
-import Route from './route'
+import { Switch, Route as ReactDOMRoute, Redirect } from "react-router-dom"
+import Route from "./route"
 
-import Login from '../pages/Login';
-import SignUp from '../pages/SignUp';
-import Home from '../pages/Home';
-import Habits from '../pages/Habits';
-import Groups from '../pages/Groups';
-
+import Login from "../pages/Login"
+import SignUp from "../pages/SignUp"
+import Home from "../pages/Home"
+import Habits from "../pages/Habits"
+import Groups from "../pages/Groups"
+import Dashboard from "../pages/Dashboard"
+import DashboardHome from "../components/Dashboard_Home"
 
 const Routes = () => {
+	return (
+		<Switch>
+			<Route exact path="/" component={Home} />
 
-    return (
-        <Switch>
+			<Route path="/signup" component={SignUp} />
 
-            <Route 
-                exact path='/home'
-                component={Home} />
+			<Route path="/login" component={Login} />
 
-            <Route 
-                exact path='/signup'
-                component={SignUp} />
-            
-            <Route 
-                exact path='/login'
-                component={Login}/>
+			<Route path="/habitos" component={Habits} />
 
-            <Route 
-                exact path='/habits'
-                component={Habits}/>
-            
-            <Route
-                exact path='/groups'
-                component={Groups}/>
+			<Route path="/grupos" component={Groups} />
 
-
-        </Switch>
-    )
+			<ReactDOMRoute
+				path="/dashboard"
+				render={({ match: { path } }) => (
+					<Dashboard>
+						<Switch>
+							<Route
+								exact
+								path={`${path}`}
+								component={() => <Redirect to={`${path}/home`} />}
+							/>
+							<Route path={`${path}/home`} component={DashboardHome} />
+							<Route path={`${path}/grupos`} component={DashboardHome} />
+							<Route path={`${path}/habitos`} component={DashboardHome} />
+							<Route component={() => <Redirect to={`${path}/home`} />} />
+						</Switch>
+					</Dashboard>
+				)}
+			/>
+			<Route component={() => <Redirect to="/" />} />
+		</Switch>
+	)
 }
 
 export default Routes
-
