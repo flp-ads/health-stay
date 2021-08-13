@@ -63,6 +63,24 @@ export const Content = styled.div`
     font-size: 18px;
   }
 
+  .separator {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+
+      width: 80%;
+
+      p {
+          margin: 0 8px;
+      }
+
+      hr {
+          width: 40%;
+          height: 2px;
+      }
+  }
+
   @media (min-width: 768px) {
   }
 `;
