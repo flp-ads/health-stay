@@ -6,7 +6,7 @@ import {
   HabitsCardInfoContainer,
   HabitsCardTitleContainer,
   HabitsCardFooterContainer,
-} from "./styles";
+} from "./Card.style";
 
 import { FiTrash2, FiCheckCircle } from "react-icons/fi";
 
@@ -26,7 +26,7 @@ const HabitsCard = () => {
           <p>Category</p>
         </HabitsCardInfoContainer>
         <HabitsCardFooterContainer>
-          <button deleted="deleted">
+          <button>
             <FiTrash2 size={23} color={"var(--red)"} />
           </button>
 
