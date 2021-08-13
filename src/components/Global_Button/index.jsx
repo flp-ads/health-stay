@@ -1,4 +1,4 @@
-import { StyledButton } from "./styles";
+import { StyledButton } from "./button.style";
 
 const Button = ({ isVanilla = false, children, ...rest }) => {
   return (
