@@ -7,6 +7,7 @@ export const CardActivitiesContainer = styled.div`
   border-radius: var(--card-border-radius);
   width: 80%;
   height: 100px;
+  margin: 2rem;
 
   @media (min-width: 900px) {
     max-width: 450px;
