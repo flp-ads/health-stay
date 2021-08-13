@@ -4,13 +4,17 @@ import bg_img from "../../assets/light_card_full.svg"
 
 export const Container = styled(motion.div)`
 	background-color: var(--light-vanilla);
-	height: 125px;
+	height: 100px;
 	border-radius: 1rem;
-	max-width: 400px;
+	max-width: 450px;
+	width: 100%;
 	display: flex;
 	overflow: hidden;
-	margin: 1rem;
 	border: 1px solid var(--vanilla);
+
+	@media only screen and (min-width: 768px) {
+		height: 125px;
+	}
 `
 
 export const UsersBottom = styled(motion.div)`
@@ -33,14 +37,21 @@ export const UsersBottom = styled(motion.div)`
 export const CardImage = styled.div`
 	background-color: var(--light-green);
 	background-image: url(${bg_img});
-	background-size: 175%;
-	background-position: -25px -30px;
+	background-size: 365%;
+	background-position: -35px -30px;
 	background-repeat: no-repeat;
-	width: 100px;
+	width: 50px;
+
+	@media only screen and (min-width: 768px) {
+		width: 100px;
+		background-size: 175%;
+		background-position-x: -25px;
+	}
 `
 
 export const Text = styled.div`
-	width: 100%;
+	width: calc(100% - 1rem);
+	margin-right: 1rem;
 
 	h4 {
 		font-size: var(--card-title-size);
@@ -62,7 +73,9 @@ export const Icon = styled.div`
 		props.isSubscribed ? css`var(--red)` : css`var(--medium-gray)`};
 `
 export const Users = styled.div`
-	position: relative;
+	position: absolute;
+	bottom: 0.5rem;
+	right: 0.5rem;
 	width: min-content;
 	height: 25px;
 	width: 125px;
