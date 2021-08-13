@@ -1,10 +1,13 @@
 import { StyledInput } from "./input.style";
 
-const Input = ({ icon: Icon, register, name, ...rest }) => {
+const Input = ({ icon: Icon, register, name, error, ...rest }) => {
   return (
-    <StyledInput>
-      {Icon && <Icon />}
-      <input {...register(name)} {...rest} />
+    <StyledInput isDenied={!!error}>
+      <div>
+        {Icon && <Icon />}
+        <input {...register(name)} {...rest} />
+      </div>
+      {!!error && <span>{error}</span>}
     </StyledInput>
   );
 };
