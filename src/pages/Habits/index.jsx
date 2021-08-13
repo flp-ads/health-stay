@@ -1,9 +1,5 @@
 const Habits = () => {
-    return (
-        <div>
-            
-        </div>
-    )
-}
+  return <div></div>;
+};
 
-export default Habits
+export default Habits;
