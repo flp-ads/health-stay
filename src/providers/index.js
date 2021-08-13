@@ -1,9 +1,5 @@
-const Providers = ({children}) => {
-    return (
-        <div>
-            {children}
-        </div>
-    )
-}
+const Providers = ({ children }) => {
+  return <div>{children}</div>;
+};
 
-export default Providers
+export default Providers;
