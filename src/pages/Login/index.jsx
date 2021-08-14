@@ -6,6 +6,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 
 import { Link } from "react-router-dom";
+import { useHistory } from 'react-router';
 
 import {
   Container,
@@ -13,7 +14,7 @@ import {
   Content,
   HeaderContainer,
   MainContainer,
-} from "./styles";
+} from "./login.styles";
 
 import { FiLock, FiUser, FiChevronLeft } from "react-icons/fi";
 
@@ -33,6 +34,10 @@ const Login = () => {
 
   const onFormSubmit = ({ username, password }) => {};
 
+  const history = useHistory();
+
+  const handleNavigation = (path) => history.push(path)
+
   return (
     <Container>
       <Background>
@@ -42,7 +47,8 @@ const Login = () => {
 
       <MainContainer>
         <HeaderContainer>
-          <button>
+          <button
+            onClick={() => handleNavigation('/home')}>
             <FiChevronLeft /> return
           </button>
 
@@ -56,7 +62,10 @@ const Login = () => {
             <Input icon={FiLock} placeholder="Senha" />
           </form>
 
-          <Button>login</Button>
+          <Button
+            type='submit'>
+            login
+          </Button>
 
           <div className="separator">
             <hr />
@@ -64,7 +73,11 @@ const Login = () => {
             <hr />
           </div>
 
-          <Button isVanilla>cadastro</Button>
+          <Button 
+            isVanilla
+            onClick={() => handleNavigation('/signup')}>
+            cadastro
+          </Button>
         </Content>
       </MainContainer>
     </Container>

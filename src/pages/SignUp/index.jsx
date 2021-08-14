@@ -6,6 +6,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 
 import { Link } from "react-router-dom";
+import { useHistory } from "react-router";
 
 import {
   Container,
@@ -13,13 +14,14 @@ import {
   Content,
   HeaderContainer,
   MainContainer,
-} from "./styles";
+} from "./signup.styles";
 
 import { FiLock, FiUser, FiChevronLeft, FiMail } from "react-icons/fi";
 
 const Login = () => {
   const formSchema = yup.object().shape({
     username: yup.string().required("Preencha este campo"),
+    email: yup.string().required('Preencha este campo').email('Email inválido'),
     password: yup.string().required("Preencha este campo"),
   });
 
@@ -31,7 +33,13 @@ const Login = () => {
     resolver: yupResolver(formSchema),
   });
 
-  const onFormSubmit = ({ username, password }) => {};
+  const onFormSubmit = ({ username, password }) => {
+
+  };
+
+  const history = useHistory();
+
+  const handleNavigation = (path) =>  history.push(path)
 
   return (
     <Container>
@@ -42,7 +50,8 @@ const Login = () => {
 
       <MainContainer>
         <HeaderContainer>
-          <button>
+          <button
+            onClick={() => handleNavigation('/home')}>
             <FiChevronLeft /> return
           </button>
 
@@ -60,7 +69,10 @@ const Login = () => {
             <Input icon={FiLock} placeholder="Confirmar senha" />
           </form>
 
-          <Button>login</Button>
+          <Button
+            type='submit'>
+              cadastro
+          </Button>
 
           <div className="separator">
             <hr />
@@ -68,9 +80,15 @@ const Login = () => {
             <hr />
           </div>
 
-          <Button isVanilla>cadastro</Button>
+          <Button
+            isVanilla
+            onClick={() => handleNavigation('/login')}>
+              login
+          </Button>
+
         </Content>
       </MainContainer>
+
     </Container>
   );
 };

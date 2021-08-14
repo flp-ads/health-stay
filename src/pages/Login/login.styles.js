@@ -89,11 +89,6 @@ export const Content = styled.div`
 
   margin-top: 80px;
 
-  header {
-    justify-self: top;
-    align-self: top;
-  }
-
   form {
     margin-bottom: 24px;
   }
