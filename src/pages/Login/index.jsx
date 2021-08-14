@@ -5,7 +5,6 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 
-import { Link } from "react-router-dom";
 import { useHistory } from 'react-router';
 
 import {
@@ -19,6 +18,9 @@ import {
 import { FiLock, FiUser, FiChevronLeft } from "react-icons/fi";
 
 const Login = () => {
+
+  
+
   const formSchema = yup.object().shape({
     username: yup.string().required("Preencha este campo"),
     password: yup.string().required("Preencha este campo"),
@@ -48,7 +50,7 @@ const Login = () => {
       <MainContainer>
         <HeaderContainer>
           <button
-            onClick={() => handleNavigation('/home')}>
+            onClick={() => handleNavigation('/')}>
             <FiChevronLeft /> return
           </button>
 

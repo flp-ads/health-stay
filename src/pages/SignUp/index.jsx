@@ -5,7 +5,6 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 
-import { Link } from "react-router-dom";
 import { useHistory } from "react-router";
 
 import {
@@ -39,7 +38,7 @@ const Login = () => {
 
   const history = useHistory();
 
-  const handleNavigation = (path) =>  history.push(path)
+  const handleNavigation = (path) => history.push(path)
 
   return (
     <Container>
@@ -51,7 +50,7 @@ const Login = () => {
       <MainContainer>
         <HeaderContainer>
           <button
-            onClick={() => handleNavigation('/home')}>
+            onClick={() => handleNavigation('/')}>
             <FiChevronLeft /> return
           </button>
 
