@@ -14,7 +14,7 @@ export const Container = styled.div`
 `;
 
 export const Background = styled.div`
-  background: url(${SideMobileImage}) repeat center, var(--light-green);
+  background: url(${SideMobileImage}) no-repeat center, var(--light-green);
   background-size: auto 100%;
   height: 300px;
   width: 100%;
@@ -36,6 +36,7 @@ export const Background = styled.div`
   @media (min-width: 768px) {
     height: 100vh;
     width: 36%;
+    max-width: 407px;
     background: url(${SideImage}) no-repeat center, var(--light-green);
     background-size: auto 100%;
   }
