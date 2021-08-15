@@ -16,11 +16,12 @@ import {
 } from "./signup.styles";
 
 import { FiLock, FiUser, FiChevronLeft, FiMail } from "react-icons/fi";
+import { motion } from "framer-motion";
 
 const Login = () => {
   const formSchema = yup.object().shape({
     username: yup.string().required("Preencha este campo"),
-    email: yup.string().required('Preencha este campo').email('Email inválido'),
+    email: yup.string().required("Preencha este campo").email("Email inválido"),
     password: yup.string().required("Preencha este campo"),
   });
 
@@ -32,13 +33,11 @@ const Login = () => {
     resolver: yupResolver(formSchema),
   });
 
-  const onFormSubmit = ({ username, password }) => {
-
-  };
+  const onFormSubmit = ({ username, password }) => {};
 
   const history = useHistory();
 
-  const handleNavigation = (path) => history.push(path)
+  const handleNavigation = (path) => history.push(path);
 
   return (
     <Container>
@@ -49,15 +48,20 @@ const Login = () => {
 
       <MainContainer>
         <HeaderContainer>
-          <button
-            onClick={() => handleNavigation('/')}>
+          <button onClick={() => handleNavigation("/")}>
             <FiChevronLeft /> return
           </button>
 
           <h1>Logo</h1>
         </HeaderContainer>
 
-        <Content>
+        <Content
+          as={motion.div}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.5 }}>
+            
           <form>
             <Input icon={FiUser} placeholder="Usuário" />
 
@@ -68,10 +72,7 @@ const Login = () => {
             <Input icon={FiLock} placeholder="Confirmar senha" />
           </form>
 
-          <Button
-            type='submit'>
-              cadastro
-          </Button>
+          <Button type="submit">cadastro</Button>
 
           <div className="separator">
             <hr />
@@ -79,15 +80,11 @@ const Login = () => {
             <hr />
           </div>
 
-          <Button
-            isVanilla
-            onClick={() => handleNavigation('/login')}>
-              login
+          <Button isVanilla onClick={() => handleNavigation("/login")}>
+            login
           </Button>
-
         </Content>
       </MainContainer>
-
     </Container>
   );
 };

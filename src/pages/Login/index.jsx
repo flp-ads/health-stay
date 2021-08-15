@@ -16,6 +16,7 @@ import {
 } from "./login.styles";
 
 import { FiLock, FiUser, FiChevronLeft } from "react-icons/fi";
+import { motion } from "framer-motion";
 
 const Login = () => {
 
@@ -57,7 +58,13 @@ const Login = () => {
           <h1>Logo</h1>
         </HeaderContainer>
 
-        <Content>
+        <Content
+          as={motion.div}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.5 }}>
+            
           <form>
             <Input icon={FiUser} placeholder="Usuário" />
 

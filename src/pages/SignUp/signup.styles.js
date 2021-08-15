@@ -10,6 +10,7 @@ export const Container = styled.div`
 
   @media (min-width: 768px) {
     flex-direction: row;
+    justify-content: space-between;
   }
 `;
 
@@ -36,7 +37,7 @@ export const Background = styled.div`
   @media (min-width: 768px) {
     height: 100vh;
     width: 36%;
-    max-width: 407px;
+    max-width: 500px;
     background: url(${SideImage}) no-repeat center, var(--light-green);
     background-size: auto 100%;
   }
@@ -44,15 +45,18 @@ export const Background = styled.div`
 
 export const MainContainer = styled.div`
   width: 100%;
+  height: 100%;
   display: flex;
   flex-flow: column nowrap;
   justify-content: center;
 
   @media (min-width: 768px) {
     width: 64%;
+    height: 100%;
     display: flex;
     flex-flow: column nowrap;
     justify-content: center;
+    align-items: center;
   }
 `;
 
@@ -61,7 +65,6 @@ export const HeaderContainer = styled.div`
   flex-direction: row;
   align-self: flex-start;
   justify-content: space-between;
-
   padding: 16px;
   width: 100%;
 
@@ -87,7 +90,6 @@ export const Content = styled.div`
   flex-flow: column nowrap;
   align-items: center;
   align-self: center;
-
   margin-top: 80px;
 
   form {
@@ -103,7 +105,6 @@ export const Content = styled.div`
     flex-direction: row;
     justify-content: center;
     align-items: center;
-
     margin: 8px 0;
     width: 320px;
 
