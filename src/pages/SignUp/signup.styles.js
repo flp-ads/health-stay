@@ -36,7 +36,7 @@ export const Background = styled.div`
 
   @media (min-width: 768px) {
     height: 100vh;
-    width: 36%;
+    width: 100%;
     max-width: 500px;
     background: url(${SideImage}) no-repeat center, var(--light-green);
     background-size: auto 100%;
@@ -51,7 +51,7 @@ export const MainContainer = styled.div`
   justify-content: center;
 
   @media (min-width: 768px) {
-    width: 64%;
+    width: 100%;
     height: 100%;
     display: flex;
     flex-flow: column nowrap;
