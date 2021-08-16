@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { GlobalContainer } from "../../styles/global";
 
 export const Container = styled(motion.div)`
@@ -121,22 +121,18 @@ export const CardsList = styled.div`
     flex-wrap: wrap;
     align-items: center;
     justify-content: center;
-    button {
-      background: none;
-      border: none;
-      outline: none;
-    }
-    span {
-      font-weight: normal;
-      color: var(--medium-gray);
-      span {
-        font-weight: bold;
-      }
+  }
+`;
 
-      button:active {
-        color: var(--light-green);
-      }
-    }
+export const NavigationButton = styled.button`
+  background: none;
+  border: none;
+  outline: none;
+  color: ${(props) =>
+    props.isActive ? css`var(--light-green)` : css`var(--medium-gray)`};
+  font-weight: normal;
+  span {
+    font-weight: bold;
   }
 `;
 
