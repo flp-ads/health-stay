@@ -23,6 +23,7 @@ const Login = () => {
     username: yup.string().required("Preencha este campo"),
     email: yup.string().required("Preencha este campo").email("Email inválido"),
     password: yup.string().required("Preencha este campo"),
+    pwdConfirm: yup.string().required("Preencha este campo").oneOf([yup.ref('password'), null], "Senhas devem ser iguais"),
   });
 
   const {
@@ -33,7 +34,7 @@ const Login = () => {
     resolver: yupResolver(formSchema),
   });
 
-  const onFormSubmit = ({ username, password }) => {};
+  const onFormSubmit = ({ username, email, password }) => {};
 
   const history = useHistory();
 
@@ -62,14 +63,35 @@ const Login = () => {
           exit={{ opacity: 0 }}
           transition={{ duration: 0.5 }}>
             
-          <form>
-            <Input icon={FiUser} placeholder="Usuário" />
+          <form
+            onSubmit={handleSubmit(onFormSubmit)}>
+            <Input 
+              name='username'
+              icon={FiUser} 
+              placeholder="Usuário"
+              register={register}
+              error={errors.username?.message} />
 
-            <Input icon={FiMail} placeholder="Email" />
+            <Input 
+              name='email'
+              icon={FiMail} 
+              placeholder="Email"
+              register={register}
+              error={errors.email?.message} />
 
-            <Input icon={FiLock} placeholder="Senha" />
+            <Input 
+              name='password'
+              icon={FiLock} 
+              placeholder="Senha"
+              register={register}
+              error={errors.password?.message} />
 
-            <Input icon={FiLock} placeholder="Confirmar senha" />
+            <Input 
+              name='pwdConfirm'
+              icon={FiLock} 
+              placeholder="Confirmar senha"
+              register={register}
+              error={errors.pwdConfirm?.message} />
           </form>
 
           <Button type="submit">cadastro</Button>
