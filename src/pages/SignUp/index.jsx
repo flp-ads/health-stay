@@ -20,7 +20,7 @@ import { motion } from "framer-motion"
 import api from "../../services/api"
 import { toast } from "react-toastify"
 
-const Login = () => {
+const SignUp = () => {
 	const formSchema = yup.object().shape({
 		username: yup.string().required("Preencha este campo"),
 		email: yup.string().required("Preencha este campo").email("Email inválido"),
@@ -136,4 +136,4 @@ const Login = () => {
 	)
 }
 
-export default Login
+export default SignUp
