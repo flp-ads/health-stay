@@ -26,9 +26,9 @@ import { useState } from "react";
 const GroupsHome = () => {
   const history = useHistory();
   const MAX_CARDS = 3;
-  const [isActiveMy, setIsActiveMy] = useState(false);
+  const [isActiveMy, setIsActiveMy] = useState(true);
   const [isActiveAll, setIsActiveAll] = useState(false);
-  const [isActiveCreate, setIsActiveCreate] = useState(true);
+  const [isActiveCreate, setIsActiveCreate] = useState(false);
 
   const schema = yup.object().shape({
     name: yup.string().required("campo obrigatório"),

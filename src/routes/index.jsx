@@ -8,6 +8,7 @@ import Habits from "../pages/Habits";
 import Groups from "../pages/Groups";
 import Dashboard from "../pages/Dashboard";
 import DashboardHome from "../components/Dashboard_Home";
+import GroupsHome from "../components/Groups_Home";
 
 const Routes = () => {
   return (
@@ -21,7 +22,9 @@ const Routes = () => {
       <Route path="/habitos" component={Habits} />
 
       <Route path="/grupos" component={Groups}>
-        <Groups />
+        <Groups>
+          <GroupsHome />
+        </Groups>
       </Route>
 
       <ReactDOMRoute
