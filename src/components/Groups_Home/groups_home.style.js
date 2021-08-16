@@ -80,7 +80,6 @@ export const OverviewItem = styled.p`
   text-align: center;
   color: var(--medium-gray);
   font-size: 1.2rem;
-
   p {
     font-weight: bold;
     color: var(--light-green);
@@ -90,12 +89,25 @@ export const OverviewItem = styled.p`
     margin: 0 5rem;
   }
 `;
+
 export const MyGroups = styled(Overview)`
+  padding: 1rem;
+  display: none;
+
+  @media only screen and (min-width: 768px) {
+    display: flex;
+    flex: calc(45% - 0.5rem);
+    padding: 2rem;
+  }
+`;
+
+export const MyGroupsMobile = styled(Overview)`
   padding: 1rem;
 
   @media only screen and (min-width: 768px) {
     flex: calc(45% - 0.5rem);
     padding: 2rem;
+    display: none;
   }
 `;
 
@@ -109,6 +121,22 @@ export const CardsList = styled.div`
     flex-wrap: wrap;
     align-items: center;
     justify-content: center;
+    button {
+      background: none;
+      border: none;
+      outline: none;
+    }
+    span {
+      font-weight: normal;
+      color: var(--medium-gray);
+      span {
+        font-weight: bold;
+      }
+
+      button:active {
+        color: var(--light-green);
+      }
+    }
   }
 `;
 

@@ -7,6 +7,7 @@ import {
   Container,
   Header,
   MyGroups,
+  MyGroupsMobile,
   Overview,
   OverviewItem,
   Username,
@@ -64,6 +65,21 @@ const GroupsHome = () => {
           </CardsList>
         </Overview>
         <MyGroups>
+          <CardsList>
+            <span>
+              <button>
+                Meus <span>Grupos</span>
+              </button>
+            </span>
+            <span>
+              Todos os <span>Grupos</span>
+            </span>
+            <span>
+              Criar <span>Grupo</span>
+            </span>
+          </CardsList>
+        </MyGroups>
+        <MyGroupsMobile>
           <Header>
             Meus <span>Grupos</span>
           </Header>
@@ -77,8 +93,8 @@ const GroupsHome = () => {
               Ver <span>todos</span>
             </All>
           )}
-        </MyGroups>
-        <MyGroups>
+        </MyGroupsMobile>
+        <MyGroupsMobile>
           <Header>
             Todos os <span>Grupos</span>
           </Header>
@@ -92,8 +108,8 @@ const GroupsHome = () => {
               Ver <span>todos</span>
             </All>
           )}
-        </MyGroups>
-        <MyGroups>
+        </MyGroupsMobile>
+        <MyGroupsMobile>
           <Header>
             Criar <span>Grupo</span>
           </Header>
@@ -130,7 +146,7 @@ const GroupsHome = () => {
               <GlobalButton type="submit">Criar Grupo</GlobalButton>
             </CategoryContainer>
           </CardsList>
-        </MyGroups>
+        </MyGroupsMobile>
       </Cards>
     </Container>
   );
