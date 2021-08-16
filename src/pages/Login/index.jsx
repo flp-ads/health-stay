@@ -65,10 +65,22 @@ const Login = () => {
           exit={{ opacity: 0 }}
           transition={{ duration: 0.5 }}>
             
-          <form>
-            <Input icon={FiUser} placeholder="Usuário" />
+          <form
+            onSubmit={handleSubmit(onFormSubmit)}>
+            <Input 
+              name='username'
+              icon={FiUser} 
+              placeholder="Usuário"
+              register={register}
+              error={errors.username?.message} />
 
-            <Input icon={FiLock} placeholder="Senha" />
+            <Input 
+              name='password'
+              icon={FiLock} 
+              placeholder="Senha"
+              register={register}
+              error={errors.password?.message} />
+
           </form>
 
           <Button
