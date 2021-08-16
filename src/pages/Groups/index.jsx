@@ -1,9 +1,13 @@
+import GroupsHome from "../../components/Groups_Home";
+import GroupsMenu from "../../components/Groups_Menu";
+
 const Groups = () => {
-    return (
-        <div>
+  return (
+    <div>
+      <GroupsHome />
+      <GroupsMenu />
+    </div>
+  );
+};
 
-        </div>
-    )
-}
-
-export default Groups
+export default Groups;
