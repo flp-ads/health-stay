@@ -19,7 +19,13 @@ const Home = () => {
   return (
     <Container>
       <Header>
-        <h1>Logo</h1>
+        <div className="header_container">
+          <h1>Logo</h1>
+          <div className="header_container">
+            <button onClick={() => handleNavigation("/")}>Home</button>
+            <button onClick={() => handleNavigation("/sobre")}>Sobre</button>
+          </div>
+        </div>
       </Header>
       <BackgroundHeader>
         <img src={bg_image} alt="" />

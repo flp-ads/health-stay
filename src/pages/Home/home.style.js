@@ -109,11 +109,30 @@ export const Header = styled.header`
 
   div.header_container {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
+
+    button {
+      background-color: transparent;
+      margin: 0 5vh;
+      border: none;
+      color: var(--dark-green);
+    }
   }
 
   @media (min-width: 768px) {
     padding: 2rem 1rem;
+
+    div.header_container {
+      display: flex;
+      justify-content: space-between;
+      margin-right: 10vh;
+      button {
+        background-color: transparent;
+        margin: 0 7vh;
+        border: none;
+        color: var(--dark-green);
+      }
+    }
   }
 `;
 
@@ -123,7 +142,7 @@ export const BackgroundHeader = styled.div`
   right: 0;
   overflow: hidden;
   height: 60vh;
-  width: 18vw;
+  width: 10vw;
 
   img {
     display: none;
