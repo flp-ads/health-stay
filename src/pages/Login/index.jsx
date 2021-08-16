@@ -66,6 +66,7 @@ const Login = () => {
           transition={{ duration: 0.5 }}>
             
           <form
+            id='login_form'
             onSubmit={handleSubmit(onFormSubmit)}>
             <Input 
               name='username'
@@ -84,7 +85,8 @@ const Login = () => {
           </form>
 
           <Button
-            type='submit'>
+            type='submit'
+            form='login_form'>
             login
           </Button>
 
