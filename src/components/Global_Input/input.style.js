@@ -1,11 +1,16 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 export const StyledInput = styled.div`
-  border-bottom: 1px solid var(--medium-gray);
-  display: flex;
-  align-items: center;
-  margin: 0 10px;
   color: var(--medium-gray);
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+
+  div {
+    border-bottom: 1px solid var(--medium-gray);
+    align-items: center;
+    display: flex;
+  }
 
   input {
     flex: 1;
@@ -17,8 +22,17 @@ export const StyledInput = styled.div`
     margin-right: 10px;
   }
 
-  :hover {
+  div:hover {
     border-bottom: 1px solid var(--light-green);
     color: var(--light-green);
   }
+
+  ${(props) =>
+    props.isDenied &&
+    css`
+      color: var(--red);
+      div {
+        border-color: var(--red);
+      }
+    `}
 `;
