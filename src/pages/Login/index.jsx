@@ -18,6 +18,8 @@ import {
 import { FiLock, FiUser, FiChevronLeft } from "react-icons/fi";
 import { motion } from "framer-motion";
 
+import { useLogin } from "../../providers/User";
+
 const Login = () => {
 
   
@@ -35,7 +37,12 @@ const Login = () => {
     resolver: yupResolver(formSchema),
   });
 
-  const onFormSubmit = ({ username, password }) => {};
+  const { userLogin } = useLogin()
+
+  const onFormSubmit = ({ username, password }) => {
+    
+    userLogin({username, password})
+  };
 
   const history = useHistory();
 
