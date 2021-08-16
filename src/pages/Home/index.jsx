@@ -23,7 +23,9 @@ const Home = () => {
           <h1>Logo</h1>
           <div className="header_container">
             <button onClick={() => handleNavigation("/")}>Home</button>
-            <button onClick={() => handleNavigation("/sobre")}>About Us</button>
+            <button onClick={() => handleNavigation("/sobre")}>
+              Sobre nós
+            </button>
           </div>
         </div>
       </Header>
@@ -32,8 +34,8 @@ const Home = () => {
       </BackgroundHeader>
       <HomeTitleContainer>
         <div>
-          <p>change yours habits</p>
-          <strong>Today</strong>
+          <p>Mude seus habitos</p>
+          <strong>Hoje</strong>
         </div>
       </HomeTitleContainer>
 
@@ -42,15 +44,17 @@ const Home = () => {
       </BackgroundImage>
 
       <HomeButtonContainer>
-        <Button onClick={() => handleNavigation("/signup")}>sign up now</Button>
+        <Button onClick={() => handleNavigation("/signup")}>
+          Cadastre-se agora
+        </Button>
 
         <div>
           <fieldset>
-            <legend>or</legend>
+            <legend>ou</legend>
           </fieldset>
         </div>
         <Button isVanilla onClick={() => handleNavigation("/login")}>
-          Login rigth away
+          Faça login
         </Button>
       </HomeButtonContainer>
     </Container>
