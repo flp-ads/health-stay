@@ -113,7 +113,7 @@ export const Header = styled.header`
 
     button {
       background-color: transparent;
-      margin: 0 5vh;
+      margin: 0 2vh;
       border: none;
       color: var(--dark-green);
     }
