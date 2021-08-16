@@ -1,5 +1,5 @@
-import { motion } from "framer-motion"
-import styled, { createGlobalStyle } from "styled-components"
+import { motion } from "framer-motion";
+import styled, { createGlobalStyle } from "styled-components";
 
 export default createGlobalStyle`
     * {
@@ -32,7 +32,7 @@ export default createGlobalStyle`
         color: var(--black);
     }
 
-    body, input, button {
+    body, input, button, select {
         font-family: 'Montserrat', sans-serif;
         font-weight: normal;
         font-size: 1rem;
@@ -50,11 +50,11 @@ export default createGlobalStyle`
     a {
         text-decoration: none;
     }
-`
+`;
 
 export const GlobalContainer = styled(motion.div)`
-	border-radius: 1.5rem;
-	padding: 1rem;
-	background-color: var(--white);
-	box-shadow: 0px 0px 19px rgba(0, 0, 0, 0.1);
-`
+  border-radius: 1.5rem;
+  padding: 1rem;
+  background-color: var(--white);
+  box-shadow: 0px 0px 19px rgba(0, 0, 0, 0.1);
+`;
