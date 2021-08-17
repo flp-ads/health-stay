@@ -80,38 +80,32 @@ export const OverviewItem = styled.p`
   text-align: center;
   color: var(--medium-gray);
   font-size: 1.2rem;
+
   p {
     font-weight: bold;
     color: var(--light-green);
   }
 
   @media only screen and (min-width: 768px) {
-    margin: 0 5rem;
+    margin: 0 1rem;
   }
 `;
 
-export const MyGroups = styled(Overview)`
-  padding: 1rem;
-  display: none;
+export const SubMenuContainer = styled(Overview)`
+	padding: 1rem;
 
-  @media only screen and (min-width: 768px) {
+	@media only screen and (min-width: 768px) {
+		flex: 1;
     display: flex;
-    flex: calc(45% - 0.5rem);
-    padding: 2rem;
-  }
-`;
+    flex-flow: column nowrap;
+    align-items: center;
+    justify-content: space-evenly;
+		padding: 2rem;
+    margin: 1rem 0 0 0;
+	}
+`
 
-export const MyGroupsMobile = styled(Overview)`
-  padding: 1rem;
-
-  @media only screen and (min-width: 768px) {
-    flex: calc(45% - 0.5rem);
-    padding: 2rem;
-    display: none;
-  }
-`;
-
-export const MyGroupsNavigationMobile = styled(Overview)`
+export const SubMenuMobile = styled(Overview)`
   padding: 1rem;
   display: flex;
   align-items: center;
@@ -123,6 +117,19 @@ export const MyGroupsNavigationMobile = styled(Overview)`
     display: none;
   }
 `;
+
+export const SubMenuDesktop = styled.header`
+  display: none;
+
+  @media only screen and (min-width: 768px) {
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    margin: 0 0 1rem 0;
+  }
+`
 
 export const CardsList = styled.div`
   display: flex;
@@ -137,25 +144,20 @@ export const CardsList = styled.div`
   }
 `;
 
-export const CardsListMobile = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-
-  @media only screen and (min-width: 768px) {
-    display: none;
-  }
-`;
-
 export const NavigationButton = styled.button`
   background: none;
   border: none;
   outline: none;
   color: ${(props) =>
-    props.isActive ? css`var(--light-green)` : css`var(--medium-gray)`};
+    props.isActive ? css`var(--dark-green)` : css`var(--medium-gray)`};
   font-weight: normal;
+  font-size: 18px;
   span {
     font-weight: bold;
+  }
+
+  @media only screen and (min-width: 768px) {
+    font-size: 32px;
   }
 `;
 
@@ -172,39 +174,5 @@ export const All = styled(motion.p)`
 
   @media only screen and (min-width: 768px) {
     flex: 100%;
-  }
-`;
-
-export const CategoryContainer = styled.form`
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  input,
-  select,
-  button {
-    margin-top: 16px;
-  }
-`;
-
-export const SelectContainer = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  border-bottom: 1px solid var(--medium-gray);
-
-  select {
-    width: 100%;
-    font-family: "Montserrat", sans-serif;
-    font-weight: normal;
-    font-size: 1rem;
-    border: none;
-    background: none;
-    color: var(--medium-gray);
-    margin-bottom: 8px;
-  }
-
-  svg {
-    color: var(--medium-gray);
-    margin-right: 8px;
   }
 `;
