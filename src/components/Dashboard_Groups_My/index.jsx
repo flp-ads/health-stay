@@ -3,26 +3,45 @@ import {
   MyGroups,
   CardsList,
   All,
+  MyGroupsMobile,
 } from "../Dashboard_Groups/groups_home.style";
 import GroupCard from "../Group_Card";
 
 const DashboardGroupsMy = ({ MAX_CARDS, handleNavigation }) => {
   return (
-    <MyGroups>
-      <Header>
-        Meus <span>Grupos</span>
-      </Header>
-      <CardsList>
-        {groups.slice(0, MAX_CARDS).map((group) => (
-          <GroupCard group={group} />
-        ))}
-      </CardsList>
-      {groups.length > MAX_CARDS && (
-        <All onClick={() => handleNavigation("grupos")}>
-          Ver <span>todos</span>
-        </All>
-      )}
-    </MyGroups>
+    <>
+      <MyGroups>
+        <Header>
+          Meus <span>Grupos</span>
+        </Header>
+        <CardsList>
+          {groups.slice(0, MAX_CARDS).map((group) => (
+            <GroupCard group={group} />
+          ))}
+        </CardsList>
+        {groups.length > MAX_CARDS && (
+          <All onClick={() => handleNavigation("grupos")}>
+            Ver <span>todos</span>
+          </All>
+        )}
+      </MyGroups>
+
+      <MyGroupsMobile>
+        <Header>
+          Meus <span>Grupos</span>
+        </Header>
+        <CardsList>
+          {groups.slice(0, MAX_CARDS).map((group) => (
+            <GroupCard group={group} />
+          ))}
+        </CardsList>
+        {groups.length > MAX_CARDS && (
+          <All onClick={() => handleNavigation("grupos")}>
+            Ver <span>todos</span>
+          </All>
+        )}
+      </MyGroupsMobile>
+    </>
   );
 };
 
