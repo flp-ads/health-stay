@@ -20,11 +20,13 @@ export const UserContextProvider = ({ children }) => {
 			.then((response) => {
 				const { access } = response.data
 				localStorage.setItem("@HS:UserToken", JSON.stringify(access))
-				getUserId()
 				toast.success("Login bem sucedido")
+				getUserId()
 			})
-			.catch((_) => {
-				toast.error("Usuário ou senha incorretos")
+			.catch((err) => {
+				if (!!err) {
+					toast.error("Usuário ou senha incorretos")
+				}
 			})
 	}
 
