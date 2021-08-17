@@ -2,16 +2,19 @@ import styled from "styled-components";
 
 export const Container = styled.div`
   background-color: var(--vanilla);
-
   width: 100%;
   min-height: calc(100vh - calc(45px + 1rem));
-  margin-top: calc(45px + 1rem);
   display: flex;
   flex-direction: column;
 
   @media (min-width: 768px) {
     min-height: calc(100vh - calc(45px + 2rem));
     flex-direction: row;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
   }
 `;
 
@@ -25,7 +28,7 @@ export const HomeTitleContainer = styled.div`
     display: flex;
     flex-direction: column;
     align-items: left;
-    margin-top: 15%;
+    margin-top: 100px;
 
     p {
       font-size: 1.7rem;
@@ -44,6 +47,7 @@ export const HomeTitleContainer = styled.div`
     height: 105vh;
 
     div {
+      margin-top: 160px;
       p {
         font-size: 2.5rem;
       }
@@ -60,7 +64,6 @@ export const HomeButtonContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-
   flex-direction: column;
 
   div {
@@ -100,10 +103,7 @@ export const HomeButtonContainer = styled.div`
 export const Header = styled.header`
   background-color: var(--light-green);
   position: fixed;
-  top: 0;
-  left: 0;
   color: var(--white);
-
   padding: 0.5rem 1rem;
   width: 100%;
 
@@ -121,14 +121,17 @@ export const Header = styled.header`
 
   @media (min-width: 768px) {
     padding: 2rem 1rem;
+    position: fixed;
+    top: 0;
+    left: 0;
 
     div.header_container {
       display: flex;
       justify-content: space-between;
-      margin-right: 10vh;
+      margin-right: 60px;
       button {
         background-color: transparent;
-        margin: 0 7vh;
+        margin: 0 20px;
         border: none;
         color: var(--dark-green);
       }
@@ -137,24 +140,29 @@ export const Header = styled.header`
 `;
 
 export const BackgroundHeader = styled.div`
-  position: absolute;
-  top: 0;
-  right: 0;
-  overflow: hidden;
-  height: 60vh;
-  width: 10vw;
-
+  height: 0;
+  width: 0;
+  display: none;
   img {
     display: none;
   }
 
   @media (min-width: 768px) {
+    position: absolute;
+    z-index: 100;
+    top: 0;
+    right: 0;
+    overflow: hidden;
+    height: 60vh;
+    width: 170px;
+    display: block;
+
     img {
       display: block;
       position: absolute;
       top: -195px;
       right: -375px;
-      transform: rotate(-240deg);
+      transform: rotate(-237deg);
       width: 710px;
       height: auto;
     }
@@ -163,21 +171,24 @@ export const BackgroundHeader = styled.div`
 
 export const BackgroundImage = styled.div`
   position: absolute;
-  width: 40vh;
-  height: 27vh;
+  width: 99%;
+  height: 53vh;
   left: 0;
-  top: -17vh;
+  top: 27vh;
+  overflow: hidden;
 
   img {
     position: absolute;
-    width: 59vh;
-    height: 40vh;
-    left: -6vh;
-    top: 52vh;
+    width: 450px;
+    height: auto;
+    right: 0;
+    left: -45px;
+    top: 0;
     transform: rotate(-12.35deg);
   }
 
   @media (min-width: 768px) {
+    overflow: initial;
     width: 50%;
     height: 17vh;
     left: 0;
@@ -185,7 +196,6 @@ export const BackgroundImage = styled.div`
 
     img {
       width: 120%;
-      height: 60vh;
       left: -6vh;
       top: 75vh;
       transform: rotate(-8.35deg);
