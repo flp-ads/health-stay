@@ -9,11 +9,11 @@ import Routes from './routes';
 function App() {
   return (
     <div>
-      <AnimatePresence>
         <GlobalStyle />
         <ToastContainer />
-        <Routes />
-      </AnimatePresence>
+        <AnimatePresence>
+          <Routes />
+        </AnimatePresence>
     </div>
   );
 }

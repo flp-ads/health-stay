@@ -9,6 +9,7 @@ import {
   OverviewItem,
   Username,
   NavigationButton,
+  MyGroupsNavigationMobile,
 } from "./groups_home.style";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -82,6 +83,7 @@ const DashboardGroups = () => {
             </OverviewItem>
           </CardsList>
         </Overview>
+
         <MyGroups>
           <CardsList>
             <span>
@@ -106,7 +108,33 @@ const DashboardGroups = () => {
             </NavigationButton>
           </CardsList>
         </MyGroups>
+
+        <MyGroupsNavigationMobile>
+          <CardsList>
+            <span>
+              <NavigationButton
+                onClick={handleNavigationMy}
+                isActive={isActiveMy}
+              >
+                Meus <span>Grupos</span>
+              </NavigationButton>
+            </span>
+            <NavigationButton
+              onClick={handleNavigationAll}
+              isActive={isActiveAll}
+            >
+              Todos os <span>Grupos</span>
+            </NavigationButton>
+            <NavigationButton
+              onClick={handleNavigationCreate}
+              isActive={isActiveCreate}
+            >
+              Criar <span>Grupo</span>
+            </NavigationButton>
+          </CardsList>
+        </MyGroupsNavigationMobile>
       </Cards>
+
       {isActiveMy && (
         <DashboardGroupsMy
           MAX_CARDS={MAX_CARDS}
