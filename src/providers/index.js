@@ -1,5 +1,11 @@
+import { UserContextProvider } from "./User";
+
 const Providers = ({ children }) => {
-  return <div>{children}</div>;
+  return (
+  <UserContextProvider>
+    {children}
+  </UserContextProvider>
+  )
 };
 
 export default Providers;

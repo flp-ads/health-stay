@@ -1,6 +1,7 @@
 import { Switch, Route as ReactDOMRoute, Redirect } from "react-router-dom";
 import Route from "./route";
 
+import AboutUs from "../pages/AboutUs";
 import Login from "../pages/Login";
 import SignUp from "../pages/SignUp";
 import Home from "../pages/Home";
@@ -14,11 +15,15 @@ const Routes = () => {
     <Switch>
       <Route exact path="/" component={Home} />
 
+      <Route path="/sobre" component={AboutUs} />
+
       <Route path="/signup" component={SignUp} />
 
       <Route path="/login" component={Login} />
 
       <Route path="/habitos" component={Habits} />
+
+      <Route path="/grupos" component={Groups} />
 
       <ReactDOMRoute
         path="/dashboard"
