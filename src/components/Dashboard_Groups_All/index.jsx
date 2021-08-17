@@ -16,7 +16,7 @@ const DashboardGroupsAll = ({ MAX_CARDS, handleNavigation }) => {
         </Header>
         <CardsList>
           {groups.slice(0, MAX_CARDS).map((group) => (
-            <GroupCard group={group} />
+            <GroupCard key={group.id} group={group} />
           ))}
         </CardsList>
         {groups.length > MAX_CARDS && (
@@ -31,7 +31,7 @@ const DashboardGroupsAll = ({ MAX_CARDS, handleNavigation }) => {
         </Header>
         <CardsList>
           {groups.slice(0, MAX_CARDS).map((group) => (
-            <GroupCard group={group} />
+            <GroupCard key={group.id} group={group} />
           ))}
         </CardsList>
         {groups.length > MAX_CARDS && (
