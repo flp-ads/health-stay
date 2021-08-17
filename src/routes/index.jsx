@@ -36,7 +36,7 @@ const Routes = () => {
                 component={() => <Redirect to={`${path}/home`} />}
               />
               <Route path={`${path}/home`} component={DashboardHome} />
-              <Route path={`${path}/grupos`} component={DashboardHome} />
+              <Route path={`${path}/grupos`} component={Groups} />
               <Route path={`${path}/habitos`} component={DashboardHome} />
               <Route component={() => <Redirect to={`${path}/home`} />} />
             </Switch>
