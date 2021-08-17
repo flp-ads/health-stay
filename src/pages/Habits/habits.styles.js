@@ -1,75 +1,79 @@
 import styled from "styled-components";
-import { GlobalContainer } from "../../styles/global";
 
 export const Container = styled.div`
-  padding: 1rem;
-  position: relative;
-  margin-bottom: 66px;
+  background-color: var(--light-gray);
+  width: 100%;
+  min-height: calc(100vh - calc(45px + 1rem));
+  margin-top: calc(45px + 1rem);
 
-  h1 {
-    color: var(--dark-green);
+  div.inner_container {
+    width: 100%;
+    min-height: calc(100vh - calc(45px + 1rem));
+    position: relative;
   }
 
   @media only screen and (min-width: 768px) {
-    margin: 0 3px 0px 200px;
+    min-height: calc(100vh - calc(45px + 2rem));
+    margin-top: calc(45px + 2rem);
+
+    div.inner_container {
+      min-height: calc(100vh - calc(45px + 2rem));
+    }
   }
 `;
 
-export const Overview = styled(GlobalContainer)`
-  flex: 100%;
-  margin: 1rem 0;
+export const Header = styled.header`
+  z-index: 150;
+  background-color: var(--light-green);
+  position: fixed;
+  top: 0;
+  left: 0;
+  padding: 0.5rem 1rem;
+  width: 100%;
 
-  @media only screen and (min-width: 768px) {
+  div.header_container {
     display: flex;
-    flex-wrap: wrap;
-    gap: 1rem;
-    justify-content: center;
-    padding: 2rem;
-  }
-`;
-
-export const Header = styled.h2`
-  font-weight: normal;
-  color: var(--dark-green);
-  margin-bottom: 1rem;
-  font-size: 1.5rem;
-
-  span {
-    font-weight: bold;
+    justify-content: space-between;
   }
 
   @media only screen and (min-width: 768px) {
-    flex: 100%;
-    margin: 0;
+    padding: 1rem;
   }
 `;
+export const User = styled.div`
+  background-color: var(--dark-green);
+  border-radius: 50%;
+  width: 45px;
+  height: 45px;
+  color: var(--vanilla);
+  display: grid;
+  place-items: center;
+  font-size: 2rem;
+  text-transform: uppercase;
+`;
+export const BackgroundImage = styled.div`
+  position: absolute;
+  top: 0;
+  right: 0;
+  overflow: hidden;
+  height: 50vh;
+  width: 90vw;
 
-export const HabitsInfo = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
+  img {
+    position: absolute;
+    top: -115px;
+    right: -295px;
+    transform: rotate(-180deg);
+    width: 515px;
+    height: auto;
+  }
 
   @media only screen and (min-width: 768px) {
-    flex-direction: row;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
+    img {
+      top: -182px;
+      right: -176px;
+      transform: rotate(-168deg);
+      width: 570px;
+    }
   }
 `;
-
-export const InfoItem = styled.p`
-  text-align: center;
-  color: var(--medium-gray);
-  font-size: 1.2rem;
-
-  p {
-    font-weight: bold;
-    color: var(--light-green);
-  }
-
-  @media only screen and (min-width: 768px) {
-    margin: 0 5rem;
-  }
-`;
-
-export const Main = styled.div``;

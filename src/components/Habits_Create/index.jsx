@@ -1,7 +1,7 @@
-import { Container } from "./createHabit.styles";
+import { Container } from "./habits.create.styles";
 
-import Input from "../../components/Global_Input";
-import Button from "../../components/Global_Button";
+import Input from "../Global_Input";
+import Button from "../Global_Button";
 
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";

@@ -17,6 +17,7 @@ export const StyledInput = styled.div`
     flex: 1;
     background: transparent;
     border: 0;
+    min-width: 100px;
   }
 
   svg {

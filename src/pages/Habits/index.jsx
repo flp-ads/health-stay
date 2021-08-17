@@ -1,37 +1,24 @@
-import Input from "../../components/Global_Input";
-import {
-  Container,
-  HabitsInfo,
-  Header,
-  InfoItem,
-  Main,
-  Overview,
-} from "./habits.styles";
+import DashboardMenu from "../../components/Dashboard_Menu";
+import { BackgroundImage, Container, Header, User } from "./habits.styles";
+import bg_image from "../../assets/healthy-food-png.png";
+import DashboardHabits from "../../components/Dashboard_Habits";
 
 const Habits = () => {
-  const list = ["Azul", "Vermelho", "Preto"];
   return (
     <Container>
-      <h1>Hábitos</h1>
-      <Overview>
-        <Header>Resumo</Header>
-        <HabitsInfo>
-          <InfoItem>
-            Você tem
-            <p>999 hábitos</p>
-          </InfoItem>
-          <InfoItem>
-            Você tem
-            <p>999 hábitos conluídos</p>
-          </InfoItem>
-        </HabitsInfo>
-      </Overview>
-      <Main>
-        {/* Criar sub-rotas */}
-
-        <Input register={console.log} name="yata" list={list} />
-        <Input register={console.log} name="yata" />
-      </Main>
+      <Header>
+        <div className="header_container">
+          <h1>Logo</h1>
+          <User>U</User>
+        </div>
+      </Header>
+      <div className="inner_container">
+        <BackgroundImage>
+          <img src={bg_image} alt="" />
+        </BackgroundImage>
+        <DashboardHabits />
+        <DashboardMenu />
+      </div>
     </Container>
   );
 };
