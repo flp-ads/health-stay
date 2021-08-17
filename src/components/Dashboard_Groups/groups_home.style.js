@@ -80,6 +80,7 @@ export const OverviewItem = styled.p`
   text-align: center;
   color: var(--medium-gray);
   font-size: 1.2rem;
+
   p {
     font-weight: bold;
     color: var(--light-green);
@@ -91,27 +92,28 @@ export const OverviewItem = styled.p`
 `;
 
 export const MyGroups = styled(Overview)`
-  padding: 1rem;
-  display: none;
+	padding: 1rem;
 
-  @media only screen and (min-width: 768px) {
+	@media only screen and (min-width: 768px) {
+		flex: 1;
+		padding: 2rem;
+	}
+`
+
+export const SubMenuContainer = styled(Overview)`
+	padding: 1rem;
+
+	@media only screen and (min-width: 768px) {
+		flex: 1;
     display: flex;
-    flex: calc(45% - 0.5rem);
-    padding: 2rem;
-  }
-`;
+    flex-flow: column nowrap;
+    align-items: center;
+		padding: 2rem;
+    margin: 1rem 0 0 0;
+	}
+`
 
-export const MyGroupsMobile = styled(Overview)`
-  padding: 1rem;
-
-  @media only screen and (min-width: 768px) {
-    flex: calc(45% - 0.5rem);
-    padding: 2rem;
-    display: none;
-  }
-`;
-
-export const MyGroupsNavigationMobile = styled(Overview)`
+export const SubMenuMobile = styled(Overview)`
   padding: 1rem;
   display: flex;
   align-items: center;
@@ -123,6 +125,17 @@ export const MyGroupsNavigationMobile = styled(Overview)`
     display: none;
   }
 `;
+
+export const SubMenuDesktop = styled.header`
+  display: none;
+
+  @media only screen and (min-width: 768px) {
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    gap: 2rem;
+  }
+`
 
 export const CardsList = styled.div`
   display: flex;
@@ -136,6 +149,16 @@ export const CardsList = styled.div`
     justify-content: center;
   }
 `;
+
+export const SubMenuHeader = styled.header`
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 1rem;
+
+  @media only screen and (min-width: 768px) {
+      flex-flow: row wrap;
+  }
+`
 
 export const CardsListMobile = styled.div`
   display: flex;
@@ -154,6 +177,7 @@ export const NavigationButton = styled.button`
   color: ${(props) =>
     props.isActive ? css`var(--light-green)` : css`var(--medium-gray)`};
   font-weight: normal;
+  font-size: 32px;
   span {
     font-weight: bold;
   }

@@ -4,12 +4,13 @@ import {
   CardsList,
   Container,
   Header,
-  MyGroups,
   Overview,
   OverviewItem,
   Username,
   NavigationButton,
-  MyGroupsNavigationMobile,
+  SubMenuMobile,
+  SubMenuDesktop,
+  SubMenuContainer,
 } from "./groups_home.style";
 import { useState } from "react";
 import DashboardGroupsMy from "../Dashboard_Groups_My";
@@ -17,8 +18,10 @@ import DashboardGroupsAll from "../Dashboard_Groups_All";
 import DashboardGroupsCreate from "../Dashboard_Groups_Create";
 
 const DashboardGroups = () => {
+
   const history = useHistory();
   const MAX_CARDS = 3;
+
   const [isActiveMy, setIsActiveMy] = useState(true);
   const [isActiveAll, setIsActiveAll] = useState(false);
   const [isActiveCreate, setIsActiveCreate] = useState(false);
@@ -45,12 +48,17 @@ const DashboardGroups = () => {
 
   return (
     <Container>
+
       <Username>
         Bem vindo aos <span>seus grupos</span>
       </Username>
+
       <Cards>
+
         <Overview>
+
           <Header>Resumo</Header>
+
           <CardsList>
             <OverviewItem>
               Você está inscrito em <p>999 grupos</p>
@@ -62,72 +70,78 @@ const DashboardGroups = () => {
               Voce possui <p>999 atividades em grupo</p>
             </OverviewItem>
           </CardsList>
+          
         </Overview>
 
-        <MyGroups>
+        <SubMenuMobile>
           <CardsList>
-            <span>
-              <NavigationButton
-                onClick={handleNavigationMy}
-                isActive={isActiveMy}
-              >
-                Meus <span>Grupos</span>
-              </NavigationButton>
-            </span>
-            <NavigationButton
-              onClick={handleNavigationAll}
-              isActive={isActiveAll}
-            >
-              Todos os <span>Grupos</span>
-            </NavigationButton>
-            <NavigationButton
-              onClick={handleNavigationCreate}
-              isActive={isActiveCreate}
-            >
-              Criar <span>Grupo</span>
-            </NavigationButton>
-          </CardsList>
-        </MyGroups>
+          
+          <NavigationButton
+            onClick={handleNavigationMy}
+            isActive={isActiveMy}>
 
-        <MyGroupsNavigationMobile>
-          <CardsList>
-            <span>
-              <NavigationButton
-                onClick={handleNavigationMy}
-                isActive={isActiveMy}
-              >
-                Meus <span>Grupos</span>
-              </NavigationButton>
-            </span>
-            <NavigationButton
-              onClick={handleNavigationAll}
-              isActive={isActiveAll}
-            >
-              Todos os <span>Grupos</span>
-            </NavigationButton>
-            <NavigationButton
-              onClick={handleNavigationCreate}
-              isActive={isActiveCreate}
-            >
-              Criar <span>Grupo</span>
-            </NavigationButton>
+            Meus <span>Grupos</span>
+          </NavigationButton>
+
+          <NavigationButton
+            onClick={handleNavigationAll}
+            isActive={isActiveAll}>
+
+            Todos os <span>Grupos</span>
+          </NavigationButton>
+          
+          <NavigationButton
+            onClick={handleNavigationCreate}
+            isActive={isActiveCreate}>
+
+            Criar <span>Grupo</span>
+          </NavigationButton>
+
           </CardsList>
-        </MyGroupsNavigationMobile>
+        </SubMenuMobile>
+
       </Cards>
 
-      {isActiveMy && (
-        <DashboardGroupsMy
-          MAX_CARDS={MAX_CARDS}
-          handleNavigation={handleNavigation}
-        />
-      )}
-      {isActiveAll && (
-        <DashboardGroupsAll
-          MAX_CARDS={MAX_CARDS}
-          handleNavigation={handleNavigation}
-        />
-      )}
-      {isActiveCreate && <DashboardGroupsCreate />}
+      <SubMenuContainer>
+
+        <SubMenuDesktop>
+            <NavigationButton
+              onClick={handleNavigationMy}
+              isActive={isActiveMy}>
+
+              Meus <span>Grupos</span>
+            </NavigationButton>
+
+            <NavigationButton
+              onClick={handleNavigationAll}
+              isActive={isActiveAll}>
+
+              Todos os <span>Grupos</span>
+            </NavigationButton>
+            
+            <NavigationButton
+              onClick={handleNavigationCreate}
+              isActive={isActiveCreate}>
+
+              Criar <span>Grupo</span>
+            </NavigationButton>
+        </SubMenuDesktop>
+
+
+        {isActiveMy && (
+          <DashboardGroupsMy
+            MAX_CARDS={MAX_CARDS}
+            handleNavigation={handleNavigation}
+          />
+        )}
+        {isActiveAll && (
+          <DashboardGroupsAll
+            MAX_CARDS={MAX_CARDS}
+            handleNavigation={handleNavigation}
+          />
+        )}
+        {isActiveCreate && <DashboardGroupsCreate />}
+      </SubMenuContainer>
     </Container>
   );
 };

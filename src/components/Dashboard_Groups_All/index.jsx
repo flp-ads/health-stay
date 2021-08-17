@@ -1,16 +1,13 @@
 import {
   Header,
-  MyGroups,
   CardsList,
   All,
-  MyGroupsMobile,
 } from "../Dashboard_Groups/groups_home.style";
 import GroupCard from "../Group_Card";
 
 const DashboardGroupsAll = ({ MAX_CARDS, handleNavigation }) => {
   return (
-    <>
-      <MyGroups>
+      <div>
         <Header>
           Todos os <span>Grupos</span>
         </Header>
@@ -24,23 +21,7 @@ const DashboardGroupsAll = ({ MAX_CARDS, handleNavigation }) => {
             Ver <span>todos</span>
           </All>
         )}
-      </MyGroups>
-      <MyGroupsMobile>
-        <Header>
-          Todos os <span>Grupos</span>
-        </Header>
-        <CardsList>
-          {groups.slice(0, MAX_CARDS).map((group) => (
-            <GroupCard key={group.id} group={group} />
-          ))}
-        </CardsList>
-        {groups.length > MAX_CARDS && (
-          <All onClick={() => handleNavigation("grupos")}>
-            Ver <span>todos</span>
-          </All>
-        )}
-      </MyGroupsMobile>
-    </>
+      </div>
   );
 };
 
