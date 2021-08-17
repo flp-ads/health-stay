@@ -17,47 +17,50 @@ const Home = () => {
     return history.push(path);
   };
   return (
-    <Container>
-      <Header>
-        <div className="header_container">
-          <h1>Logo</h1>
-          <div className="header_container">
-            <button onClick={() => handleNavigation("/")}>Home</button>
-            <button onClick={() => handleNavigation("/sobre")}>
-              Sobre nós
-            </button>
-          </div>
-        </div>
-      </Header>
+    <>
       <BackgroundHeader>
         <img src={bg_image} alt="" />
       </BackgroundHeader>
-      <HomeTitleContainer>
-        <div>
-          <p>Mude seus habitos</p>
-          <strong>Hoje</strong>
-        </div>
-      </HomeTitleContainer>
+      <Container>
+        <Header>
+          <div className="header_container">
+            <h1>Logo</h1>
+            <div className="header_container">
+              <button onClick={() => handleNavigation("/")}>Home</button>
+              <button onClick={() => handleNavigation("/sobre")}>
+                Sobre nós
+              </button>
+            </div>
+          </div>
+        </Header>
 
-      <BackgroundImage>
-        <img src={bg_image} alt="" />
-      </BackgroundImage>
+        <HomeTitleContainer>
+          <div>
+            <p>Mude seus habitos</p>
+            <strong>Hoje</strong>
+          </div>
+        </HomeTitleContainer>
 
-      <HomeButtonContainer>
-        <Button onClick={() => handleNavigation("/signup")}>
-          Cadastre-se agora
-        </Button>
+        <BackgroundImage>
+          <img src={bg_image} alt="" />
+        </BackgroundImage>
 
-        <div>
-          <fieldset>
-            <legend>ou</legend>
-          </fieldset>
-        </div>
-        <Button isVanilla onClick={() => handleNavigation("/login")}>
-          Faça login
-        </Button>
-      </HomeButtonContainer>
-    </Container>
+        <HomeButtonContainer>
+          <Button onClick={() => handleNavigation("/signup")}>
+            Cadastre-se agora
+          </Button>
+
+          <div>
+            <fieldset>
+              <legend>ou</legend>
+            </fieldset>
+          </div>
+          <Button isVanilla onClick={() => handleNavigation("/login")}>
+            Faça login
+          </Button>
+        </HomeButtonContainer>
+      </Container>
+    </>
   );
 };
 
