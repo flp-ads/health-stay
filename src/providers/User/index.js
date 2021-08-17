@@ -33,19 +33,6 @@ export const UserContextProvider = ({ children }) => {
 			})
 	}
 
-	const getUserId = () => {
-		console.log(!!accToken)
-		if (!!accToken) {
-			const [token] = accToken
-			const { user_id } = jwt_decode(token)
-
-			setUserId(user_id)
-			localStorage.setItem("@HS:UserId", JSON.stringify(user_id))
-		} else {
-			setUserId(-1)
-		}
-	}
-
 	return (
 		<UserContext.Provider value={{ accToken, userLogin, userId }}>
 			{children}
