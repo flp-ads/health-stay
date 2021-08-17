@@ -9,13 +9,28 @@ import {
 import GlobalInput from "../../components/Global_Input";
 import GlobalButton from "../../components/Global_Button";
 import { FaPencilAlt, FaBox, FaAlignLeft } from "react-icons/fa";
+import * as yup from "yup";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { useForm } from "react-hook-form";
 
-const DashboardGroupsCreate = ({
-  handleSubmit,
-  onSubmit,
-  register,
-  errors,
-}) => {
+const DashboardGroupsCreate = () => {
+  const schema = yup.object().shape({
+    name: yup.string().required("campo obrigatório"),
+    description: yup.string().required("campo obrigatório"),
+    category: yup.string().required("campo obrigatório"),
+  });
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({
+    resolver: yupResolver(schema),
+  });
+
+  const onSubmit = (data) => {
+    console.log(data);
+  };
   return (
     <>
       <MyGroups>
