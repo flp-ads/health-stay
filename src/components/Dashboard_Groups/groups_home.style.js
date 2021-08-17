@@ -111,6 +111,19 @@ export const MyGroupsMobile = styled(Overview)`
   }
 `;
 
+export const MyGroupsNavigationMobile = styled(Overview)`
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  margin-bottom: 16px;
+
+  @media only screen and (min-width: 768px) {
+    display: none;
+  }
+`;
+
 export const CardsList = styled.div`
   display: flex;
   flex-direction: column;
@@ -121,6 +134,16 @@ export const CardsList = styled.div`
     flex-wrap: wrap;
     align-items: center;
     justify-content: center;
+  }
+`;
+
+export const CardsListMobile = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+
+  @media only screen and (min-width: 768px) {
+    display: none;
   }
 `;
 
