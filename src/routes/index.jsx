@@ -21,24 +21,22 @@ const Routes = () => {
 
       <Route path="/login" component={Login} />
 
-      <Route path="/habitos" component={Habits} />
-
-      <Route path="/grupos" component={Groups} />
-
       <ReactDOMRoute
         path="/dashboard"
+        isPrivate
         render={({ match: { path } }) => (
           <Dashboard>
             <Switch>
               <Route
                 exact
+                isPrivate
                 path={`${path}`}
                 component={() => <Redirect to={`${path}/home`} />}
               />
-              <Route path={`${path}/home`} component={DashboardHome} />
-              <Route path={`${path}/grupos`} component={Groups} />
-              <Route path={`${path}/habitos`} component={Habits} />
-              <Route component={() => <Redirect to={`${path}/home`} />} />
+              <Route isPrivate path={`${path}/home`} component={DashboardHome} />
+              <Route isPrivate path={`${path}/grupos`} component={Groups} />
+              <Route isPrivate path={`${path}/habitos`} component={Habits} />
+              <Route isPrivate component={() => <Redirect to={`${path}/home`} />} />
             </Switch>
           </Dashboard>
         )}
