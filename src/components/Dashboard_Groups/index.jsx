@@ -11,9 +11,6 @@ import {
   NavigationButton,
   MyGroupsNavigationMobile,
 } from "./groups_home.style";
-import * as yup from "yup";
-import { yupResolver } from "@hookform/resolvers/yup";
-import { useForm } from "react-hook-form";
 import { useState } from "react";
 import DashboardGroupsMy from "../Dashboard_Groups_My";
 import DashboardGroupsAll from "../Dashboard_Groups_All";
@@ -25,20 +22,6 @@ const DashboardGroups = () => {
   const [isActiveMy, setIsActiveMy] = useState(true);
   const [isActiveAll, setIsActiveAll] = useState(false);
   const [isActiveCreate, setIsActiveCreate] = useState(false);
-
-  const schema = yup.object().shape({
-    name: yup.string().required("campo obrigatório"),
-    description: yup.string().required("campo obrigatório"),
-    category: yup.string().required("campo obrigatório"),
-  });
-
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm({
-    resolver: yupResolver(schema),
-  });
 
   const handleNavigationMy = () => {
     setIsActiveMy(true);
@@ -60,9 +43,6 @@ const DashboardGroups = () => {
 
   const handleNavigation = (path) => history.push(path);
 
-  const onSubmit = (data) => {
-    console.log(data);
-  };
   return (
     <Container>
       <Username>
@@ -147,14 +127,7 @@ const DashboardGroups = () => {
           handleNavigation={handleNavigation}
         />
       )}
-      {isActiveCreate && (
-        <DashboardGroupsCreate
-          handleSubmit={handleSubmit}
-          onSubmit={onSubmit}
-          register={register}
-          errors={errors}
-        />
-      )}
+      {isActiveCreate && <DashboardGroupsCreate />}
     </Container>
   );
 };
