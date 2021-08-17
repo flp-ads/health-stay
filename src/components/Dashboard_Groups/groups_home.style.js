@@ -87,18 +87,9 @@ export const OverviewItem = styled.p`
   }
 
   @media only screen and (min-width: 768px) {
-    margin: 0 5rem;
+    margin: 0 1rem;
   }
 `;
-
-export const MyGroups = styled(Overview)`
-	padding: 1rem;
-
-	@media only screen and (min-width: 768px) {
-		flex: 1;
-		padding: 2rem;
-	}
-`
 
 export const SubMenuContainer = styled(Overview)`
 	padding: 1rem;
@@ -108,6 +99,7 @@ export const SubMenuContainer = styled(Overview)`
     display: flex;
     flex-flow: column nowrap;
     align-items: center;
+    justify-content: space-evenly;
 		padding: 2rem;
     margin: 1rem 0 0 0;
 	}
@@ -133,7 +125,9 @@ export const SubMenuDesktop = styled.header`
     display: flex;
     flex-flow: row wrap;
     align-items: center;
+    justify-content: center;
     gap: 2rem;
+    margin: 0 0 1rem 0;
   }
 `
 
@@ -150,36 +144,20 @@ export const CardsList = styled.div`
   }
 `;
 
-export const SubMenuHeader = styled.header`
-  display: flex;
-  flex-flow: column nowrap;
-  gap: 1rem;
-
-  @media only screen and (min-width: 768px) {
-      flex-flow: row wrap;
-  }
-`
-
-export const CardsListMobile = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-
-  @media only screen and (min-width: 768px) {
-    display: none;
-  }
-`;
-
 export const NavigationButton = styled.button`
   background: none;
   border: none;
   outline: none;
   color: ${(props) =>
-    props.isActive ? css`var(--light-green)` : css`var(--medium-gray)`};
+    props.isActive ? css`var(--dark-green)` : css`var(--medium-gray)`};
   font-weight: normal;
-  font-size: 32px;
+  font-size: 18px;
   span {
     font-weight: bold;
+  }
+
+  @media only screen and (min-width: 768px) {
+    font-size: 32px;
   }
 `;
 
@@ -196,39 +174,5 @@ export const All = styled(motion.p)`
 
   @media only screen and (min-width: 768px) {
     flex: 100%;
-  }
-`;
-
-export const CategoryContainer = styled.form`
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  input,
-  select,
-  button {
-    margin-top: 16px;
-  }
-`;
-
-export const SelectContainer = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  border-bottom: 1px solid var(--medium-gray);
-
-  select {
-    width: 100%;
-    font-family: "Montserrat", sans-serif;
-    font-weight: normal;
-    font-size: 1rem;
-    border: none;
-    background: none;
-    color: var(--medium-gray);
-    margin-bottom: 8px;
-  }
-
-  svg {
-    color: var(--medium-gray);
-    margin-right: 8px;
   }
 `;

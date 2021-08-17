@@ -1,17 +1,12 @@
 import {
-  Header,
-  MyGroups,
   CardsList,
   All,
-} from "../Dashboard_Groups/groups_home.style";
+} from "./groups_my.style";
 import GroupCard from "../Group_Card";
 
 const DashboardGroupsMy = ({ MAX_CARDS, handleNavigation }) => {
   return (
       <div>
-        <Header>
-          Meus <span>Grupos</span>
-        </Header>
         <CardsList>
           {groups.slice(0, MAX_CARDS).map((group) => (
             <GroupCard key={group.id} group={group} />

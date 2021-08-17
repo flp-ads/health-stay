@@ -56,7 +56,6 @@ const DashboardGroups = () => {
       <Cards>
 
         <Overview>
-
           <Header>Resumo</Header>
 
           <CardsList>
@@ -70,7 +69,6 @@ const DashboardGroups = () => {
               Voce possui <p>999 atividades em grupo</p>
             </OverviewItem>
           </CardsList>
-          
         </Overview>
 
         <SubMenuMobile>
@@ -99,11 +97,9 @@ const DashboardGroups = () => {
 
           </CardsList>
         </SubMenuMobile>
-
       </Cards>
 
       <SubMenuContainer>
-
         <SubMenuDesktop>
             <NavigationButton
               onClick={handleNavigationMy}
@@ -142,6 +138,7 @@ const DashboardGroups = () => {
         )}
         {isActiveCreate && <DashboardGroupsCreate />}
       </SubMenuContainer>
+
     </Container>
   );
 };

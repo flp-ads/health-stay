@@ -1,10 +1,6 @@
 import {
-  MyGroups,
-  Header,
-  CategoryContainer,
-  SelectContainer,
   CardsList,
-} from "../Dashboard_Groups/groups_home.style";
+} from "./groups_create.style";
 import GlobalInput from "../../components/Global_Input";
 import GlobalButton from "../../components/Global_Button";
 import { FaPencilAlt, FaBox, FaAlignLeft } from "react-icons/fa";
@@ -32,30 +28,18 @@ const DashboardGroupsCreate = () => {
   };
   return (
       <div>
-        <Header>
-          Criar <span>Grupo</span>
-        </Header>
         <CardsList>
-          <CategoryContainer onSubmit={handleSubmit(onSubmit)}>
+          <form
+            id="create_group"
+            onSubmit={handleSubmit(onSubmit)}>
+
             <GlobalInput
               placeholder="Nome do grupo"
               register={register}
               icon={FaPencilAlt}
               name="name"
               error={errors.name?.message}
-              type="text"
-            />
-            <SelectContainer>
-              <FaBox />
-              <select name="category">
-                <option value="categoria" selected disabled>
-                  Categoria
-                </option>
-                <option value="valor1">Valor1</option>
-                <option value="valor2">Valor2</option>
-                <option value="valor3">Valor3</option>
-              </select>
-            </SelectContainer>
+              type="text" />
 
             <GlobalInput
               placeholder="Descrição"
@@ -63,10 +47,14 @@ const DashboardGroupsCreate = () => {
               icon={FaAlignLeft}
               name="description"
               error={errors.description?.message}
-              type="text area"
-            />
-            <GlobalButton type="submit">Criar Grupo</GlobalButton>
-          </CategoryContainer>
+              type="text area" />
+
+            <GlobalButton 
+              type="submit"
+              form="create_group">
+                Criar Grupo
+            </GlobalButton>
+          </form>
         </CardsList>
       </div>
   );
