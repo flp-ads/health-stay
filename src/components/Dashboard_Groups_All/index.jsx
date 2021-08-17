@@ -1,267 +1,32 @@
-import { useHistory } from "react-router-dom";
-import GroupCard from "../Group_Card";
 import {
-  All,
-  Cards,
-  CardsList,
-  Container,
   Header,
   MyGroups,
-  MyGroupsMobile,
-  Overview,
-  OverviewItem,
-  Username,
-  CategoryContainer,
-  SelectContainer,
-  NavigationButton,
-} from "./groups_home.style";
-import GlobalInput from "../Global_Input";
-import GlobalButton from "../Global_Button";
-import * as yup from "yup";
-import { yupResolver } from "@hookform/resolvers/yup";
-import { useForm } from "react-hook-form";
-import { FaPencilAlt, FaBox, FaAlignLeft } from "react-icons/fa";
-import { useState } from "react";
+  CardsList,
+  All,
+} from "../Dashboard_Groups/groups_home.style";
+import GroupCard from "../Group_Card";
 
-const GroupsHome = () => {
-  const history = useHistory();
-  const MAX_CARDS = 3;
-  const [isActiveMy, setIsActiveMy] = useState(false);
-  const [isActiveAll, setIsActiveAll] = useState(false);
-  const [isActiveCreate, setIsActiveCreate] = useState(true);
-
-  const schema = yup.object().shape({
-    name: yup.string().required("campo obrigatório"),
-    description: yup.string().required("campo obrigatório"),
-    category: yup.string().required("campo obrigatório"),
-  });
-
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm({
-    resolver: yupResolver(schema),
-  });
-
-  const handleNavigationMy = () => {
-    setIsActiveMy(true);
-    setIsActiveAll(false);
-    setIsActiveCreate(false);
-  };
-
-  const handleNavigationAll = () => {
-    setIsActiveMy(false);
-    setIsActiveAll(true);
-    setIsActiveCreate(false);
-  };
-
-  const handleNavigationCreate = () => {
-    setIsActiveMy(false);
-    setIsActiveAll(false);
-    setIsActiveCreate(true);
-  };
-
-  const handleNavigation = (path) => history.push(path);
-
-  const onSubmit = (data) => {
-    console.log(data);
-  };
+const DashboardGroupsAll = ({ MAX_CARDS, handleNavigation }) => {
   return (
-    <Container>
-      <Username>
-        Bem vindo aos <span>seus grupos</span>
-      </Username>
-      <Cards>
-        <Overview>
-          <Header>Resumo</Header>
-          <CardsList>
-            <OverviewItem>
-              Você está inscrito em <p>999 grupos</p>
-            </OverviewItem>
-            <OverviewItem>
-              Você possui <p>999 metas de grupo</p>
-            </OverviewItem>
-            <OverviewItem>
-              Voce possui <p>999 atividades em grupo</p>
-            </OverviewItem>
-          </CardsList>
-        </Overview>
-        <MyGroups>
-          <CardsList>
-            <span>
-              <NavigationButton
-                onClick={handleNavigationMy}
-                isActive={isActiveMy}
-              >
-                Meus <span>Grupos</span>
-              </NavigationButton>
-            </span>
-            <NavigationButton
-              onClick={handleNavigationAll}
-              isActive={isActiveAll}
-            >
-              Todos os <span>Grupos</span>
-            </NavigationButton>
-            <NavigationButton
-              onClick={handleNavigationCreate}
-              isActive={isActiveCreate}
-            >
-              Criar <span>Grupo</span>
-            </NavigationButton>
-          </CardsList>
-
-          {isActiveMy && (
-            <MyGroups>
-              <Header>
-                Meus <span>Grupos</span>
-              </Header>
-              <CardsList>
-                {groups.slice(0, MAX_CARDS).map((group) => (
-                  <GroupCard group={group} />
-                ))}
-              </CardsList>
-              {groups.length > MAX_CARDS && (
-                <All onClick={() => handleNavigation("grupos")}>
-                  Ver <span>todos</span>
-                </All>
-              )}
-            </MyGroups>
-          )}
-
-          {isActiveAll && (
-            <MyGroups>
-              <Header>
-                Todos os <span>Grupos</span>
-              </Header>
-              <CardsList>
-                {groups.slice(0, MAX_CARDS).map((group) => (
-                  <GroupCard group={group} isSubscribed />
-                ))}
-              </CardsList>
-              {groups.length > MAX_CARDS && (
-                <All onClick={() => handleNavigation("grupos")}>
-                  Ver <span>todos</span>
-                </All>
-              )}
-            </MyGroups>
-          )}
-
-          {isActiveCreate && (
-            <MyGroups>
-              <Header>
-                Criar <span>Grupo</span>
-              </Header>
-              <CardsList>
-                <CategoryContainer onSubmit={handleSubmit(onSubmit)}>
-                  <GlobalInput
-                    placeholder="Nome do grupo"
-                    register={register}
-                    icon={FaPencilAlt}
-                    name="name"
-                    error={errors.name?.message}
-                    type="text"
-                  />
-                  <SelectContainer>
-                    <FaBox />
-                    <select name="category">
-                      <option value="categoria" selected disabled>
-                        Categoria
-                      </option>
-                      <option value="valor1">Valor1</option>
-                      <option value="valor2">Valor2</option>
-                      <option value="valor3">Valor3</option>
-                    </select>
-                  </SelectContainer>
-
-                  <GlobalInput
-                    placeholder="Descrição"
-                    register={register}
-                    icon={FaAlignLeft}
-                    name="description"
-                    error={errors.description?.message}
-                    type="text area"
-                  />
-                  <GlobalButton type="submit">Criar Grupo</GlobalButton>
-                </CategoryContainer>
-              </CardsList>
-            </MyGroups>
-          )}
-        </MyGroups>
-        <MyGroupsMobile>
-          <Header>
-            Meus <span>Grupos</span>
-          </Header>
-          <CardsList>
-            {groups.slice(0, MAX_CARDS).map((group) => (
-              <GroupCard group={group} />
-            ))}
-          </CardsList>
-          {groups.length > MAX_CARDS && (
-            <All onClick={() => handleNavigation("grupos")}>
-              Ver <span>todos</span>
-            </All>
-          )}
-        </MyGroupsMobile>
-        <MyGroupsMobile>
-          <Header>
-            Todos os <span>Grupos</span>
-          </Header>
-          <CardsList>
-            {groups.slice(0, MAX_CARDS).map((group) => (
-              <GroupCard group={group} isSubscribed />
-            ))}
-          </CardsList>
-          {groups.length > MAX_CARDS && (
-            <All onClick={() => handleNavigation("grupos")}>
-              Ver <span>todos</span>
-            </All>
-          )}
-        </MyGroupsMobile>
-        <MyGroupsMobile>
-          <Header>
-            Criar <span>Grupo</span>
-          </Header>
-          <CardsList>
-            <CategoryContainer onSubmit={handleSubmit(onSubmit)}>
-              <GlobalInput
-                placeholder="Nome do grupo"
-                register={register}
-                icon={FaPencilAlt}
-                name="name"
-                error={errors.name?.message}
-                type="text"
-              />
-              <SelectContainer>
-                <FaBox />
-                <select name="category">
-                  <option value="categoria" selected disabled>
-                    Categoria
-                  </option>
-                  <option value="valor1">Valor1</option>
-                  <option value="valor2">Valor2</option>
-                  <option value="valor3">Valor3</option>
-                </select>
-              </SelectContainer>
-
-              <GlobalInput
-                placeholder="Descrição"
-                register={register}
-                icon={FaAlignLeft}
-                name="description"
-                error={errors.description?.message}
-                type="text area"
-              />
-              <GlobalButton type="submit">Criar Grupo</GlobalButton>
-            </CategoryContainer>
-          </CardsList>
-        </MyGroupsMobile>
-      </Cards>
-    </Container>
+    <MyGroups>
+      <Header>
+        Todos os <span>Grupos</span>
+      </Header>
+      <CardsList>
+        {groups.slice(0, MAX_CARDS).map((group) => (
+          <GroupCard group={group} />
+        ))}
+      </CardsList>
+      {groups.length > MAX_CARDS && (
+        <All onClick={() => handleNavigation("grupos")}>
+          Ver <span>todos</span>
+        </All>
+      )}
+    </MyGroups>
   );
 };
 
-export default GroupsHome;
+export default DashboardGroupsAll;
 
 const groups = [
   {

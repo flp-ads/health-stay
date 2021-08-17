@@ -20,10 +20,6 @@ const Routes = () => {
 
       <Route path="/habitos" component={Habits} />
 
-      <Route path="/grupos" component={Groups}>
-        <Groups />
-      </Route>
-
       <ReactDOMRoute
         path="/dashboard"
         render={({ match: { path } }) => (
@@ -35,7 +31,7 @@ const Routes = () => {
                 component={() => <Redirect to={`${path}/home`} />}
               />
               <Route path={`${path}/home`} component={DashboardHome} />
-              <Route path={`${path}/grupos`} component={DashboardHome} />
+              <Route path={`${path}/grupos`} component={Groups} />
               <Route path={`${path}/habitos`} component={DashboardHome} />
               <Route component={() => <Redirect to={`${path}/home`} />} />
             </Switch>
