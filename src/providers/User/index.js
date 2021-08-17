@@ -1,36 +1,50 @@
-import { createContext, useState, useContext} from 'react';
-import { toast } from 'react-toastify';
+import { createContext, useState, useContext } from "react"
+import { toast } from "react-toastify"
+import jwt_decode from "jwt-decode"
 
-import api from '../../services/api';
+import api from "../../services/api"
 
-const UserContext = createContext();
+const UserContext = createContext()
 
-export const UserContextProvider = ({children}) => {
+export const UserContextProvider = ({ children }) => {
+	const accToken = useState(
+		JSON.parse(localStorage.getItem("@HS:UserToken")) || []
+	)
+	const [userId, setUserId] = useState(
+		JSON.parse(localStorage.getItem("@HS:UserId")) || -1
+	)
 
-    const accToken = useState(JSON.parse(localStorage.getItem('@HS:UserToken')) || []);
+	const userLogin = (formData) => {
+		api
+			.post("/sessions/", formData)
+			.then((response) => {
+				const { access } = response.data
+				localStorage.setItem("@HS:UserToken", JSON.stringify(access))
+				getUserId()
+				toast.success("Login bem sucedido")
+			})
+			.catch((_) => {
+				toast.error("Usuário ou senha incorretos")
+			})
+	}
 
-    const userLogin = (formData) => {
+	const getUserId = () => {
+		if (accToken.length) {
+			const [token] = accToken
+			const { user_id } = jwt_decode(token)
 
-        api
-            .post('/sessions/', formData)
-            .then((response) => {
+			setUserId(user_id)
+			localStorage.setItem("@HS:UserId", JSON.stringify(user_id))
+		} else {
+			setUserId(-1)
+		}
+	}
 
-                const { access } = response.data
-                localStorage.setItem('@HS:UserToken', JSON.stringify(access))
-                toast.success('Login bem sucedido')
-            })
-            .catch((err) => {
-                toast.error('Usuário ou senha incorretos')
-            })
-    }
-
-    return (
-        <UserContext.Provider
-            value={{accToken, userLogin}}>
-                {children}
-        </UserContext.Provider>
-    )
-
+	return (
+		<UserContext.Provider value={{ accToken, userLogin, userId }}>
+			{children}
+		</UserContext.Provider>
+	)
 }
 
 export const useLogin = () => useContext(UserContext)
