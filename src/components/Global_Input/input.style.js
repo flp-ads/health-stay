@@ -18,7 +18,12 @@ export const StyledInput = styled.div`
     background: transparent;
     border: 0;
     min-width: 100px;
+    
+    option {
+      color: var(--black);
+    }
   }
+
 
   svg {
     margin-right: 10px;

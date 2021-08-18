@@ -64,7 +64,7 @@ const CreateHabit = () => {
         />
         <Input
           name="category"
-          placeholder="Categoria"
+          selectPlaceholder="Categoria"
           icon={BsInboxes}
           register={register}
           error={errors.category?.message}
@@ -72,7 +72,7 @@ const CreateHabit = () => {
         />
         <Input
           name="difficulty"
-          placeholder="Dificuldade"
+          selectPlaceholder="Dificuldade"
           icon={FiLayers}
           register={register}
           error={errors.difficulty?.message}
@@ -80,7 +80,7 @@ const CreateHabit = () => {
         />
         <Input
           name="frequency"
-          placeholder="Frequência"
+          selectPlaceholder="Frequência"
           icon={BiLineChart}
           register={register}
           error={errors.frequency?.message}
