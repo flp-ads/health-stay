@@ -10,6 +10,8 @@ import {
 import { FaHeart } from "react-icons/fa"
 import { useGroups } from "../../providers/Groups"
 
+const PREFIX = "@HS-"
+
 const GroupCard = ({ group, isSubscribed = false }) => {
 	const { name, category, users_on_group } = group
 	const { subscribleToGroup } = useGroups()
@@ -48,7 +50,7 @@ const GroupCard = ({ group, isSubscribed = false }) => {
 			<CardImage />
 			<Info>
 				<Text>
-					<h4>{name}</h4>
+					<h4>{name.slice(PREFIX.length)}</h4>
 					<p>{category}</p>
 				</Text>
 				<Icon

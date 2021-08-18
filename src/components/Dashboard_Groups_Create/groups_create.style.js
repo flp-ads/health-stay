@@ -1,14 +1,19 @@
-import styled from 'styled-components';
+import styled from "styled-components"
 
 export const CardsList = styled.div`
-display: flex;
-flex-direction: column;
-gap: 1rem;
+	display: grid;
+	place-items: center;
+	min-height: 300px;
 
-@media only screen and (min-width: 768px) {
-  flex-direction: row;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: center;
-}
-`;
+	form {
+		max-width: 600px;
+		margin: 0 auto;
+		display: flex;
+		flex-direction: column;
+		gap: 1rem;
+	}
+
+	@media only screen and (min-width: 768px) {
+		min-height: 450px;
+	}
+`
