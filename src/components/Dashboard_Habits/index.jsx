@@ -1,7 +1,9 @@
 import { useHistory } from "react-router";
 import { useState } from "react";
+
 import {
   Container,
+  Username,
   HabitsInfo,
   Header,
   InfoItem,
@@ -11,13 +13,13 @@ import {
   SubMenu,
 } from "./habits.home.style";
 
-import MyHabits from "../Habits_My";
-import AchievedHabits from "../Habits_Achieved";
-import CreateHabit from "../Habits_Create";
+import MyHabits from "../Dashboard_Habits_My";
+import AchievedHabits from "../Dashboard_Habits_Achieved";
+import CreateHabit from "../Dashboard_Habits_Create";
 
 const DashboardHabits = () => {
   const history = useHistory();
-  const MAX_CARDS = 3;
+  const MAX_CARDS = 4;
 
   const [isActiveMy, setIsActiveMy] = useState(true);
   const [isActiveAchieved, setIsActiveAchieved] = useState(false);
@@ -45,7 +47,9 @@ const DashboardHabits = () => {
 
   return (
     <Container>
-      <h1>Hábitos</h1>
+      <Username>
+        Bem vindo aos <span>seus Hábitos</span>
+      </Username>
 
       <Overview>
         <Header>Resumo</Header>

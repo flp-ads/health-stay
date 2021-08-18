@@ -1,18 +1,18 @@
 import { useHistory } from "react-router-dom";
-import {
-  Cards,
-  CardsList,
-  Container,
-  Header,
-  Overview,
-  OverviewItem,
-  Username,
-  NavigationButton,
-  SubMenuMobile,
-  SubMenuDesktop,
-  SubMenuContainer,
-} from "./groups_home.style";
 import { useState } from "react";
+
+import {
+  Container,
+  Username,
+  GroupsInfo,
+  Header,
+  InfoItem,
+  Main,
+  Overview,
+  NavigationButton,
+  SubMenu,
+} from "./groups_home.style";
+
 import DashboardGroupsMy from "../Dashboard_Groups_My";
 import DashboardGroupsAll from "../Dashboard_Groups_All";
 import DashboardGroupsCreate from "../Dashboard_Groups_Create";
@@ -20,7 +20,7 @@ import DashboardGroupsCreate from "../Dashboard_Groups_Create";
 const DashboardGroups = () => {
 
   const history = useHistory();
-  const MAX_CARDS = 3;
+  const MAX_CARDS = 4;
 
   const [isActiveMy, setIsActiveMy] = useState(true);
   const [isActiveAll, setIsActiveAll] = useState(false);
@@ -50,57 +50,29 @@ const DashboardGroups = () => {
     <Container>
 
       <Username>
-        Bem vindo aos <span>seus grupos</span>
+        Bem vindo aos <span>seus Grupos</span>
       </Username>
-
-      <Cards>
 
         <Overview>
           <Header>Resumo</Header>
 
-          <CardsList>
-            <OverviewItem>
+          <GroupsInfo>
+            <InfoItem>
               Você está inscrito em <p>999 grupos</p>
-            </OverviewItem>
-            <OverviewItem>
+            </InfoItem>
+
+            <InfoItem>
               Você possui <p>999 metas de grupo</p>
-            </OverviewItem>
-            <OverviewItem>
+            </InfoItem>
+
+            <InfoItem>
               Voce possui <p>999 atividades em grupo</p>
-            </OverviewItem>
-          </CardsList>
+            </InfoItem>
+          </GroupsInfo>
         </Overview>
 
-        <SubMenuMobile>
-          <CardsList>
-          
-          <NavigationButton
-            onClick={handleNavigationMy}
-            isActive={isActiveMy}>
-
-            Meus <span>Grupos</span>
-          </NavigationButton>
-
-          <NavigationButton
-            onClick={handleNavigationAll}
-            isActive={isActiveAll}>
-
-            Todos os <span>Grupos</span>
-          </NavigationButton>
-          
-          <NavigationButton
-            onClick={handleNavigationCreate}
-            isActive={isActiveCreate}>
-
-            Criar <span>Grupo</span>
-          </NavigationButton>
-
-          </CardsList>
-        </SubMenuMobile>
-      </Cards>
-
-      <SubMenuContainer>
-        <SubMenuDesktop>
+        <Main>
+          <SubMenu>
             <NavigationButton
               onClick={handleNavigationMy}
               isActive={isActiveMy}>
@@ -121,24 +93,23 @@ const DashboardGroups = () => {
 
               Criar <span>Grupo</span>
             </NavigationButton>
-        </SubMenuDesktop>
-
-
-        {isActiveMy && (
-          <DashboardGroupsMy
-            MAX_CARDS={MAX_CARDS}
-            handleNavigation={handleNavigation}
-          />
-        )}
-        {isActiveAll && (
-          <DashboardGroupsAll
-            MAX_CARDS={MAX_CARDS}
-            handleNavigation={handleNavigation}
-          />
-        )}
-        {isActiveCreate && <DashboardGroupsCreate />}
-      </SubMenuContainer>
-
+          </SubMenu>
+          <div>
+            {isActiveMy && (
+              <DashboardGroupsMy
+                MAX_CARDS={MAX_CARDS}
+                handleNavigation={handleNavigation}
+              />
+            )}
+            {isActiveAll && (
+              <DashboardGroupsAll
+                MAX_CARDS={MAX_CARDS}
+                handleNavigation={handleNavigation}
+              />
+            )}
+            {isActiveCreate && <DashboardGroupsCreate />}
+          </div>
+        </Main>
     </Container>
   );
 };

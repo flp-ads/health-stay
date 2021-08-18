@@ -1,5 +1,6 @@
 import styled, { css } from "styled-components";
 import { GlobalContainer } from "../../styles/global";
+import { motion } from "framer-motion";
 
 export const Container = styled.div`
   padding: 1rem;
@@ -12,6 +13,31 @@ export const Container = styled.div`
 
   @media only screen and (min-width: 768px) {
     margin: 0 3px 0px 200px;
+  }
+`;
+
+export const Username = styled(motion.p)`
+  font-size: 1.5rem;
+  color: var(--dark-green);
+  margin-bottom: 1.5rem;
+
+  span {
+    font-weight: bold;
+  }
+
+  p {
+    color: var(--medium-gray);
+    font-size: 1rem;
+    margin-top: 0.25rem;
+  }
+
+  @media only screen and (min-width: 768px) {
+    margin-top: 2rem;
+    font-size: 2.25rem;
+
+    p {
+      font-size: 1.25rem;
+    }
   }
 `;
 
