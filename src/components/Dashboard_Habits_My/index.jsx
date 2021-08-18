@@ -10,15 +10,10 @@ const MyHabits = ({ MAX_CARDS, handleNavigation }) => {
   return (
     <div>
       <CardsList>
-        {habits.slice(0, MAX_CARDS).map((habit) => (
+        {habits.map((habit) => (
           <HabitsCard key={habit.id} habit={habit} />
         ))}
       </CardsList>
-      {habits.length > MAX_CARDS && (
-        <All onClick={() => handleNavigation("habitos")}>
-          Ver <span>todos</span>
-        </All>
-      )}
     </div>
   );
 };

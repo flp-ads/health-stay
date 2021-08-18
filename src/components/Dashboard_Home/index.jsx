@@ -58,8 +58,8 @@ const DashboardHome = () => {
 						Meus <span>Hábitos</span>
 					</Header>
 					<CardsList>
-						{habits.slice(0, MAX_CARDS).map((_) => (
-							<HabitsCard />
+						{habits.slice(0, MAX_CARDS).map((habit) => (
+							<HabitsCard habit={habit}/>
 						))}
 					</CardsList>
 					{habits.length > MAX_CARDS && (
