@@ -35,10 +35,6 @@ export const HabitsProvider = ({ children }) => {
 				})
 				.catch((err) => console.log(err))
 		}
-
-		const getMyAchievedHabits = () => {
-
-		}
 		
 		if (userId !== -1) {
 			getMyHabits()
