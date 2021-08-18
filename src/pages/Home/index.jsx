@@ -46,18 +46,20 @@ const Home = () => {
         </BackgroundImage>
 
         <HomeButtonContainer>
-          <Button onClick={() => handleNavigation("/signup")}>
-            Cadastre-se agora
-          </Button>
+          <div className="container">
+            <Button onClick={() => handleNavigation("/signup")}>
+              Cadastre-se agora
+            </Button>
 
-          <div>
-            <fieldset>
-              <legend>ou</legend>
-            </fieldset>
+            <div>
+              <fieldset>
+                <legend>ou</legend>
+              </fieldset>
+            </div>
+            <Button isVanilla onClick={() => handleNavigation("/login")}>
+              Faça login
+            </Button>
           </div>
-          <Button isVanilla onClick={() => handleNavigation("/login")}>
-            Faça login
-          </Button>
         </HomeButtonContainer>
       </Container>
     </>

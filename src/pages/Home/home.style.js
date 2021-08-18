@@ -70,6 +70,10 @@ export const HomeButtonContainer = styled.div`
     margin-top: 1%;
   }
 
+  div.container {
+    margin-top: 100px;
+  }
+
   fieldset {
     margin-top: 1%;
     border-top: 1px solid black;
@@ -128,7 +132,7 @@ export const Header = styled.header`
     div.header_container {
       display: flex;
       justify-content: space-between;
-      margin-right: 60px;
+      margin-right: 70px;
       button {
         background-color: transparent;
         margin: 0 20px;
@@ -160,9 +164,9 @@ export const BackgroundHeader = styled.div`
     img {
       display: block;
       position: absolute;
-      top: -195px;
+      top: -375px;
       right: -375px;
-      transform: rotate(-237deg);
+      transform: rotate(-227deg);
       width: 710px;
       height: auto;
     }
@@ -172,18 +176,18 @@ export const BackgroundHeader = styled.div`
 export const BackgroundImage = styled.div`
   position: absolute;
   width: 99%;
-  height: 53vh;
+  height: 55vh;
   left: 0;
   top: 27vh;
   overflow: hidden;
 
   img {
     position: absolute;
-    width: 450px;
+    width: 420px;
     height: auto;
     right: 0;
     left: -45px;
-    top: 0;
+    top: 12px;
     transform: rotate(-12.35deg);
   }
 
