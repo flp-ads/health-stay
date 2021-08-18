@@ -17,6 +17,8 @@ import MyHabits from "../Dashboard_Habits_My";
 import AchievedHabits from "../Dashboard_Habits_Achieved";
 import CreateHabit from "../Dashboard_Habits_Create";
 
+import { useHabits } from "../../providers/Habits";
+
 const DashboardHabits = () => {
   const history = useHistory();
   const MAX_CARDS = 4;
@@ -45,6 +47,8 @@ const DashboardHabits = () => {
 
   const handleNavigation = (path) => history.push(path);
 
+  const { habitsCount, achievedHabitsCount } = useHabits();
+
   return (
     <Container>
       <Username>
@@ -57,12 +61,12 @@ const DashboardHabits = () => {
         <HabitsInfo>
           <InfoItem>
             Você tem
-            <p>999 hábitos</p>
+            <p>{habitsCount} hábitos</p>
           </InfoItem>
 
           <InfoItem>
             Você tem
-            <p>999 hábitos concluídos</p>
+            <p>{achievedHabitsCount} hábitos concluídos</p>
           </InfoItem>
         </HabitsInfo>
       </Overview>
