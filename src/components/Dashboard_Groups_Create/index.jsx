@@ -1,8 +1,8 @@
 import {
   CardsList,
 } from "./groups_create.style";
-import GlobalInput from "../../components/Global_Input";
-import GlobalButton from "../../components/Global_Button";
+import Input from "../../components/Global_Input";
+import Button from "../../components/Global_Button";
 import { FaPencilAlt, FaBox, FaAlignLeft } from "react-icons/fa";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -26,6 +26,9 @@ const DashboardGroupsCreate = () => {
   const onSubmit = (data) => {
     console.log(data);
   };
+
+  const categoryList = []
+
   return (
       <div>
         <CardsList>
@@ -33,7 +36,7 @@ const DashboardGroupsCreate = () => {
             id="create_group"
             onSubmit={handleSubmit(onSubmit)}>
 
-            <GlobalInput
+            <Input
               placeholder="Nome do grupo"
               register={register}
               icon={FaPencilAlt}
@@ -41,7 +44,7 @@ const DashboardGroupsCreate = () => {
               error={errors.name?.message}
               type="text" />
 
-            <GlobalInput
+            <Input
               placeholder="Descrição"
               register={register}
               icon={FaAlignLeft}
@@ -49,11 +52,19 @@ const DashboardGroupsCreate = () => {
               error={errors.description?.message}
               type="text area" />
 
-            <GlobalButton 
+            <Input
+              selectPlaceholder="Categoria"
+              register={register}
+              icon={FaBox}
+              name="category"
+              error={errors.category?.message}
+              list={categoryList} />
+
+            <Button 
               type="submit"
               form="create_group">
                 Criar Grupo
-            </GlobalButton>
+            </Button>
           </form>
         </CardsList>
       </div>
