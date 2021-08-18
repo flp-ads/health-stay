@@ -50,6 +50,36 @@ export const HabitsProvider = ({ children }) => {
 		setAchievedHabitsCount(filterHabits.length)
 	}, [habits])
 
+	const addHabit = (formData) => {
+
+		const {title, category, difficulty, frequency} = formData
+
+		let newHabit = {
+			title,
+			category,
+			difficulty,
+			frequency,
+			achieved: false,
+			how_much_achieved: 0,
+			user: userId,
+		}
+		console.log(newHabit)
+
+		api
+			.post('/habits/', newHabit,
+			{
+				headers: {
+					Authorization: `Bearer ${accToken}`,
+				},
+			})
+			.then((res) => {
+				setHabits([...habits, newHabit])
+			})
+			.catch((err) => {
+				console.log(err)
+			})
+	}
+
 	return (
 		<HabitsContext.Provider 
 			value={{
@@ -57,6 +87,7 @@ export const HabitsProvider = ({ children }) => {
 				achievedHabits,
 				habitsCount,
 				achievedHabitsCount,
+				addHabit,
 			}}
 		>
 			{children}</HabitsContext.Provider>
