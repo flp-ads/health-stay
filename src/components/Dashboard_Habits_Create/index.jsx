@@ -13,7 +13,7 @@ import { FiLayers } from "react-icons/fi";
 import api from "../../services/api";
 import { toast } from "react-toastify";
 
-import { useLogin } from "../../providers/User";
+import { useHabits } from "../../providers/Habits";
 
 const CreateHabit = () => {
   const formSchema = yup.object().shape({
@@ -31,26 +31,16 @@ const CreateHabit = () => {
     resolver: yupResolver(formSchema),
   });
 
-  const { accToken } = useLogin();
+  const { addHabit } = useHabits()
 
-  const onFormSubmit = ({ title, category, difficulty, frequency }) => {
-    api
-      .post("/habits/", {
-        title,
-        category,
-        difficulty,
-        frequency,
-        achieved: false,
-        how_much_achieved: 0,
-        user: 1,
-      })
-      .then((_) => toast.success("Hábito cadastrado com sucesso!"))
-      .catch((_) => toast.error("Ops... Algo deu errado"));
+  const onFormSubmit = (formData) => {
+    
+    addHabit(formData)
   };
 
-  const categoryList = [];
-  const difficultyList = [];
-  const frequencyList = [];
+  const categoryList = ['Saúde Mental', 'Saúde Física', 'Reeducação', 'Alimentação'];
+  const difficultyList = ['Fácil', 'Média', 'Difícil'];
+  const frequencyList = ['Diária', 'Semanal', 'Mensal'];
 
   return (
     <Container>
