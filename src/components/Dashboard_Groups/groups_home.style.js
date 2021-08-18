@@ -1,11 +1,15 @@
-import { motion } from "framer-motion";
 import styled, { css } from "styled-components";
 import { GlobalContainer } from "../../styles/global";
+import { motion } from "framer-motion";
 
-export const Container = styled(motion.div)`
+export const Container = styled.div`
   padding: 1rem;
   position: relative;
   margin-bottom: 66px;
+
+  h1 {
+    color: var(--dark-green);
+  }
 
   @media only screen and (min-width: 768px) {
     margin: 0 3px 0px 200px;
@@ -37,19 +41,9 @@ export const Username = styled(motion.p)`
   }
 `;
 
-export const Cards = styled(motion.div)`
-  display: flex;
-  gap: 1rem;
-  flex-direction: column;
-
-  @media only screen and (min-width: 768px) {
-    flex-direction: row;
-    flex-wrap: wrap;
-  }
-`;
-
 export const Overview = styled(GlobalContainer)`
   flex: 100%;
+  margin: 1rem 0;
 
   @media only screen and (min-width: 768px) {
     display: flex;
@@ -76,7 +70,20 @@ export const Header = styled.h2`
   }
 `;
 
-export const OverviewItem = styled.p`
+export const GroupsInfo = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+
+  @media only screen and (min-width: 768px) {
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+  }
+`;
+
+export const InfoItem = styled.p`
   text-align: center;
   color: var(--medium-gray);
   font-size: 1.2rem;
@@ -87,60 +94,7 @@ export const OverviewItem = styled.p`
   }
 
   @media only screen and (min-width: 768px) {
-    margin: 0 1rem;
-  }
-`;
-
-export const SubMenuContainer = styled(Overview)`
-	padding: 1rem;
-
-	@media only screen and (min-width: 768px) {
-		flex: 1;
-    display: flex;
-    flex-flow: column nowrap;
-    align-items: center;
-    justify-content: space-evenly;
-		padding: 2rem;
-    margin: 1rem 0 0 0;
-	}
-`
-
-export const SubMenuMobile = styled(Overview)`
-  padding: 1rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  margin-bottom: 16px;
-
-  @media only screen and (min-width: 768px) {
-    display: none;
-  }
-`;
-
-export const SubMenuDesktop = styled.header`
-  display: none;
-
-  @media only screen and (min-width: 768px) {
-    display: flex;
-    flex-flow: row wrap;
-    align-items: center;
-    justify-content: center;
-    gap: 2rem;
-    margin: 0 0 1rem 0;
-  }
-`
-
-export const CardsList = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-
-  @media only screen and (min-width: 768px) {
-    flex-direction: row;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
+    margin: 0 5rem;
   }
 `;
 
@@ -157,22 +111,24 @@ export const NavigationButton = styled.button`
   }
 
   @media only screen and (min-width: 768px) {
-    font-size: 32px;
+    font-size: 26px;
   }
 `;
 
-export const All = styled(motion.p)`
-  cursor: pointer;
-  margin: 1rem 1rem 0 0;
-  text-align: right;
-  font-size: 0.8rem;
-  color: var(--light-green);
+export const Main = styled(GlobalContainer)`
+  /* padding: 2rem; */
+`;
 
-  span {
-    font-weight: bold;
-  }
+export const SubMenu = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 2rem;
 
   @media only screen and (min-width: 768px) {
-    flex: 100%;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
   }
 `;
