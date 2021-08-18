@@ -1,5 +1,5 @@
 import axios from "axios"
-import { createContext, useContext, useEffect, useState } from "react"
+import { createContext, useContext, useEffect, useRef, useState } from "react"
 import { toast } from "react-toastify"
 import api from "../../services/api"
 import { useLogin } from "../User"
@@ -23,6 +23,21 @@ export const GroupProvider = ({ children }) => {
 
 	const { userId, accToken } = useLogin()
 
+	const fetchMyGroups = () => {
+		api
+			.get("/groups/subscriptions/", {
+				headers: {
+					Authorization: `Bearer ${accToken}`,
+				},
+			})
+			.then(({ data }) => {
+				setMyGroups(data)
+			})
+			.catch((err) => console.log(err))
+	}
+
+	const fetchMyGroupsRef = useRef(fetchMyGroups)
+
 	useEffect(() => {
 		const initialEndPoint = `https://kabit-api.herokuapp.com/groups/?search=${PREFIX}`
 
@@ -41,21 +56,8 @@ export const GroupProvider = ({ children }) => {
 			}
 		}
 
-		const fetchMyGroups = () => {
-			api
-				.get("/groups/subscriptions/", {
-					headers: {
-						Authorization: `Bearer ${accToken}`,
-					},
-				})
-				.then(({ data }) => {
-					setMyGroups(data)
-				})
-				.catch((err) => console.log(err))
-		}
-
 		if (userId !== -1) {
-			fetchMyGroups()
+			fetchMyGroupsRef.current()
 			fetchGroups()
 		}
 	}, [accToken, userId])
@@ -110,6 +112,7 @@ export const GroupProvider = ({ children }) => {
 				nextPage,
 				subscribleToGroup,
 				loadMoreGroups,
+				fetchMyGroups,
 			}}
 		>
 			{children}
