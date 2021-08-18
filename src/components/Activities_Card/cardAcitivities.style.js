@@ -1,15 +1,17 @@
 import styled from "styled-components";
 
 export const CardActivitiesContainer = styled.div`
-  width: 284px;
-  height: 101px;
+  max-width: 450px;
+  width: 100%;
+  height: 100px;
+
   display: flex;
   border: 1px solid var(--vanilla);
   background: var(--light-vanilla);
   border-radius: var(--card-border-radius);
   overflow: hidden;
   @media (min-width: 768px) {
-    max-width: 480px;
+    height: 125px;
   }
 `;
 

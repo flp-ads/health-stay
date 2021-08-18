@@ -8,10 +8,13 @@ import {
 	UsersBottom,
 } from "./card.style"
 import { FaHeart } from "react-icons/fa"
+import { useGroups } from "../../providers/Groups"
+
+const PREFIX = "@HS-"
 
 const GroupCard = ({ group, isSubscribed = false }) => {
 	const { name, category, users_on_group } = group
-	// const isSubscribed = users_on_group.find(u => u.id == user.id)
+	const { subscribleToGroup } = useGroups()
 
 	const handleUsers = () => {
 		let isBig = false
@@ -47,10 +50,13 @@ const GroupCard = ({ group, isSubscribed = false }) => {
 			<CardImage />
 			<Info>
 				<Text>
-					<h4>{name}</h4>
+					<h4>{name.slice(PREFIX.length)}</h4>
 					<p>{category}</p>
 				</Text>
-				<Icon isSubscribed>
+				<Icon
+					isSubscribed={isSubscribed}
+					onClick={() => (!isSubscribed ? subscribleToGroup(group) : null)}
+				>
 					<FaHeart />
 				</Icon>
 				<Users>{handleUsers()}</Users>

@@ -1,9 +1,9 @@
-import DashboardMenu from "../../components/Dashboard_Menu";
-import { BackgroundImage, Container, Header, User } from "./habits.styles";
 import bg_image from "../../assets/healthy-food-png.png";
-import DashboardHabits from "../../components/Dashboard_Habits";
+import DashboardGroup from "../../components/Dashboard_Group";
+import DashboardMenu from "../../components/Dashboard_Menu";
+import { BackgroundImage, Container, Header, User } from "./group.style";
 
-const Habits = () => {
+const Group = () => {
   return (
     <Container>
       <Header>
@@ -16,11 +16,11 @@ const Habits = () => {
         <BackgroundImage>
           <img src={bg_image} alt="" />
         </BackgroundImage>
-        <DashboardHabits />
+        <DashboardGroup />
         <DashboardMenu />
       </div>
     </Container>
   );
 };
 
-export default Habits;
+export default Group;

@@ -9,21 +9,26 @@ import {
 } from "./card.style"
 
 import { FiTrash2, FiCheckCircle } from "react-icons/fi"
+import { useHabits } from "../../providers/Habits"
 
-const HabitsCard = () => {
+const HabitsCard = ({ habit }) => {
+
+	const { id, title, category, difficulty, frequency, achieved, how_much_achieved } = habit
+
+
 	return (
 		<HabitsCardContainer>
 			<Background />
 			<HabitsCardContent>
 				<HabitsCardHeaderContainer>
-					<strong>Frequency</strong>
-					<p>Difficulty</p>
+					<strong>{frequency}</strong>
+					<p>{difficulty}</p>
 				</HabitsCardHeaderContainer>
 				<HabitsCardTitleContainer>
-					<h4>Habit name</h4>
+					<h4>{title}</h4>
 				</HabitsCardTitleContainer>
 				<HabitsCardInfoContainer>
-					<p>Category</p>
+					<p>{category}</p>
 				</HabitsCardInfoContainer>
 				<HabitsCardFooterContainer>
 					<button>

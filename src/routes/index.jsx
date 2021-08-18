@@ -6,6 +6,7 @@ import Login from "../pages/Login";
 import SignUp from "../pages/SignUp";
 import Home from "../pages/Home";
 import Habits from "../pages/Habits";
+import Group from "../pages/Group";
 import Groups from "../pages/Groups";
 import Dashboard from "../pages/Dashboard";
 import DashboardHome from "../components/Dashboard_Home";
@@ -21,24 +22,31 @@ const Routes = () => {
 
       <Route path="/login" component={Login} />
 
-      <Route path="/habitos" component={Habits} />
-
-      <Route path="/grupos" component={Groups} />
+      <Route isPrivate path="/group" component={Group} />
 
       <ReactDOMRoute
         path="/dashboard"
+        isPrivate
         render={({ match: { path } }) => (
           <Dashboard>
             <Switch>
               <Route
                 exact
+                isPrivate
                 path={`${path}`}
                 component={() => <Redirect to={`${path}/home`} />}
               />
-              <Route path={`${path}/home`} component={DashboardHome} />
-              <Route path={`${path}/grupos`} component={Groups} />
-              <Route path={`${path}/habitos`} component={DashboardHome} />
-              <Route component={() => <Redirect to={`${path}/home`} />} />
+              <Route
+                isPrivate
+                path={`${path}/home`}
+                component={DashboardHome}
+              />
+              <Route isPrivate path={`${path}/grupos`} component={Groups} />
+              <Route isPrivate path={`${path}/habitos`} component={Habits} />
+              <Route
+                isPrivate
+                component={() => <Redirect to={`${path}/home`} />}
+              />
             </Switch>
           </Dashboard>
         )}

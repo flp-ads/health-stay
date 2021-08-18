@@ -1,135 +1,116 @@
-import { useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom"
+import { useState } from "react"
+
 import {
-  Cards,
-  CardsList,
-  Container,
-  Header,
-  MyGroups,
-  Overview,
-  OverviewItem,
-  Username,
-  NavigationButton,
-  MyGroupsNavigationMobile,
-} from "./groups_home.style";
-import { useState } from "react";
-import DashboardGroupsMy from "../Dashboard_Groups_My";
-import DashboardGroupsAll from "../Dashboard_Groups_All";
-import DashboardGroupsCreate from "../Dashboard_Groups_Create";
+	Container,
+	Username,
+	GroupsInfo,
+	Header,
+	InfoItem,
+	Main,
+	Overview,
+	NavigationButton,
+	SubMenu,
+} from "./groups_home.style"
+
+import DashboardGroupsMy from "../Dashboard_Groups_My"
+import DashboardGroupsAll from "../Dashboard_Groups_All"
+import DashboardGroupsCreate from "../Dashboard_Groups_Create"
+import { useGroups } from "../../providers/Groups"
 
 const DashboardGroups = () => {
-  const history = useHistory();
-  const MAX_CARDS = 3;
-  const [isActiveMy, setIsActiveMy] = useState(true);
-  const [isActiveAll, setIsActiveAll] = useState(false);
-  const [isActiveCreate, setIsActiveCreate] = useState(false);
+	const history = useHistory()
+	const MAX_CARDS = 4
 
-  const handleNavigationMy = () => {
-    setIsActiveMy(true);
-    setIsActiveAll(false);
-    setIsActiveCreate(false);
-  };
+	const [isActiveMy, setIsActiveMy] = useState(true)
+	const [isActiveAll, setIsActiveAll] = useState(false)
+	const [isActiveCreate, setIsActiveCreate] = useState(false)
 
-  const handleNavigationAll = () => {
-    setIsActiveMy(false);
-    setIsActiveAll(true);
-    setIsActiveCreate(false);
-  };
+	const handleNavigationMy = () => {
+		setIsActiveMy(true)
+		setIsActiveAll(false)
+		setIsActiveCreate(false)
+	}
 
-  const handleNavigationCreate = () => {
-    setIsActiveMy(false);
-    setIsActiveAll(false);
-    setIsActiveCreate(true);
-  };
+	const handleNavigationAll = () => {
+		setIsActiveMy(false)
+		setIsActiveAll(true)
+		setIsActiveCreate(false)
+	}
 
-  const handleNavigation = (path) => history.push(path);
+	const handleNavigationCreate = () => {
+		setIsActiveMy(false)
+		setIsActiveAll(false)
+		setIsActiveCreate(true)
+	}
 
-  return (
-    <Container>
-      <Username>
-        Bem vindo aos <span>seus grupos</span>
-      </Username>
-      <Cards>
-        <Overview>
-          <Header>Resumo</Header>
-          <CardsList>
-            <OverviewItem>
-              Você está inscrito em <p>999 grupos</p>
-            </OverviewItem>
-            <OverviewItem>
-              Você possui <p>999 metas de grupo</p>
-            </OverviewItem>
-            <OverviewItem>
-              Voce possui <p>999 atividades em grupo</p>
-            </OverviewItem>
-          </CardsList>
-        </Overview>
+	const handleNavigation = (path) => history.push(path)
 
-        <MyGroups>
-          <CardsList>
-            <span>
-              <NavigationButton
-                onClick={handleNavigationMy}
-                isActive={isActiveMy}
-              >
-                Meus <span>Grupos</span>
-              </NavigationButton>
-            </span>
-            <NavigationButton
-              onClick={handleNavigationAll}
-              isActive={isActiveAll}
-            >
-              Todos os <span>Grupos</span>
-            </NavigationButton>
-            <NavigationButton
-              onClick={handleNavigationCreate}
-              isActive={isActiveCreate}
-            >
-              Criar <span>Grupo</span>
-            </NavigationButton>
-          </CardsList>
-        </MyGroups>
+	const { subscribledGroupsCount, groupGoalsCount, groupActivitiesCount } =
+		useGroups()
 
-        <MyGroupsNavigationMobile>
-          <CardsList>
-            <span>
-              <NavigationButton
-                onClick={handleNavigationMy}
-                isActive={isActiveMy}
-              >
-                Meus <span>Grupos</span>
-              </NavigationButton>
-            </span>
-            <NavigationButton
-              onClick={handleNavigationAll}
-              isActive={isActiveAll}
-            >
-              Todos os <span>Grupos</span>
-            </NavigationButton>
-            <NavigationButton
-              onClick={handleNavigationCreate}
-              isActive={isActiveCreate}
-            >
-              Criar <span>Grupo</span>
-            </NavigationButton>
-          </CardsList>
-        </MyGroupsNavigationMobile>
-      </Cards>
+	return (
+		<Container>
+			<Username>
+				<span>Grupos</span>
+			</Username>
 
-      {isActiveMy && (
-        <DashboardGroupsMy
-          MAX_CARDS={MAX_CARDS}
-          handleNavigation={handleNavigation}
-        />
-      )}
-      {isActiveAll && (
-        <DashboardGroupsAll
-          MAX_CARDS={MAX_CARDS}
-          handleNavigation={handleNavigation}
-        />
-      )}
-      {isActiveCreate && <DashboardGroupsCreate />}
-    </Container>
-  );
-};
+			<Overview>
+				<Header>Resumo</Header>
 
-export default DashboardGroups;
+				<GroupsInfo>
+					<InfoItem>
+						Você está inscrito em <p>{subscribledGroupsCount} grupos</p>
+					</InfoItem>
+
+					<InfoItem>
+						Você possui <p>{groupGoalsCount} metas de grupo</p>
+					</InfoItem>
+
+					<InfoItem>
+						Voce possui <p>{groupActivitiesCount} atividades em grupo</p>
+					</InfoItem>
+				</GroupsInfo>
+			</Overview>
+
+			<Main>
+				<SubMenu>
+					<NavigationButton onClick={handleNavigationMy} isActive={isActiveMy}>
+						Meus <span>Grupos</span>
+					</NavigationButton>
+
+					<NavigationButton
+						onClick={handleNavigationAll}
+						isActive={isActiveAll}
+					>
+						Todos os <span>Grupos</span>
+					</NavigationButton>
+
+					<NavigationButton
+						onClick={handleNavigationCreate}
+						isActive={isActiveCreate}
+					>
+						Criar <span>Grupo</span>
+					</NavigationButton>
+				</SubMenu>
+				<div>
+					{isActiveMy && (
+						<DashboardGroupsMy
+							MAX_CARDS={MAX_CARDS}
+							handleNavigation={handleNavigation}
+						/>
+					)}
+					{isActiveAll && (
+						<DashboardGroupsAll
+							MAX_CARDS={MAX_CARDS}
+							handleNavigation={handleNavigation}
+						/>
+					)}
+					{isActiveCreate && <DashboardGroupsCreate />}
+				</div>
+			</Main>
+		</Container>
+	)
+}
+
+export default DashboardGroups

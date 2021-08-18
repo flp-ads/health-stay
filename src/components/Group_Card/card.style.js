@@ -7,6 +7,7 @@ export const Container = styled(motion.div)`
 	height: 100px;
 	border-radius: 1rem;
 	max-width: 450px;
+	min-width: 320px;
 	width: 100%;
 	display: flex;
 	overflow: hidden;
@@ -14,6 +15,12 @@ export const Container = styled(motion.div)`
 
 	@media only screen and (min-width: 768px) {
 		height: 125px;
+		flex: 100%;
+	}
+
+	@media only screen and (min-width: 950px) {
+		height: 125px;
+		flex: calc(33% - 2rem);
 	}
 `
 
@@ -71,6 +78,7 @@ export const Icon = styled.div`
 	right: 0;
 	color: ${(props) =>
 		props.isSubscribed ? css`var(--red)` : css`var(--medium-gray)`};
+	cursor: ${(props) => (props.isSubscribed ? "default" : "pointer")};
 `
 export const Users = styled.div`
 	position: absolute;

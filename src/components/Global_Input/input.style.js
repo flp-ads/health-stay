@@ -12,10 +12,13 @@ export const StyledInput = styled.div`
 		display: flex;
 	}
 
-	input {
+	input,
+	select {
 		flex: 1;
 		background: transparent;
 		border: 0;
+		min-width: 100px;
+		color: #7b7b7b;
 	}
 
 	svg {
