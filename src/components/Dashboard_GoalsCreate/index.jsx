@@ -38,7 +38,7 @@ const DashboardGoalsCreate = () => {
 
         <Input
           name="difficulty"
-          placeholder="Dificuldade"
+          selectPlaceholder="Dificuldade"
           icon={FiLayers}
           register={register}
           error={errors.difficulty?.message}
