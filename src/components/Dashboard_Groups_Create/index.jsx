@@ -53,7 +53,7 @@ const DashboardGroupsCreate = () => {
               type="text area" />
 
             <Input
-              placeholder="Categoria"
+              selectPlaceholder="Categoria"
               register={register}
               icon={FaBox}
               name="category"
