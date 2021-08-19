@@ -3,17 +3,18 @@ import { RiCheckDoubleFill } from "react-icons/ri"
 import { AiOutlineCheckCircle, AiOutlineDelete } from "react-icons/ai"
 import { useGroup } from "../../providers/Group"
 
-const GoalsCard = ({ goal: { title, id, difficulty } }) => {
+const GoalsCard = ({ goal }) => {
 	const { isAdmin, removeGoal, editGoal } = useGroup()
+	const { title, id, difficulty, achieved } = goal
 
 	return (
 		<Container>
 			<ImageContainer />
 
-			<ContentContainer>
+			<ContentContainer achieved={achieved}>
 				<header>
 					{isAdmin() && (
-						<button className="completed" onClick={() => editGoal(id)}>
+						<button className="completed" onClick={() => editGoal(goal)}>
 							<RiCheckDoubleFill />
 						</button>
 					)}

@@ -7,11 +7,12 @@ export const Container = styled(motion.div)`
 	height: 100px;
 	border-radius: 1rem;
 	max-width: 450px;
-	min-width: 320px;
+	min-width: 290px;
 	width: 100%;
 	display: flex;
 	overflow: hidden;
 	border: 1px solid var(--vanilla);
+	cursor: pointer;
 
 	@media only screen and (min-width: 768px) {
 		height: 125px;

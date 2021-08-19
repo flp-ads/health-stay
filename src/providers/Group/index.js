@@ -72,10 +72,10 @@ export const GroupProvider = ({ children }) => {
 			.catch((err) => console.log(err))
 	}
 
-	const editGoal = (goalId, achieved) => {
+	const editGoal = ({ id, achieved }) => {
 		api
 			.patch(
-				`/goals/${goalId}/`,
+				`/goals/${id}/`,
 				{
 					achieved: !achieved,
 				},
@@ -85,9 +85,43 @@ export const GroupProvider = ({ children }) => {
 					},
 				}
 			)
-			.then((resp) => {
-				console.log(resp)
+			.then(() => {
 				updateGoals()
+			})
+			.catch((err) => console.log(err))
+	}
+
+	const updateActivities = () => {
+		api
+			.get(`/activities/?group=${group.id}`)
+			.then(({ data: { results } }) => setActivities(results))
+			.catch((err) => console.log(err))
+	}
+
+	const addActivity = (activityData) => {
+		api
+			.post("/activities/", activityData, {
+				headers: {
+					Authorization: `Bearer ${accToken}`,
+				},
+			})
+			.then(() => {
+				toast.success("Atividade criada!")
+				updateActivities()
+			})
+			.catch((err) => console.log(err))
+	}
+
+	const removeActivity = ({ id }) => {
+		api
+			.delete(`/activities/${id}/`, {
+				headers: {
+					Authorization: `Bearer ${accToken}`,
+				},
+			})
+			.then(() => {
+				toast.success("Atividade removida!")
+				updateActivities()
 			})
 			.catch((err) => console.log(err))
 	}
@@ -110,6 +144,8 @@ export const GroupProvider = ({ children }) => {
 				removeGoal,
 				isAdmin,
 				reset,
+				addActivity,
+				removeActivity,
 			}}
 		>
 			{children}

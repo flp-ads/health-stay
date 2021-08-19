@@ -61,7 +61,7 @@ const DashboardGroup = () => {
 	return (
 		<Container>
 			<Username>
-				<span>{parseName(name)}</span>
+				<span>{name && parseName(name)}</span>
 			</Username>
 			<Cards>
 				<Overview>
@@ -134,8 +134,8 @@ const DashboardGroup = () => {
 					<Main>
 						<SubMenu>
 							{isActivitiesAll ? (
-								goals.map((group) => (
-									<ActivitiesCard group={group.activities} />
+								activities.map((activity) => (
+									<ActivitiesCard activity={activity} />
 								))
 							) : (
 								<DashboardActivitiesCreate />
