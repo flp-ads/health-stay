@@ -1,4 +1,5 @@
 import { createContext, useContext, useState, useEffect } from "react"
+import { toast } from "react-toastify"
 import api from "../../services/api"
 import { useLogin } from "../User"
 
@@ -86,6 +87,20 @@ export const HabitsProvider = ({ children }) => {
 			})
 	}
 
+	  const deleteHabit = (habitID) => {
+    api
+      .delete(`/habits/${habitID}/`, {
+        headers: {
+          Authorization: `Bearer ${accToken}`,
+        },
+      })
+      .then((res) => {
+        setUpdateTrigger(!updateTrigger)
+        toast.success("Hábito removido com sucesso!");
+      })
+      .catch((_) => toast.error("Algo deu errado, tente novamente"));
+  };
+
 	return (
 		<HabitsContext.Provider 
 			value={{
@@ -95,6 +110,7 @@ export const HabitsProvider = ({ children }) => {
 				habitsCount,
 				achievedHabitsCount,
 				addHabit,
+				deleteHabit
 			}}
 		>
 			{children}</HabitsContext.Provider>

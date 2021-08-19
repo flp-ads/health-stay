@@ -25,24 +25,23 @@ const HabitsCard = ({ habit }) => {
     how_much_achieved,
   } = habit;
 
-  const { accToken } = useLogin();
-  const { habits, setHabits } = useHabits();
+  //   const { accToken } = useLogin();
+  const { deleteHabit } = useHabits();
 
-  const handleDelete = () => {
-    console.log(id);
-    api
-      .delete(`/habits/${id}/`, {
-        headers: {
-          Authorization: `Bearer ${accToken}`,
-        },
-      })
-      .then((res) => {
-        const newHabits = habits.filter((habit) => habit.id !== id);
-        setHabits([...habits, newHabits]);
-        toast.success("Hábito removido com sucesso!");
-      })
-      .catch((_) => toast.error("Algo deu errado, tente novamente"));
-  };
+  //   const handleDelete = () => {
+  //     console.log(id);
+  //     api
+  //       .delete(`/habits/${id}/`, {
+  //         headers: {
+  //           Authorization: `Bearer ${accToken}`,
+  //         },
+  //       })
+  //       .then((res) => {
+
+  //         toast.success("Hábito removido com sucesso!");
+  //       })
+  //       .catch((_) => toast.error("Algo deu errado, tente novamente"));
+  //   };
 
   return (
     <HabitsCardContainer>
@@ -59,7 +58,7 @@ const HabitsCard = ({ habit }) => {
           <p>{category}</p>
         </HabitsCardInfoContainer>
         <HabitsCardFooterContainer>
-          <button onClick={handleDelete}>
+          <button onClick={() => deleteHabit(id)}>
             <FiTrash2 size={23} color={"var(--red)"} />
           </button>
 
