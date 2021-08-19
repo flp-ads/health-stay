@@ -14,7 +14,8 @@ export const StyledButton = styled.button`
   justify-content: center;
   align-items: center;
   height: 45px;
-  width: 270px;
+  max-width: 270px;
+  min-width: 210px;
   border-radius: 23px;
 
   @media screen and (min-width: 768px) {
