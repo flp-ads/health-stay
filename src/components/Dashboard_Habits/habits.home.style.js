@@ -94,7 +94,7 @@ export const InfoItem = styled.p`
   }
 
   @media only screen and (min-width: 768px) {
-    margin: 0 5rem;
+    margin: 0 7rem;
   }
 `;
 

@@ -52,7 +52,7 @@ const DashboardHabits = () => {
   return (
     <Container>
       <Username>
-        Bem vindo aos <span>seus Hábitos</span>
+        <span>Hábitos</span>
       </Username>
 
       <Overview>

@@ -5,7 +5,7 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 
-import { useHistory } from 'react-router';
+import { useHistory } from "react-router";
 
 import {
   Container,
@@ -21,9 +21,6 @@ import { motion } from "framer-motion";
 import { useLogin } from "../../providers/User";
 
 const Login = () => {
-
-  
-
   const formSchema = yup.object().shape({
     username: yup.string().required("Preencha este campo"),
     password: yup.string().required("Preencha este campo"),
@@ -37,16 +34,15 @@ const Login = () => {
     resolver: yupResolver(formSchema),
   });
 
-  const { userLogin } = useLogin()
+  const { userLogin } = useLogin();
 
   const onFormSubmit = ({ username, password }) => {
-    
-    userLogin({username, password})
+    userLogin({ username, password });
   };
 
   const history = useHistory();
 
-  const handleNavigation = (path) => history.push(path)
+  const handleNavigation = (path) => history.push(path);
 
   return (
     <Container>
@@ -57,9 +53,8 @@ const Login = () => {
 
       <MainContainer>
         <HeaderContainer>
-          <button
-            onClick={() => handleNavigation('/')}>
-            <FiChevronLeft /> return
+          <button onClick={() => handleNavigation("/")}>
+            <FiChevronLeft /> voltar
           </button>
 
           <h1>Logo</h1>
@@ -70,30 +65,27 @@ const Login = () => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          transition={{ duration: 0.5 }}>
-            
-          <form
-            id='login_form'
-            onSubmit={handleSubmit(onFormSubmit)}>
-            <Input 
-              name='username'
-              icon={FiUser} 
+          transition={{ duration: 0.5 }}
+        >
+          <form id="login_form" onSubmit={handleSubmit(onFormSubmit)}>
+            <Input
+              name="username"
+              icon={FiUser}
               placeholder="Usuário"
               register={register}
-              error={errors.username?.message} />
+              error={errors.username?.message}
+            />
 
-            <Input 
-              name='password'
-              icon={FiLock} 
+            <Input
+              name="password"
+              icon={FiLock}
               placeholder="Senha"
               register={register}
-              error={errors.password?.message} />
-
+              error={errors.password?.message}
+            />
           </form>
 
-          <Button
-            type='submit'
-            form='login_form'>
+          <Button type="submit" form="login_form">
             login
           </Button>
 
@@ -103,9 +95,7 @@ const Login = () => {
             <hr />
           </div>
 
-          <Button 
-            isVanilla
-            onClick={() => handleNavigation('/signup')}>
+          <Button isVanilla onClick={() => handleNavigation("/signup")}>
             cadastro
           </Button>
         </Content>

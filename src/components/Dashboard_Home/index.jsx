@@ -41,7 +41,7 @@ const DashboardHome = () => {
               Você está inscrito em <p>{subscribledGroupsCount} grupos</p>
             </OverviewItem>
             <OverviewItem>
-              Você está registrou <p>{habitsCount} habitos</p>
+              Você tem registrado <p>{habitsCount} habitos</p>
             </OverviewItem>
           </CardsList>
         </Overview>
@@ -81,5 +81,3 @@ const DashboardHome = () => {
 };
 
 export default DashboardHome;
-
-
