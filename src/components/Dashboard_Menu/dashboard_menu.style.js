@@ -1,4 +1,5 @@
 import { motion } from "framer-motion"
+import { Link } from "react-router-dom"
 import styled, { css } from "styled-components"
 
 export const Menu = styled(motion.nav)`
@@ -46,7 +47,7 @@ export const MenuList = styled.div`
 	}
 `
 
-export const MenuItem = styled(motion.div)`
+export const MenuItem = styled(Link)`
 	cursor: pointer;
 	text-align: center;
 	font-size: 0.8rem;

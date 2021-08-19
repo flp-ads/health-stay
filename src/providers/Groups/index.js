@@ -4,10 +4,10 @@ import { toast } from "react-toastify"
 import api from "../../services/api"
 import { useLogin } from "../User"
 
-const GroupContext = createContext()
+const GroupsContext = createContext()
 const PREFIX = "@HS-"
 
-export const GroupProvider = ({ children }) => {
+export const GroupsProvider = ({ children }) => {
 	// All the groups where the user is not registered
 	const [groups, setGroups] = useState([])
 	// All the groups where the user is registered
@@ -102,7 +102,7 @@ export const GroupProvider = ({ children }) => {
 	}
 
 	return (
-		<GroupContext.Provider
+		<GroupsContext.Provider
 			value={{
 				myGroups,
 				groups,
@@ -116,8 +116,8 @@ export const GroupProvider = ({ children }) => {
 			}}
 		>
 			{children}
-		</GroupContext.Provider>
+		</GroupsContext.Provider>
 	)
 }
 
-export const useGroups = () => useContext(GroupContext)
+export const useGroups = () => useContext(GroupsContext)
