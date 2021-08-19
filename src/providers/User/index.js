@@ -1,4 +1,4 @@
-import { createContext, useState, useContext } from "react";
+import { createContext, useState, useContext, useEffect } from "react";
 import { toast } from "react-toastify";
 import jwt_decode from "jwt-decode";
 
@@ -41,7 +41,13 @@ export const UserContextProvider = ({ children }) => {
       .catch((err) => console.log(err));
   };
 
-  getUserName();
+  useEffect(() => {
+
+    if (userId !== -1) {
+
+      getUserName();
+    }
+  }, [accToken])
 
   return (
     <UserContext.Provider value={{ accToken, userLogin, userId, userName }}>
