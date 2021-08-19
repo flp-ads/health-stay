@@ -9,12 +9,14 @@ import {
 } from "./card.style"
 import { FaHeart } from "react-icons/fa"
 import { useGroups } from "../../providers/Groups"
+import { useHistory } from "react-router-dom"
 
 const PREFIX = "@HS-"
 
 const GroupCard = ({ group, isSubscribed = false }) => {
-	const { name, category, users_on_group } = group
+	const { name, category, users_on_group, id } = group
 	const { subscribleToGroup } = useGroups()
+	const history = useHistory()
 
 	const handleUsers = () => {
 		let isBig = false
@@ -46,7 +48,11 @@ const GroupCard = ({ group, isSubscribed = false }) => {
 	}
 
 	return (
-		<Container>
+		<Container
+			onClick={() => {
+				history.push(`/dashboard/grupos/${id}/`)
+			}}
+		>
 			<CardImage />
 			<Info>
 				<Text>

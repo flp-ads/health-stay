@@ -1,35 +1,37 @@
-import { Container, ContentContainer, ImageContainer } from './card.style';
-import { RiCheckDoubleFill } from "react-icons/ri";
-import { AiOutlineCheckCircle, AiOutlineDelete } from 'react-icons/ai';
+import { Container, ContentContainer, ImageContainer } from "./card.style"
+import { RiCheckDoubleFill } from "react-icons/ri"
+import { AiOutlineCheckCircle, AiOutlineDelete } from "react-icons/ai"
+import { useGroup } from "../../providers/Group"
 
-const GoalsCard = () => {
-    
-    return (
-        <Container>
-            <ImageContainer />
+const GoalsCard = ({ goal: { title, id, difficulty } }) => {
+	const { isAdmin, removeGoal, editGoal } = useGroup()
 
-            <ContentContainer>
-                <header>
-                    <button
-                        className='completed'>
-                        <RiCheckDoubleFill />
-                    </button>
-                    <button
-                        className='delete'>
-                        <AiOutlineDelete />
-                    </button>
-                    <button
-                        className='achieved'>
-                        <AiOutlineCheckCircle />
-                    </button>
-                </header>
+	return (
+		<Container>
+			<ImageContainer />
 
-                <h4>Goal name</h4>
-                <p>difficulty</p>
+			<ContentContainer>
+				<header>
+					{isAdmin() && (
+						<button className="completed" onClick={() => editGoal(id)}>
+							<RiCheckDoubleFill />
+						</button>
+					)}
+					{isAdmin() && (
+						<button className="delete" onClick={() => removeGoal(id)}>
+							<AiOutlineDelete />
+						</button>
+					)}
+					<button className="achieved">
+						<AiOutlineCheckCircle />
+					</button>
+				</header>
 
-            </ContentContainer>
-        </Container>
-    )
+				<h4>{title}</h4>
+				<p>{difficulty}</p>
+			</ContentContainer>
+		</Container>
+	)
 }
 
 export default GoalsCard
