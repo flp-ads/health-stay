@@ -51,7 +51,7 @@ const DashboardHome = () => {
           </Header>
           <CardsList>
             {myGroups.slice(0, MAX_CARDS).map((group) => (
-              <GroupCard group={group} />
+              <GroupCard key={group.id} group={group} />
             ))}
           </CardsList>
           {myGroups.length > MAX_CARDS && (

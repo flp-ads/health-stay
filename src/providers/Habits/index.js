@@ -40,6 +40,7 @@ export const HabitsProvider = ({ children }) => {
 				.then(({data}) => {
 
 					setHabits(data)
+					localStorage.setItem('@HS:HabitsProg', JSON.stringify(habitsProgression))
 				})
 				.catch((err) => console.log(err))
 		}
@@ -84,6 +85,7 @@ export const HabitsProvider = ({ children }) => {
 			})
 			.then((_) => {
 				setUpdateTrigger(!updateTrigger)
+				toast.success('Hábito criado com sucesso')
 			})
 			.catch((err) => {
 				console.log(err)
@@ -99,6 +101,11 @@ export const HabitsProvider = ({ children }) => {
 			},
 		})
 		.then((_) => {
+
+			let newHabitData = habitsProgression.filter(habit => habit.id !== habitID)
+
+			setHabitsProgression(newHabitData)
+			localStorage.setItem('@')
 			setUpdateTrigger(!updateTrigger)
 			toast.success("Hábito removido com sucesso!");
 		})
@@ -123,7 +130,7 @@ export const HabitsProvider = ({ children }) => {
 			newProgress = currentProgress + 10
 		} else if (frequency === 'Mensal') {
 
-			newProgress = currentProgress + 25
+			newProgress = currentProgress + 30
 			nextUpdate.setDate(nextUpdate.getDate() + 30)
 		}
 
@@ -174,10 +181,13 @@ export const HabitsProvider = ({ children }) => {
 				}
 				
 				setUpdateTrigger(!updateTrigger)
+				toast.success('Progresso atualizado')
 			})
 			.catch((err) => {
 				console.log(err)
 			})
+		} else {
+			toast.error(`Próxima atualização disponível em: ${next_update_in}`)
 		}
 	}
 

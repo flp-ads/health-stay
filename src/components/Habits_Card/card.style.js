@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled ,{ css } from "styled-components";
 import card from "../../assets/card_dark_full.svg";
 export const HabitsCardContainer = styled.div`
   background-color: var(--light-vanilla);
@@ -88,7 +88,7 @@ export const HabitsCardFooterContainer = styled.div`
   display: flex;
   width: 100%;
   justify-content: flex-end;
-  align-items: flex-end;
+  align-items: center;
   button {
     color: var(--medium-gray);
     margin: 0 5px;
@@ -106,3 +106,29 @@ export const HabitsCardFooterContainer = styled.div`
     }
   }
 `;
+
+export const ProgressContainer = styled.div`
+  width: 100px;
+  height: 10px;
+  background-color: var(--dark-green);
+  margin-right: 8px;
+  border-radius: 2px;
+
+  @media (min-width: 768px) {
+    width: 150px;
+  }
+`
+
+export const ProgressBar = styled.div`
+  width: ${props => props.how_much_achieved}%;
+  height: 10px;
+  background-color: var(--light-green);
+
+  border-radius: 2px;
+`
+export const UpdateButton = styled.button`
+
+    color: var(--light-green);
+
+
+`
