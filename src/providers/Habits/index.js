@@ -87,19 +87,20 @@ export const HabitsProvider = ({ children }) => {
 			})
 	}
 
-	  const deleteHabit = (habitID) => {
-    api
-      .delete(`/habits/${habitID}/`, {
-        headers: {
-          Authorization: `Bearer ${accToken}`,
-        },
-      })
-      .then((res) => {
-        setUpdateTrigger(!updateTrigger)
-        toast.success("Hábito removido com sucesso!");
-      })
-      .catch((_) => toast.error("Algo deu errado, tente novamente"));
-  };
+	const deleteHabit = (habitID) => {
+
+		api
+		.delete(`/habits/${habitID}/`, {
+			headers: {
+			Authorization: `Bearer ${accToken}`,
+			},
+		})
+		.then((_) => {
+			setUpdateTrigger(!updateTrigger)
+			toast.success("Hábito removido com sucesso!");
+		})
+		.catch((_) => toast.error("Algo deu errado, tente novamente"));
+	};
 
 	return (
 		<HabitsContext.Provider 

@@ -25,23 +25,7 @@ const HabitsCard = ({ habit }) => {
     how_much_achieved,
   } = habit;
 
-  //   const { accToken } = useLogin();
   const { deleteHabit } = useHabits();
-
-  //   const handleDelete = () => {
-  //     console.log(id);
-  //     api
-  //       .delete(`/habits/${id}/`, {
-  //         headers: {
-  //           Authorization: `Bearer ${accToken}`,
-  //         },
-  //       })
-  //       .then((res) => {
-
-  //         toast.success("Hábito removido com sucesso!");
-  //       })
-  //       .catch((_) => toast.error("Algo deu errado, tente novamente"));
-  //   };
 
   return (
     <HabitsCardContainer>
