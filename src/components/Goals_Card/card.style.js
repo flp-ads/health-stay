@@ -10,11 +10,16 @@ export const Container = styled.div`
   display: flex;
   overflow: hidden;
   border: 1px solid var(--vanilla);
+  cursor: pointer;
   @media only screen and (min-width: 768px) {
+    min-width: 450px;
+    width: 450px;
     height: 150px;
     flex: 100%;
   }
   @media only screen and (min-width: 950px) {
+    min-width: 450px;
+    width: 450px;
     height: 150px;
     flex: calc(33% - 2rem);
   }
