@@ -56,7 +56,7 @@ const DashboardGroup = () => {
 
 	const PREFIX = "@HS-"
 
-	const parseName = (str) => str.slice(PREFIX.length)
+	const parseName = (str) => str?.slice(PREFIX.length)
 
 	return (
 		<Container>
