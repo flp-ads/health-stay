@@ -1,28 +1,42 @@
 import styled from "styled-components";
-
+import card_light from "../../assets/light_card.svg";
 export const CardActivitiesContainer = styled.div`
+  background-color: var(--light-vanilla);
+  height: 125px;
+  border-radius: 1rem;
   max-width: 450px;
+  min-width: 20vw;
   width: 100%;
-  height: 100px;
-
   display: flex;
-  border: 1px solid var(--vanilla);
-  background: var(--light-vanilla);
-  border-radius: var(--card-border-radius);
   overflow: hidden;
-  @media (min-width: 768px) {
-    height: 125px;
+  border: 1px solid var(--vanilla);
+  cursor: pointer;
+  @media only screen and (min-width: 768px) {
+    min-width: 450px;
+    width: 450px;
+    height: 150px;
+    flex: 100%;
+  }
+  @media only screen and (min-width: 950px) {
+    min-width: 450px;
+    width: 450px;
+    height: 150px;
+    flex: calc(33% - 2rem);
   }
 `;
-
 export const Background = styled.div`
   background-color: var(--light-green);
-  width: 30%;
-  img {
-    width: 100%;
+  background-image: url(${card_light});
+  background-size: 365%;
+  background-position: -35px -30px;
+  background-repeat: no-repeat;
+  width: 50px;
+  @media only screen and (min-width: 768px) {
+    width: 100px;
+    background-size: 175%;
+    background-position-x: -25px;
   }
 `;
-
 export const CardActivitiesContent = styled.div`
   display: flex;
   flex-direction: column;
@@ -31,7 +45,6 @@ export const CardActivitiesContent = styled.div`
   width: 70%;
   padding: 10px;
 `;
-
 export const CardActivitiesTitleContainer = styled.div`
   display: flex;
   justify-content: space-between;
@@ -48,7 +61,6 @@ export const CardActivitiesTitleContainer = styled.div`
     }
   }
 `;
-
 export const CardActivitiesInfoContainer = styled.div`
   display: flex;
   justify-content: space-between;
