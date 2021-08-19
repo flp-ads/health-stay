@@ -9,12 +9,16 @@ export const HabitsProvider = ({ children }) => {
 
 	//User Habits
 	const [habits, setHabits] = useState([])
+	//User Unachieved Habits
+	const [unachievedHabits, setUnachievedHabits] = useState([])
 	//User Habits achieved
 	const [achievedHabits, setAchievedHabits] = useState([])
 	//User Habits total count
 	const [habitsCount, setHabitsCount] = useState(0)
 	//User Habits achieved total count
 	const [achievedHabitsCount, setAchievedHabitsCount] = useState(0)
+	//Update trigger
+	const [updateTrigger, setUpdateTrigger] = useState(false)
 
 
 	const { accToken, userId } = useLogin();
@@ -39,13 +43,16 @@ export const HabitsProvider = ({ children }) => {
 		if (userId !== -1) {
 			getMyHabits()
 		}
-	}, [accToken, userId])
+	}, [accToken, userId, updateTrigger])
 
 	useEffect (() => {
 
 		let filterHabits = habits.filter(habit => habit.achieved === true)
-
+		let filterUnachieved = habits.filter(habit => habit.achieved === false)
+		
+		setUnachievedHabits(filterUnachieved)
 		setHabitsCount(habits.length)
+
 		setAchievedHabits(filterHabits)
 		setAchievedHabitsCount(filterHabits.length)
 	}, [habits])
@@ -63,7 +70,6 @@ export const HabitsProvider = ({ children }) => {
 			how_much_achieved: 0,
 			user: userId,
 		}
-		console.log(newHabit)
 
 		api
 			.post('/habits/', newHabit,
@@ -72,8 +78,8 @@ export const HabitsProvider = ({ children }) => {
 					Authorization: `Bearer ${accToken}`,
 				},
 			})
-			.then((res) => {
-				setHabits([...habits, newHabit])
+			.then((_) => {
+				setUpdateTrigger(!updateTrigger)
 			})
 			.catch((err) => {
 				console.log(err)
@@ -84,6 +90,7 @@ export const HabitsProvider = ({ children }) => {
 		<HabitsContext.Provider 
 			value={{
 				habits,
+				unachievedHabits,
 				achievedHabits,
 				habitsCount,
 				achievedHabitsCount,
