@@ -1,10 +1,8 @@
 import { useParams } from "react-router-dom"
 import DashboardGroup from "../../components/Dashboard_Group"
-import DashboardMenu from "../../components/Dashboard_Menu"
 import { Container } from "./group.style"
 import { useGroup } from "../../providers/Group"
 import { useEffect, useRef } from "react"
-import api from "../../services/api"
 
 const Group = () => {
 	const { id } = useParams()
@@ -23,7 +21,6 @@ const Group = () => {
 		<Container>
 			<div className="inner_container">
 				<DashboardGroup />
-				{/* <DashboardMenu /> */}
 			</div>
 		</Container>
 	)

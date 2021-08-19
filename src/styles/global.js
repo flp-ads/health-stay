@@ -1,5 +1,5 @@
-import { motion } from "framer-motion";
-import styled, { createGlobalStyle } from "styled-components";
+import { motion } from "framer-motion"
+import styled, { createGlobalStyle } from "styled-components"
 
 export default createGlobalStyle`
     * {
@@ -50,11 +50,19 @@ export default createGlobalStyle`
     a {
         text-decoration: none;
     }
-`;
+
+    input[type="date"]::-webkit-inner-spin-button,
+    input[type="date"]::-webkit-calendar-picker-indicator,
+    input[type="time"]::-webkit-calendar-picker-indicator {
+    
+    display: none;
+    -webkit-appearance: none;
+}
+`
 
 export const GlobalContainer = styled(motion.div)`
-  border-radius: 1.5rem;
-  padding: 1rem;
-  background-color: var(--white);
-  box-shadow: 0px 0px 19px rgba(0, 0, 0, 0.1);
-`;
+	border-radius: 1.5rem;
+	padding: 1rem;
+	background-color: var(--white);
+	box-shadow: 0px 0px 19px rgba(0, 0, 0, 0.1);
+`
