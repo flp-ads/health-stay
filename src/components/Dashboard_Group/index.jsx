@@ -18,6 +18,7 @@ import {
   OverviewItem,
   SubMenu,
   Username,
+  ActivitiesContainer,
 } from "./group.style";
 import { useState } from "react";
 import { useGroup } from "../../providers/Group";
@@ -131,15 +132,17 @@ const DashboardGroup = () => {
               )}
             </div>
           </Header>
-          <SubMenu>
-            {isActivitiesAll ? (
-              activities.map((activity) => (
-                <ActivitiesCard activity={activity} />
-              ))
-            ) : (
-              <DashboardActivitiesCreate />
-            )}
-          </SubMenu>
+          <ActivitiesContainer>
+            <SubMenu>
+              {isActivitiesAll ? (
+                activities.map((activity) => (
+                  <ActivitiesCard activity={activity} />
+                ))
+              ) : (
+                <DashboardActivitiesCreate />
+              )}
+            </SubMenu>
+          </ActivitiesContainer>
         </MyActivities>
       </Cards>
     </Container>

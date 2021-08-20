@@ -106,6 +106,7 @@ const SignUp = () => {
 
             <Input
               name="password"
+              type="password"
               icon={FiLock}
               placeholder="Senha"
               register={register}
@@ -114,6 +115,7 @@ const SignUp = () => {
 
             <Input
               name="pwdConfirm"
+              type="password"
               icon={FiLock}
               placeholder="Confirmar senha"
               register={register}

@@ -171,8 +171,13 @@ export const NavigationButton = styled.button`
 `;
 
 export const Main = styled.div`
-  /* padding: 2rem; */
   border: none;
+`;
+
+export const ActivitiesContainer = styled.div`
+  @media screen and (min-width: 768px) {
+    padding-top: 4rem;
+  }
 `;
 
 export const SubMenu = styled.div`

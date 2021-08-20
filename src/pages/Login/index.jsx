@@ -82,6 +82,7 @@ const Login = () => {
 
             <Input
               name="password"
+              type="password"
               icon={FiLock}
               placeholder="Senha"
               register={register}
