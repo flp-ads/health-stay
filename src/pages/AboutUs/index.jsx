@@ -55,7 +55,7 @@ const AboutUs = () => {
             <img src={Eduardo} alt="RafaPhoto" />
             <div>
               <h3>Eduardo Parraga</h3>
-              <p>Tech Lead / Developer</p>
+              <p>Tech Lead</p>
               <a href="https://www.linkedin.com/in/eduardo-parraga-2b0a72185/">
                 <FaLinkedin size={28} />
               </a>
@@ -65,7 +65,7 @@ const AboutUs = () => {
             <img src={Felipe} alt="RafaPhoto" />
             <div>
               <h3>Felipe Silva </h3>
-              <p>QA / Developer</p>
+              <p>QA</p>
               <a href="https://www.linkedin.com/in/felipe-silva-3855541a4">
                 <FaLinkedin size={28} />
               </a>
@@ -75,7 +75,7 @@ const AboutUs = () => {
             <img src={Fernando} alt="RafaPhoto" />
             <div>
               <h3>Fernando Feliciano </h3>
-              <p>QA / Developer</p>
+              <p>QA</p>
               <a href="https://www.linkedin.com/in/fernando-rodrigo-83773b21a/">
                 <FaLinkedin size={28} />
               </a>
@@ -85,7 +85,7 @@ const AboutUs = () => {
             <img src={Lucas} alt="LucasPhoto" />
             <div>
               <h3>Lucas Rozado</h3>
-              <p>Product Owner / Developer</p>
+              <p>Product Owner</p>
               <a href="https://www.linkedin.com/in/lucas-bravo-rozado-a80b36213/">
                 <FaLinkedin size={28} />
               </a>
@@ -96,7 +96,7 @@ const AboutUs = () => {
             <div>
               <h3>Rafael Bertoldo</h3>
               <p>Scrum Master</p>
-              <a href="https://www.linkedin.com/in/felipe-silva-3855541a4">
+              <a href="https://www.linkedin.com/in/rafaeljbertoldo/">
                 <FaLinkedin size={28} />
               </a>
             </div>
