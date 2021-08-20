@@ -49,12 +49,6 @@ const DashboardGroup = () => {
     setIsActiveGoalAchieved(false);
   };
 
-  const handleNavigationAchieved = () => {
-    setIsActiveGoalOnGoing(false);
-    setIsActiveGoalCompleted(false);
-    setIsActiveGoalAchieved(true);
-  };
-
   const PREFIX = "@HS-";
 
   const parseName = (str) => str?.slice(PREFIX.length);
@@ -102,13 +96,6 @@ const DashboardGroup = () => {
                   isActive={isActiveGoalCompleted}
                 >
                   <span>Completas</span>
-                </NavigationButton>
-
-                <NavigationButton
-                  onClick={handleNavigationAchieved}
-                  isActive={isActiveGoalAchieved}
-                >
-                  <span>Arquivadas</span>
                 </NavigationButton>
               </SubMenu>
               <div>

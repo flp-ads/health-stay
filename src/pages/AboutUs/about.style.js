@@ -124,6 +124,14 @@ export const Header = styled.header`
       color: var(--dark-green);
     }
   }
+  div h1 {
+    display: flex;
+  }
+
+  div h1 img {
+    width: 200px;
+    height: auto;
+  }
 
   @media (min-width: 768px) {
     padding: 2rem 1rem;
