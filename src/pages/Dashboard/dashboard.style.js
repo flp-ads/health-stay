@@ -36,6 +36,15 @@ export const Header = styled.header`
 		justify-content: space-between;
 	}
 
+	div h1 {
+		display: flex;
+	}
+
+	div h1 img {
+		width: 200px;
+		height: auto;
+	}
+
 	@media only screen and (min-width: 768px) {
 		padding: 1rem;
 	}
