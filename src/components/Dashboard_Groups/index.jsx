@@ -1,4 +1,3 @@
-import { useHistory } from "react-router-dom"
 import { useState } from "react"
 
 import {
@@ -19,9 +18,6 @@ import DashboardGroupsCreate from "../Dashboard_Groups_Create"
 import { useGroups } from "../../providers/Groups"
 
 const DashboardGroups = () => {
-	const history = useHistory()
-	const MAX_CARDS = 4
-
 	const [isActiveMy, setIsActiveMy] = useState(true)
 	const [isActiveAll, setIsActiveAll] = useState(false)
 	const [isActiveCreate, setIsActiveCreate] = useState(false)
@@ -44,36 +40,85 @@ const DashboardGroups = () => {
 		setIsActiveCreate(true)
 	}
 
-	const handleNavigation = (path) => history.push(path)
-
 	const { subscribledGroupsCount, groupGoalsCount, groupActivitiesCount } =
 		useGroups()
 
+	const ContainerAnimation = {
+		hidden: {
+			opacity: 0,
+			transition: {
+				when: "afterChildren",
+			},
+		},
+		visible: {
+			opacity: 1,
+			transition: {
+				when: "beforeChildren",
+				staggerChildren: 0.5,
+			},
+		},
+	}
+
+	const DownAnimation = {
+		hidden: {
+			opacity: 0,
+			y: -100,
+		},
+		visible: {
+			opacity: 1,
+			y: 0,
+		},
+	}
+
+	const RightAnimation = {
+		hidden: {
+			opacity: 0,
+			x: 100,
+		},
+		visible: {
+			opacity: 1,
+			x: 0,
+		},
+	}
+
+	const MenuAnimation = {
+		hidden: {
+			opacity: 0,
+		},
+		visible: {
+			opacity: 1,
+		},
+	}
+
 	return (
-		<Container>
+		<Container initial="hidden" animate="visible" variants={ContainerAnimation}>
 			<Username>
 				<span>Grupos</span>
 			</Username>
 
-			<Overview>
+			<Overview variants={DownAnimation}>
 				<Header>Resumo</Header>
 
-				<GroupsInfo>
-					<InfoItem>
+				<GroupsInfo
+					initial="hidden"
+					animate="visible"
+					variants={ContainerAnimation}
+				>
+					<InfoItem variants={MenuAnimation}>
 						Você está inscrito em <p>{subscribledGroupsCount} grupos</p>
 					</InfoItem>
 
-					<InfoItem>
+					<InfoItem variants={MenuAnimation}>
 						Você possui <p>{groupGoalsCount} metas de grupo</p>
 					</InfoItem>
 
-					<InfoItem>
+					<InfoItem variants={MenuAnimation}>
 						Voce possui <p>{groupActivitiesCount} atividades em grupo</p>
 					</InfoItem>
 				</GroupsInfo>
 			</Overview>
 
-			<Main>
+			<Main variants={RightAnimation}>
 				<SubMenu>
 					<NavigationButton onClick={handleNavigationMy} isActive={isActiveMy}>
 						Meus <span>Grupos</span>
@@ -94,18 +139,8 @@ const DashboardGroups = () => {
 					</NavigationButton>
 				</SubMenu>
 				<div>
-					{isActiveMy && (
-						<DashboardGroupsMy
-							MAX_CARDS={MAX_CARDS}
-							handleNavigation={handleNavigation}
-						/>
-					)}
-					{isActiveAll && (
-						<DashboardGroupsAll
-							MAX_CARDS={MAX_CARDS}
-							handleNavigation={handleNavigation}
-						/>
-					)}
+					{isActiveMy && <DashboardGroupsMy />}
+					{isActiveAll && <DashboardGroupsAll />}
 					{isActiveCreate && <DashboardGroupsCreate />}
 				</div>
 			</Main>

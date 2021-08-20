@@ -7,10 +7,18 @@ const Input = ({
 	error = "",
 	list,
 	selectPlaceholder = "",
+	initial,
+	animate,
+	variants,
 	...rest
 }) => {
 	return (
-		<StyledInput isDenied={!!error}>
+		<StyledInput
+			initial={initial}
+			animate={animate}
+			variants={variants}
+			isDenied={!!error}
+		>
 			<div>
 				{Icon && <Icon />}
 				{list ? (

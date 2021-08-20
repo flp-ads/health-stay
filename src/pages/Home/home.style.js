@@ -1,3 +1,4 @@
+import { motion } from "framer-motion"
 import styled from "styled-components"
 
 export const Container = styled.div`
@@ -108,7 +109,7 @@ export const HomeButtonContainer = styled.div`
 	}
 `
 
-export const Header = styled.header`
+export const Header = styled(motion.header)`
 	background-color: var(--light-green);
 	position: fixed;
 	color: var(--white);
@@ -160,7 +161,7 @@ export const Header = styled.header`
 	}
 `
 
-export const BackgroundHeader = styled.div`
+export const BackgroundHeader = styled(motion.div)`
 	height: 0;
 	width: 0;
 	display: none;
@@ -190,7 +191,7 @@ export const BackgroundHeader = styled.div`
 	}
 `
 
-export const BackgroundImage = styled.div`
+export const BackgroundImage = styled(motion.div)`
 	position: absolute;
 	width: 99%;
 	height: 55vh;

@@ -9,6 +9,7 @@ import api from "../../services/api"
 import { useLogin } from "../../providers/User"
 import { useGroups } from "../../providers/Groups"
 import { toast } from "react-toastify"
+import { motion } from "framer-motion"
 
 const PREFIX = "@HS-"
 const categoryList = [
@@ -57,43 +58,77 @@ const DashboardGroupsCreate = () => {
 			.catch((err) => console.log(err))
 	}
 
+	const FormAnimation = {
+		visible: {
+			opacity: 1,
+			transition: {
+				when: "beforeChildren",
+				staggerChildren: 0.3,
+			},
+		},
+		hidden: {
+			opacity: 0,
+			transition: {
+				when: "afterChildren",
+			},
+		},
+	}
+
+	const FormItemAnimation = {
+		visible: {
+			opacity: 1,
+			y: 0,
+		},
+		hidden: {
+			opacity: 0,
+			y: -50,
+		},
+	}
+
 	return (
-		<div>
-			<CardsList>
-				<form id="create_group" onSubmit={handleSubmit(onSubmit)}>
-					<Input
-						placeholder="Nome do grupo"
-						register={register}
-						icon={FaPencilAlt}
-						name="name"
-						error={errors.name?.message}
-						type="text"
-					/>
+		<CardsList>
+			<motion.form
+				initial="hidden"
+				animate="visible"
+				variants={FormAnimation}
+				id="create_group"
+				onSubmit={handleSubmit(onSubmit)}
+			>
+				<Input
+					variants={FormItemAnimation}
+					placeholder="Nome do grupo"
+					register={register}
+					icon={FaPencilAlt}
+					name="name"
+					error={errors.name?.message}
+					type="text"
+				/>
 
-					<Input
-						placeholder="Descrição"
-						register={register}
-						icon={FaAlignLeft}
-						name="description"
-						error={errors.description?.message}
-						type="text area"
-					/>
+				<Input
+					variants={FormItemAnimation}
+					placeholder="Descrição"
+					register={register}
+					icon={FaAlignLeft}
+					name="description"
+					error={errors.description?.message}
+					type="text area"
+				/>
 
-					<Input
-						selectPlaceholder="Categoria"
-						register={register}
-						icon={FaBox}
-						name="category"
-						error={errors.category?.message}
-						list={categoryList}
-					/>
+				<Input
+					variants={FormItemAnimation}
+					selectPlaceholder="Categoria"
+					register={register}
+					icon={FaBox}
+					name="category"
+					error={errors.category?.message}
+					list={categoryList}
+				/>
 
-					<Button type="submit" form="create_group">
-						Criar Grupo
-					</Button>
-				</form>
-			</CardsList>
-		</div>
+				<Button variants={FormItemAnimation} type="submit" form="create_group">
+					Criar Grupo
+				</Button>
+			</motion.form>
+		</CardsList>
 	)
 }
 
