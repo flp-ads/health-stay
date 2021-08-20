@@ -1,22 +1,55 @@
-import HabitsCard from "../Habits_Card";
-import { CardsList } from "./achieved.habits.style";
-import { useHabits } from "../../providers/Habits";
+import HabitsCard from "../Habits_Card"
+import { CardsList } from "./achieved.habits.style"
+import { useHabits } from "../../providers/Habits"
 
-const AchievedHabits = ({ MAX_CARDS, handleNavigation }) => {
+const AchievedHabits = () => {
+	const { achievedHabits } = useHabits()
 
-  const { achievedHabits } = useHabits();
+	const CardsContainerAnimation = {
+		visible: {
+			opacity: 1,
+			transition: {
+				when: "beforeChildren",
+				staggerChildren: 0.3,
+			},
+		},
+		hidden: {
+			opacity: 0,
+			transition: {
+				when: "afterChildren",
+			},
+		},
+	}
 
-  return (
-    <div>
-      <CardsList>
-        {achievedHabits.map((habit) => (
-            <HabitsCard key={habit.id} habit={habit} />
-          ))}
-      </CardsList>
-    </div>
-  );
-};
+	const CardsAnimation = {
+		visible: (i) => ({
+			opacity: 1,
+			x: 0,
+			transition: {
+				delay: i * 0.3,
+			},
+		}),
+		hidden: { opacity: 0, x: -50 },
+	}
 
-export default AchievedHabits;
+	return (
+		<CardsList
+			initial="hidden"
+			animate="visible"
+			variants={CardsContainerAnimation}
+		>
+			{achievedHabits.map((habit, i) => (
+				<HabitsCard
+					custom={i}
+					animate="visible"
+					initial="hidden"
+					variants={CardsAnimation}
+					key={habit.id}
+					habit={habit}
+				/>
+			))}
+		</CardsList>
+	)
+}
 
-
+export default AchievedHabits

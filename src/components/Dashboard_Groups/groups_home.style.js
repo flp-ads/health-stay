@@ -2,7 +2,7 @@ import styled, { css } from "styled-components"
 import { GlobalContainer } from "../../styles/global"
 import { motion } from "framer-motion"
 
-export const Container = styled.div`
+export const Container = styled(motion.div)`
 	padding: 1rem;
 	position: relative;
 	margin-bottom: 66px;
@@ -70,7 +70,7 @@ export const Header = styled.h2`
 	}
 `
 
-export const GroupsInfo = styled.div`
+export const GroupsInfo = styled(motion.div)`
 	display: flex;
 	flex-direction: column;
 	gap: 1rem;
@@ -84,7 +84,7 @@ export const GroupsInfo = styled.div`
 	}
 `
 
-export const InfoItem = styled.p`
+export const InfoItem = styled(motion.div)`
 	text-align: center;
 	color: var(--medium-gray);
 	font-size: 1.2rem;

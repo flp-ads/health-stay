@@ -1,8 +1,9 @@
 import styled from "styled-components"
 import SideImage from "../../assets/side.svg"
 import SideMobileImage from "../../assets/mobile_side.svg"
+import { motion } from "framer-motion"
 
-export const Container = styled.div`
+export const Container = styled(motion.div)`
 	min-height: 100vh;
 	width: 100vw;
 	display: flex;
@@ -14,7 +15,7 @@ export const Container = styled.div`
 	}
 `
 
-export const Background = styled.div`
+export const Background = styled(motion.div)`
 	background: url(${SideMobileImage}) no-repeat center, var(--light-green);
 	background-size: cover;
 	height: 300px;

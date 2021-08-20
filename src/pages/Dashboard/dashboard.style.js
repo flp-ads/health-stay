@@ -1,3 +1,4 @@
+import { motion } from "framer-motion"
 import styled from "styled-components"
 
 export const Container = styled.div`
@@ -60,7 +61,7 @@ export const User = styled.div`
 	font-size: 2rem;
 	text-transform: uppercase;
 `
-export const BackgroundImage = styled.div`
+export const BackgroundImage = styled(motion.div)`
 	position: absolute;
 	top: 0;
 	right: 0;

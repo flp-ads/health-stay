@@ -13,7 +13,7 @@ const DashboardMenu = () => {
 	const { reset: habitsReset } = useHabits()
 	const isMobile = window.screen.width < 768
 
-	const isCurrent = (name) => path.endsWith(name)
+	const iscurrent = (name) => path.endsWith(name)
 	const logOut = () => {
 		reset()
 		habitsReset()
@@ -67,25 +67,25 @@ const DashboardMenu = () => {
 			<Title>Dashboard</Title>
 			<MenuList initial="hidden" animate="visible" variants={MenuListAnimation}>
 				<motion.div className="motion_container" variants={MenuItemAnimation}>
-					<MenuItem isCurrent={isCurrent("home")} to="/dashboard/home">
+					<MenuItem iscurrent={iscurrent("home")} to="/dashboard/home">
 						<RiHomeLine />
 						<p>Home</p>
 					</MenuItem>
 				</motion.div>
 				<motion.div className="motion_container" variants={MenuItemAnimation}>
-					<MenuItem isCurrent={isCurrent("grupos")} to="/dashboard/grupos">
+					<MenuItem iscurrent={iscurrent("grupos")} to="/dashboard/grupos">
 						<BiGroup />
 						<p>Grupos</p>
 					</MenuItem>
 				</motion.div>
 				<motion.div className="motion_container" variants={MenuItemAnimation}>
-					<MenuItem isCurrent={isCurrent("habitos")} to="/dashboard/habitos">
+					<MenuItem iscurrent={iscurrent("habitos")} to="/dashboard/habitos">
 						<HiOutlinePencilAlt />
 						<p>Hábitos</p>
 					</MenuItem>
 				</motion.div>
 				<motion.div className="motion_container" variants={MenuItemAnimation}>
-					<MenuItem isCurrent={false} onClick={logOut} to="/">
+					<MenuItem onClick={logOut} to="/">
 						<FiLogOut />
 						<p>Sair</p>
 					</MenuItem>

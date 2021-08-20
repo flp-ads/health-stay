@@ -51,8 +51,8 @@ export const MenuItem = styled(Link)`
 	text-align: center;
 	font-size: 0.8rem;
 	color: ${(props) =>
-		props.isCurrent ? css`var(--light-green)` : css`var(--medium-gray)`};
-	font-weight: ${(props) => (props.isCurrent ? "bold" : "normal")};
+		props.iscurrent ? css`var(--light-green)` : css`var(--medium-gray)`};
+	font-weight: ${(props) => (props.iscurrent ? "bold" : "normal")};
 	display: flex;
 	flex-direction: column;
 	align-items: center;

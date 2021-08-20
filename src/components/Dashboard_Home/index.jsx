@@ -104,6 +104,33 @@ const DashboardHome = () => {
 		},
 	}
 
+	const CardsContainerAnimation = {
+		visible: {
+			opacity: 1,
+			transition: {
+				when: "beforeChildren",
+				staggerChildren: 0.3,
+			},
+		},
+		hidden: {
+			opacity: 0,
+			transition: {
+				when: "afterChildren",
+			},
+		},
+	}
+
+	const CardsAnimation = {
+		visible: (i) => ({
+			opacity: 1,
+			x: 0,
+			transition: {
+				delay: i * 0.3,
+			},
+		}),
+		hidden: { opacity: 0, x: -50 },
+	}
+
 	return (
 		<Container initial="hidden" animate="visible" variants={ContainerAnimation}>
 			<Username>
@@ -130,9 +157,21 @@ const DashboardHome = () => {
 					<Header>
 						Meus <span>Grupos</span>
 					</Header>
-					<CardsList>
+					<CardsList
+						initial="hidden"
+						animate="visible"
+						variants={CardsContainerAnimation}
+					>
 						{myGroups.slice(0, MAX_CARDS).map((group, i) => (
-							<GroupCard isSubscribed index={i} key={group.id} group={group} />
+							<GroupCard
+								custom={i}
+								animate="visible"
+								initial="hidden"
+								variants={CardsAnimation}
+								isSubscribed
+								key={group.id}
+								group={group}
+							/>
 						))}
 					</CardsList>
 					{myGroups.length > MAX_CARDS && (
@@ -145,9 +184,20 @@ const DashboardHome = () => {
 					<Header>
 						Meus <span>Hábitos</span>
 					</Header>
-					<CardsList>
+					<CardsList
+						initial="hidden"
+						animate="visible"
+						variants={CardsContainerAnimation}
+					>
 						{unachievedHabits.slice(0, MAX_CARDS).map((habit, i) => (
-							<HabitsCard index={i} key={habit.id} habit={habit} />
+							<HabitsCard
+								custom={i}
+								animate="visible"
+								initial="hidden"
+								variants={CardsAnimation}
+								key={habit.id}
+								habit={habit}
+							/>
 						))}
 					</CardsList>
 					{unachievedHabits.length > MAX_CARDS && (
