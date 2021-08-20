@@ -14,9 +14,8 @@ export const Menu = styled(motion.nav)`
 	left: 0;
 
 	@media only screen and (min-width: 768px) {
-		/* position: absolute; */
 		bottom: initial;
-		top: 50%;
+		top: 16%;
 		transform: translateY(-43%);
 		width: min-content;
 		border-radius: 0 2rem 2rem 0;
@@ -36,7 +35,7 @@ export const Title = styled(motion.p)`
 	}
 `
 
-export const MenuList = styled.div`
+export const MenuList = styled(motion.div)`
 	display: flex;
 	gap: 1.5rem;
 	height: 100%;
@@ -54,6 +53,11 @@ export const MenuItem = styled(Link)`
 	color: ${(props) =>
 		props.isCurrent ? css`var(--light-green)` : css`var(--medium-gray)`};
 	font-weight: ${(props) => (props.isCurrent ? "bold" : "normal")};
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	width: min-content;
+	margin: 0 auto;
 
 	svg {
 		font-size: 1.5rem;
