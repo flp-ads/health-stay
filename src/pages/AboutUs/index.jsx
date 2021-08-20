@@ -14,6 +14,7 @@ import Eduardo from "../../assets/Eduardo.jpeg";
 import Lucas from "../../assets/Lucas.jpeg";
 import Fernando from "../../assets/Fernando.jpeg";
 import { FaLinkedin } from "react-icons/fa";
+import logo from "../../assets/logo_green_bg.svg";
 
 const AboutUs = () => {
   const history = useHistory();
@@ -29,7 +30,9 @@ const AboutUs = () => {
       <Container>
         <Header>
           <div className="header_container">
-            <h1>Logo</h1>
+            <h1>
+              <img src={logo} alt="logo" />
+            </h1>
             <div className="header_container">
               <button onClick={() => handleNavigation("/")}>Home</button>
             </div>
@@ -52,7 +55,7 @@ const AboutUs = () => {
             <img src={Eduardo} alt="RafaPhoto" />
             <div>
               <h3>Eduardo Parraga</h3>
-              <p>Tech Lider / Developer</p>
+              <p>Tech Lead / Developer</p>
               <a href="https://www.linkedin.com/in/eduardo-parraga-2b0a72185/">
                 <FaLinkedin size={28} />
               </a>
