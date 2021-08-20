@@ -1,5 +1,5 @@
 import HabitsCard from "../Habits_Card";
-import { All, CardsList } from "./achieved.habits.style";
+import { CardsList } from "./achieved.habits.style";
 import { useHabits } from "../../providers/Habits";
 
 const AchievedHabits = ({ MAX_CARDS, handleNavigation }) => {

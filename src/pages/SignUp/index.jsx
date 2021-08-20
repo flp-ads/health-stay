@@ -20,6 +20,8 @@ import { motion } from "framer-motion";
 import api from "../../services/api";
 import { toast } from "react-toastify";
 
+import logo from "../../assets/logo_white_bg.svg";
+
 const SignUp = () => {
   const formSchema = yup.object().shape({
     username: yup.string().required("Preencha este campo"),
@@ -73,7 +75,9 @@ const SignUp = () => {
             <FiChevronLeft /> voltar
           </button>
 
-          <h1>Logo</h1>
+          <h1 className="logo">
+            <img src={logo} alt="logo" />
+          </h1>
         </HeaderContainer>
 
         <Content
@@ -102,7 +106,6 @@ const SignUp = () => {
 
             <Input
               name="password"
-              type="password"
               icon={FiLock}
               placeholder="Senha"
               register={register}
@@ -111,7 +114,6 @@ const SignUp = () => {
 
             <Input
               name="pwdConfirm"
-              type="password"
               icon={FiLock}
               placeholder="Confirmar senha"
               register={register}
