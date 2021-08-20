@@ -10,8 +10,6 @@ import * as yup from "yup";
 import { BsInboxes } from "react-icons/bs";
 import { BiPencil, BiLineChart } from "react-icons/bi";
 import { FiLayers } from "react-icons/fi";
-import api from "../../services/api";
-import { toast } from "react-toastify";
 
 import { useHabits } from "../../providers/Habits";
 
