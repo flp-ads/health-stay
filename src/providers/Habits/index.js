@@ -22,39 +22,39 @@ export const HabitsProvider = ({ children }) => {
 	//Update trigger
 	const [updateTrigger, setUpdateTrigger] = useState(false)
 	//User Habits progression
-	const [habitsProgression, setHabitsProgression] = useState(JSON.parse(localStorage.getItem('@HS:HabitsProg')) || [])
+	const [habitsProgression, setHabitsProgression] = useState(
+		JSON.parse(localStorage.getItem("@HS:HabitsProg")) || []
+	)
 
-
-	const { accToken, userId } = useLogin();
+	const { accToken, userId } = useLogin()
 
 	useEffect(() => {
-		
 		const getMyHabits = () => {
-
 			api
 				.get("/habits/personal/", {
 					headers: {
 						Authorization: `Bearer ${accToken}`,
 					},
 				})
-				.then(({data}) => {
-
+				.then(({ data }) => {
 					setHabits(data)
-					localStorage.setItem('@HS:HabitsProg', JSON.stringify(habitsProgression))
+					localStorage.setItem(
+						"@HS:HabitsProg",
+						JSON.stringify(habitsProgression)
+					)
 				})
 				.catch((err) => console.log(err))
 		}
-		
+
 		if (userId !== -1) {
 			getMyHabits()
 		}
 	}, [accToken, userId, updateTrigger])
 
-	useEffect (() => {
+	useEffect(() => {
+		let filterHabits = habits.filter((habit) => habit.achieved === true)
+		let filterUnachieved = habits.filter((habit) => habit.achieved === false)
 
-		let filterHabits = habits.filter(habit => habit.achieved === true)
-		let filterUnachieved = habits.filter(habit => habit.achieved === false)
-		
 		setUnachievedHabits(filterUnachieved)
 		setHabitsCount(habits.length)
 
@@ -62,9 +62,18 @@ export const HabitsProvider = ({ children }) => {
 		setAchievedHabitsCount(filterHabits.length)
 	}, [habits])
 
-	const addHabit = (formData) => {
+	const reset = () => {
+		setHabits([])
+		setUnachievedHabits([])
+		setAchievedHabits([])
+		setHabitsCount(0)
+		setAchievedHabitsCount(0)
+		setUpdateTrigger(false)
+		setHabitsProgression([])
+	}
 
-		const {title, category, difficulty, frequency} = formData
+	const addHabit = (formData) => {
+		const { title, category, difficulty, frequency } = formData
 
 		let newHabit = {
 			title,
@@ -77,15 +86,14 @@ export const HabitsProvider = ({ children }) => {
 		}
 
 		api
-			.post('/habits/', newHabit,
-			{
+			.post("/habits/", newHabit, {
 				headers: {
 					Authorization: `Bearer ${accToken}`,
 				},
 			})
 			.then((_) => {
 				setUpdateTrigger(!updateTrigger)
-				toast.success('Hábito criado com sucesso')
+				toast.success("Hábito criado com sucesso")
 			})
 			.catch((err) => {
 				console.log(err)
@@ -93,49 +101,44 @@ export const HabitsProvider = ({ children }) => {
 	}
 
 	const deleteHabit = (habitID) => {
-
 		api
-		.delete(`/habits/${habitID}/`, {
-			headers: {
-			Authorization: `Bearer ${accToken}`,
-			},
-		})
-		.then((_) => {
+			.delete(`/habits/${habitID}/`, {
+				headers: {
+					Authorization: `Bearer ${accToken}`,
+				},
+			})
+			.then((_) => {
+				let newHabitData = habitsProgression.filter(
+					(habit) => habit.id !== habitID
+				)
 
-			let newHabitData = habitsProgression.filter(habit => habit.id !== habitID)
-
-			setHabitsProgression(newHabitData)
-			localStorage.setItem('@HS:HabitsProg', JSON.stringify(newHabitData))
-			setUpdateTrigger(!updateTrigger)
-			toast.success("Hábito removido com sucesso!");
-		})
-		.catch((_) => toast.error("Algo deu errado, tente novamente"));
-	};
+				setHabitsProgression(newHabitData)
+				localStorage.setItem("@HS:HabitsProg", JSON.stringify(newHabitData))
+				setUpdateTrigger(!updateTrigger)
+				toast.success("Hábito removido com sucesso!")
+			})
+			.catch((_) => toast.error("Algo deu errado, tente novamente"))
+	}
 
 	const updateHabit = (habitID, currentProgress, frequency) => {
-
 		let newProgress = 0
 		let newStatus = false
 
-		let currentDate = new Date();
-		let nextUpdate = new Date();
-		
-		if (frequency === 'Diária') {
+		let currentDate = new Date()
+		let nextUpdate = new Date()
 
+		if (frequency === "Diária") {
 			nextUpdate.setDate(nextUpdate.getDate() + 1)
 			newProgress = currentProgress + 2
-		} else if (frequency === 'Semanal') {
-
+		} else if (frequency === "Semanal") {
 			nextUpdate.setDate(nextUpdate.getDate() + 7)
 			newProgress = currentProgress + 10
-		} else if (frequency === 'Mensal') {
-
+		} else if (frequency === "Mensal") {
 			newProgress = currentProgress + 30
 			nextUpdate.setDate(nextUpdate.getDate() + 30)
 		}
 
 		if (newProgress >= 100) {
-
 			newProgress = 100
 			newStatus = true
 		}
@@ -144,55 +147,58 @@ export const HabitsProvider = ({ children }) => {
 			id: habitID,
 			last_updated: currentDate,
 			next_update_in: nextUpdate,
-		}		
+		}
 
-		const thisHabit = habitsProgression.filter(item => item.id === habitID) || []
-		const { next_update_in } = thisHabit[0] || ''
-		const parsedDate = parseISO(next_update_in) || ''
+		const thisHabit =
+			habitsProgression.filter((item) => item.id === habitID) || []
+		const { next_update_in } = thisHabit[0] || ""
+		const parsedDate = parseISO(next_update_in) || ""
 
 		const canUpdate = isAfter(currentDate, parsedDate)
-		const registeredHabitsIDs = habitsProgression.map(item => item.id)
+		const registeredHabitsIDs = habitsProgression.map((item) => item.id)
 
 		if (canUpdate || !registeredHabitsIDs.includes(habitID)) {
-
 			api
-			.patch(`/habits/${habitID}/`, {
-				how_much_achieved: newProgress,
-				achieved: newStatus,
-			},
-			{
-				headers: {
-					Authorization: `Bearer ${accToken}`,
-				},
-			})
-			.then((_) => {
-				let habitsProgressionIDs = habitsProgression.map(item => item.id)
-	
-				if (!habitsProgressionIDs.includes(habitID)) {
-	
-					setHabitsProgression([...habitsProgression, newHabitProgression])
-				} else {
-	
-					let newDate = new Date();
-					let index = habitsProgression.findIndex(item => item.id === habitID)
-					let temp = habitsProgression.slice()
-					temp[index].last_updated = newDate
-					setHabitsProgression(temp) 
-				}
-				
-				setUpdateTrigger(!updateTrigger)
-				toast.success('Progresso atualizado')
-			})
-			.catch((err) => {
-				console.log(err)
-			})
+				.patch(
+					`/habits/${habitID}/`,
+					{
+						how_much_achieved: newProgress,
+						achieved: newStatus,
+					},
+					{
+						headers: {
+							Authorization: `Bearer ${accToken}`,
+						},
+					}
+				)
+				.then((_) => {
+					let habitsProgressionIDs = habitsProgression.map((item) => item.id)
+
+					if (!habitsProgressionIDs.includes(habitID)) {
+						setHabitsProgression([...habitsProgression, newHabitProgression])
+					} else {
+						let newDate = new Date()
+						let index = habitsProgression.findIndex(
+							(item) => item.id === habitID
+						)
+						let temp = habitsProgression.slice()
+						temp[index].last_updated = newDate
+						setHabitsProgression(temp)
+					}
+
+					setUpdateTrigger(!updateTrigger)
+					toast.success("Progresso atualizado")
+				})
+				.catch((err) => {
+					console.log(err)
+				})
 		} else {
 			toast.error(`Próxima atualização disponível em: ${next_update_in}`)
 		}
 	}
 
 	return (
-		<HabitsContext.Provider 
+		<HabitsContext.Provider
 			value={{
 				habits,
 				unachievedHabits,
@@ -203,9 +209,11 @@ export const HabitsProvider = ({ children }) => {
 				addHabit,
 				deleteHabit,
 				updateHabit,
+				reset,
 			}}
 		>
-			{children}</HabitsContext.Provider>
+			{children}
+		</HabitsContext.Provider>
 	)
 }
 

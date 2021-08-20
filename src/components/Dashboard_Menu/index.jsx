@@ -5,15 +5,18 @@ import { HiOutlinePencilAlt } from "react-icons/hi"
 import { FiLogOut } from "react-icons/fi"
 import { useLogin } from "../../providers/User"
 import { motion } from "framer-motion"
+import { useHabits } from "../../providers/Habits"
 
 const DashboardMenu = () => {
 	const path = window.location.pathname
 	const { reset } = useLogin()
+	const { reset: habitsReset } = useHabits()
 	const isMobile = window.screen.width < 768
 
 	const isCurrent = (name) => path.endsWith(name)
 	const logOut = () => {
 		reset()
+		habitsReset()
 		localStorage.clear()
 	}
 

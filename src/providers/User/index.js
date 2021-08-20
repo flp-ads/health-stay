@@ -1,4 +1,4 @@
-import { createContext, useState, useContext, useEffect, useRef } from "react"
+import { createContext, useState, useContext, useEffect } from "react"
 import { toast } from "react-toastify"
 import jwt_decode from "jwt-decode"
 
@@ -40,18 +40,16 @@ export const UserContextProvider = ({ children }) => {
 		setAccToken("")
 	}
 
-	const getUserName = () => {
-		api
-			.get(`users/${userId}/`)
-			.then((res) => setUserName(res.data.username))
-			.catch((err) => console.log(err))
-	}
-
-	const RefGetUserName = useRef(getUserName)
-
 	useEffect(() => {
+		const getUserName = () => {
+			api
+				.get(`users/${userId}/`)
+				.then((res) => setUserName(res.data.username))
+				.catch((err) => console.log(err))
+		}
+
 		if (userId !== -1 && accToken !== "") {
-			RefGetUserName.current()
+			getUserName()
 		}
 	}, [accToken, userId])
 
