@@ -95,7 +95,7 @@ const AboutUs = () => {
             <img src={Rafael} alt="RafaPhoto" />
             <div>
               <h3>Rafael Bertoldo</h3>
-              <p>Scrum Master</p>
+              <p>Scrum Master / Developer</p>
               <a href="https://www.linkedin.com/in/felipe-silva-3855541a4">
                 <FaLinkedin size={28} />
               </a>
