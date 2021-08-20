@@ -105,7 +105,7 @@ export const HabitsProvider = ({ children }) => {
 			let newHabitData = habitsProgression.filter(habit => habit.id !== habitID)
 
 			setHabitsProgression(newHabitData)
-			localStorage.setItem('@')
+			localStorage.setItem('@HS:HabitsProg', JSON.stringify(newHabitData))
 			setUpdateTrigger(!updateTrigger)
 			toast.success("Hábito removido com sucesso!");
 		})
