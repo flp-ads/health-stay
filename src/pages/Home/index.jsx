@@ -1,69 +1,72 @@
-import Button from "../../components/Global_Button";
+import Button from "../../components/Global_Button"
 import {
-  BackgroundHeader,
-  BackgroundImage,
-  Container,
-  Header,
-  HomeButtonContainer,
-  HomeTitleContainer,
-} from "./home.style";
-import bg_image from "../../assets/healthy-food-png.png";
-import { useHistory } from "react-router";
+	BackgroundHeader,
+	BackgroundImage,
+	Container,
+	Header,
+	HomeButtonContainer,
+	HomeTitleContainer,
+} from "./home.style"
+import bg_image from "../../assets/healthy-food-png.png"
+import { useHistory } from "react-router"
+import logo from "../../assets/logo_green_bg.svg"
 
 const Home = () => {
-  const history = useHistory();
+	const history = useHistory()
 
-  const handleNavigation = (path) => {
-    return history.push(path);
-  };
-  return (
-    <>
-      <BackgroundHeader>
-        <img src={bg_image} alt="" />
-      </BackgroundHeader>
-      <Container>
-        <Header>
-          <div className="header_container">
-            <h1>Logo</h1>
-            <div className="header_container">
-              <button onClick={() => handleNavigation("/")}>Home</button>
-              <button onClick={() => handleNavigation("/sobre")}>
-                Sobre nós
-              </button>
-            </div>
-          </div>
-        </Header>
+	const handleNavigation = (path) => {
+		return history.push(path)
+	}
+	return (
+		<>
+			<BackgroundHeader>
+				<img src={bg_image} alt="" />
+			</BackgroundHeader>
+			<Container>
+				<Header>
+					<div className="header_container">
+						<h1>
+							<img src={logo} alt="logo" />
+						</h1>
+						<div className="header_container">
+							<button onClick={() => handleNavigation("/")}>Home</button>
+							<button onClick={() => handleNavigation("/sobre")}>
+								Sobre nós
+							</button>
+						</div>
+					</div>
+				</Header>
 
-        <HomeTitleContainer>
-          <div>
-            <p>Mude seus habitos</p>
-            <strong>Hoje</strong>
-          </div>
-        </HomeTitleContainer>
+				<HomeTitleContainer>
+					<div>
+						<p>Mude seus habitos</p>
+						<strong>Hoje</strong>
+					</div>
+				</HomeTitleContainer>
 
-        <BackgroundImage>
-          <img src={bg_image} alt="" />
-        </BackgroundImage>
+				<BackgroundImage>
+					<img src={bg_image} alt="" />
+				</BackgroundImage>
 
-        <HomeButtonContainer>
-          <div className="container">
-            <Button onClick={() => handleNavigation("/signup")}>
-              Cadastre-se agora
-            </Button>
+				<HomeButtonContainer>
+					<div className="container">
+						<Button onClick={() => handleNavigation("/signup")}>
+							Cadastre-se agora
+						</Button>
 
-            <div>
-              <fieldset>
-                <legend>ou</legend>
-              </fieldset>
-            </div>
-            <Button isVanilla onClick={() => handleNavigation("/login")}>
-              Faça login
-            </Button>
-          </div>
-        </HomeButtonContainer>
-      </Container>
-    </>
-  );
-};
+						<div>
+							<fieldset>
+								<legend>ou</legend>
+							</fieldset>
+						</div>
+						<Button isVanilla onClick={() => handleNavigation("/login")}>
+							Faça login
+						</Button>
+					</div>
+				</HomeButtonContainer>
+			</Container>
+		</>
+	)
+}
 
-export default Home;
+export default Home

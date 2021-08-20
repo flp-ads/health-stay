@@ -1,5 +1,5 @@
 import HabitsCard from "../Habits_Card";
-import { CardsList, All } from "./habits.my.style";
+import { CardsList } from "./habits.my.style";
 
 import { useHabits } from "../../providers/Habits";
 

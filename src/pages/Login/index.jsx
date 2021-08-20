@@ -20,6 +20,8 @@ import { motion } from "framer-motion";
 
 import { useLogin } from "../../providers/User";
 
+import logo from "../../assets/logo_white_bg.svg";
+
 const Login = () => {
   const formSchema = yup.object().shape({
     username: yup.string().required("Preencha este campo"),
@@ -57,7 +59,9 @@ const Login = () => {
             <FiChevronLeft /> voltar
           </button>
 
-          <h1>Logo</h1>
+          <h1 className="logo">
+            <img src={logo} alt="logo" />
+          </h1>
         </HeaderContainer>
 
         <Content
@@ -78,6 +82,7 @@ const Login = () => {
 
             <Input
               name="password"
+              type="password"
               icon={FiLock}
               placeholder="Senha"
               register={register}
