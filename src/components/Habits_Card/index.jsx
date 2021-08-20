@@ -14,7 +14,6 @@ import {
 import { FiTrash2, FiCheckCircle } from "react-icons/fi";
 import { useHabits } from "../../providers/Habits";
 
-
 const HabitsCard = ({ habit }) => {
   const {
     id,
@@ -26,7 +25,7 @@ const HabitsCard = ({ habit }) => {
     how_much_achieved,
   } = habit;
 
-  const { deleteHabit, updateHabit, habitsProgression } = useHabits();
+  const { deleteHabit, updateHabit } = useHabits();
 
   return (
     <HabitsCardContainer>
@@ -50,22 +49,17 @@ const HabitsCard = ({ habit }) => {
           <button onClick={() => deleteHabit(id)}>
             <FiTrash2 size={23} color={"var(--red)"} />
           </button>
-		 {achieved ? 
-		 
-          <UpdateButton
-            disabled
-          >
-            <FiCheckCircle size={23} color={"var(--medium-gray)"} />
-          </UpdateButton> 
-
-		 :	
-		  <UpdateButton
-            onClick={() => updateHabit(id, how_much_achieved, frequency)}
-          >
-            <FiCheckCircle size={23} color={"var(--light-green)"} />
-          </UpdateButton>
-		 }
-
+          {achieved ? (
+            <UpdateButton disabled>
+              <FiCheckCircle size={23} color={"var(--medium-gray)"} />
+            </UpdateButton>
+          ) : (
+            <UpdateButton
+              onClick={() => updateHabit(id, how_much_achieved, frequency)}
+            >
+              <FiCheckCircle size={23} color={"var(--light-green)"} />
+            </UpdateButton>
+          )}
         </HabitsCardFooterContainer>
       </HabitsCardContent>
     </HabitsCardContainer>

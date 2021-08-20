@@ -1,4 +1,4 @@
-import styled ,{ css } from "styled-components";
+import styled from "styled-components";
 import card from "../../assets/card_dark_full.svg";
 export const HabitsCardContainer = styled.div`
   background-color: var(--light-vanilla);
@@ -117,18 +117,15 @@ export const ProgressContainer = styled.div`
   @media (min-width: 768px) {
     width: 150px;
   }
-`
+`;
 
 export const ProgressBar = styled.div`
-  width: ${props => props.how_much_achieved}%;
+  width: ${(props) => props.how_much_achieved}%;
   height: 10px;
   background-color: var(--light-green);
 
   border-radius: 2px;
-`
+`;
 export const UpdateButton = styled.button`
-
-    color: var(--light-green);
-
-
-`
+  color: var(--light-green);
+`;

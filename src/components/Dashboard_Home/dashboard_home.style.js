@@ -108,6 +108,7 @@ export const CardsList = styled.div`
   @media only screen and (min-width: 768px) {
     flex-direction: row;
     flex-wrap: wrap;
+    align-items: center;
     justify-content: center;
   }
 `;
@@ -128,4 +129,11 @@ export const All = styled(motion.p)`
   }
 `;
 
-export const MyHabits = styled(MyGroups)``;
+export const MyHabits = styled(GlobalContainer)`
+  flex: 50%;
+  @media screen and (min-width: 768px) {
+    h2 {
+      padding: 1rem 0;
+    }
+  }
+`;
