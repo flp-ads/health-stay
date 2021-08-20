@@ -13,7 +13,7 @@ import { useHistory } from "react-router-dom"
 
 const PREFIX = "@HS-"
 
-const GroupCard = ({ group, isSubscribed = false }) => {
+const GroupCard = ({ group, isSubscribed = false, index }) => {
 	const { name, category, users_on_group, id } = group
 	const { subscribleToGroup } = useGroups()
 	const history = useHistory()
@@ -47,8 +47,23 @@ const GroupCard = ({ group, isSubscribed = false }) => {
 		)
 	}
 
+	const CardsAnimation = {
+		visible: (i) => ({
+			opacity: 1,
+			x: 0,
+			transition: {
+				delay: i * 0.3,
+			},
+		}),
+		hidden: { opacity: 0, x: -50 },
+	}
+
 	return (
 		<Container
+			custom={index}
+			initial="hidden"
+			animate="visible"
+			variants={CardsAnimation}
 			onClick={() => {
 				history.push(`/dashboard/grupos/${id}/`)
 			}}

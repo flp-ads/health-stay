@@ -65,6 +65,7 @@ export const Header = styled.h2`
   color: var(--dark-green);
   margin-bottom: 1rem;
   font-size: 1.5rem;
+  height: min-content;
 
   span {
     font-weight: bold;
@@ -76,7 +77,7 @@ export const Header = styled.h2`
   }
 `;
 
-export const OverviewItem = styled.p`
+export const OverviewItem = styled(motion.p)`
   text-align: center;
   color: var(--medium-gray);
   font-size: 1.2rem;
@@ -99,7 +100,7 @@ export const MyGroups = styled(Overview)`
   }
 `;
 
-export const CardsList = styled.div`
+export const CardsList = styled(motion.div)`
   display: flex;
   flex-direction: column;
   align-items: center;

@@ -14,7 +14,7 @@ import {
 import { FiTrash2, FiCheckCircle } from "react-icons/fi";
 import { useHabits } from "../../providers/Habits";
 
-const HabitsCard = ({ habit }) => {
+const HabitsCard = ({ habit, index }) => {
   const {
     id,
     title,
@@ -25,10 +25,26 @@ const HabitsCard = ({ habit }) => {
     how_much_achieved,
   } = habit;
 
-  const { deleteHabit, updateHabit } = useHabits();
+  const { deleteHabit, updateHabit, habitsProgression } = useHabits();
+
+  const CardsAnimation = {
+    visible: (i) => ({
+      opacity: 1,
+      x: 0,
+      transition: {
+        delay: i * 0.3,
+      },
+    }),
+    hidden: { opacity: 0, x: -50 },
+  };
 
   return (
-    <HabitsCardContainer>
+    <HabitsCardContainer
+      custom={index}
+      initial="hidden"
+      animate="visible"
+      variants={CardsAnimation}
+    >
       <Background />
       <HabitsCardContent>
         <HabitsCardHeaderContainer>
