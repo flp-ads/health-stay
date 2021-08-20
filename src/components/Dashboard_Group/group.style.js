@@ -45,6 +45,7 @@ export const Cards = styled(motion.div)`
   @media only screen and (min-width: 768px) {
     flex-direction: row;
     flex-wrap: wrap;
+    align-items: flex-start;
   }
 `;
 
@@ -169,8 +170,14 @@ export const NavigationButton = styled.button`
   }
 `;
 
-export const Main = styled(GlobalContainer)`
-  /* padding: 2rem; */
+export const Main = styled.div`
+  border: none;
+`;
+
+export const ActivitiesContainer = styled.div`
+  @media screen and (min-width: 768px) {
+    padding-top: 4rem;
+  }
 `;
 
 export const SubMenu = styled.div`
@@ -178,6 +185,7 @@ export const SubMenu = styled.div`
   flex-direction: column;
   gap: 1rem;
   margin-bottom: 2rem;
+  border: none;
 
   @media only screen and (min-width: 768px) {
     flex-direction: row;
