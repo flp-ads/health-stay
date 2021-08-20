@@ -31,51 +31,59 @@ const CreateHabit = () => {
     resolver: yupResolver(formSchema),
   });
 
-  const { addHabit } = useHabits()
+  const { addHabit } = useHabits();
 
   const onFormSubmit = (formData) => {
-    
-    addHabit(formData)
+    addHabit(formData);
   };
 
-  const categoryList = ['Saúde Mental', 'Saúde Física', 'Reeducação', 'Alimentação'];
-  const difficultyList = ['Fácil', 'Média', 'Difícil'];
-  const frequencyList = ['Diária', 'Semanal', 'Mensal'];
+  const categoryList = [
+    "Saúde Mental",
+    "Saúde Física",
+    "Reeducação",
+    "Alimentação",
+  ];
+  const difficultyList = ["Fácil", "Média", "Difícil"];
+  const frequencyList = ["Diária", "Semanal", "Mensal"];
 
   return (
     <Container>
       <form id="create_habit_form" onSubmit={handleSubmit(onFormSubmit)}>
-        <Input
-          name="title"
-          placeholder="Título"
-          icon={BiPencil}
-          register={register}
-          error={errors.title?.message}
-        />
-        <Input
-          name="category"
-          selectPlaceholder="Categoria"
-          icon={BsInboxes}
-          register={register}
-          error={errors.category?.message}
-          list={categoryList}
-        />
-        <Input
-          name="difficulty"
-          selectPlaceholder="Dificuldade"
-          icon={FiLayers}
-          register={register}
-          error={errors.difficulty?.message}
-          list={difficultyList}
-        />
-        <Input
-          name="frequency"
-          selectPlaceholder="Frequência"
-          icon={BiLineChart}
-          register={register}
-          error={errors.frequency?.message}
-          list={frequencyList}
-        />
+        <div>
+          <Input
+            name="title"
+            placeholder="Título"
+            icon={BiPencil}
+            register={register}
+            error={errors.title?.message}
+          />
+          <Input
+            name="category"
+            selectPlaceholder="Categoria"
+            icon={BsInboxes}
+            register={register}
+            error={errors.category?.message}
+            list={categoryList}
+          />
+        </div>
+        <div>
+          <Input
+            name="difficulty"
+            selectPlaceholder="Dificuldade"
+            icon={FiLayers}
+            register={register}
+            error={errors.difficulty?.message}
+            list={difficultyList}
+          />
+          <Input
+            name="frequency"
+            selectPlaceholder="Frequência"
+            icon={BiLineChart}
+            register={register}
+            error={errors.frequency?.message}
+            list={frequencyList}
+          />
+        </div>
       </form>
       <Button type="submit" form="create_habit_form">
         Criar hábito
