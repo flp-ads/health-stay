@@ -42,7 +42,7 @@ export const ContentContainer = styled.div`
   flex-flow: column nowrap;
   box-sizing: border-box;
   padding: 8px;
-  width: calc(100% - 100px);
+  width: 100%;
   background-color: var(--light-vanilla);
   font-size: var(--card-text-size);
   header {
